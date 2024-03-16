@@ -1,0 +1,137 @@
+@use "global" as *;
+
+.p-mv {
+  background-size: cover;
+  background-position-x: 50%;
+
+  &-inner {
+    height: 100vh;
+    min-height: 500px;
+    position: relative;
+    padding-top: 85px;
+  }
+
+  &-ttl-other,
+  &-ttl-other-long,
+  &-ttl-home {
+    font-weight: 500;
+    letter-spacing: 3.5px;
+    text-align: center;
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  &-ttl-other,
+  &-ttl-other-long {
+    width: 1180px;
+    font-size: rem(80);
+    color: rgba(249, 251, 251, 0.8);
+    font-style: italic;
+    text-shadow: 5px 5px 5px rgba(0, 0, 0, 0.2);
+    top: calc(50% + 20px);
+
+    @include mq (o-pc) {
+      font-size: min(8vw, rem(100));
+    }
+    @include mq (o-sp) {
+      font-size: min(11.5vw, rem(80));
+    }
+  }
+
+  &-ttl-other-long {
+    @include mq (o-tb) {
+      top: 50%;
+    }
+  }
+
+  &-ttl-home {
+    width: 835px;
+    font-size: rem(56);
+    color: $white;
+    text-shadow: 8px 8px 5px hsl(0deg 0% 0% / 95%);
+    top: calc(50%);
+
+    @include mq (o-tb) {
+      font-size: rem(50);
+    }
+    @include mq (o-sp) {
+      font-size: min(7.5vw, rem(50));
+    }
+  }
+
+  &-ttl-sub {
+    font-size: rem(30);
+    color: rgba(249, 251, 251);
+    text-align: center;
+    position: absolute;
+    font-weight: 400;
+    top: calc(50% + 110px);
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 240px;
+
+    @include mq (o-sp-m) {
+      width: 200px;
+      font-size: rem(24);
+    }
+  }
+
+  // &-company {
+  //   position: absolute;
+  //   bottom: -320px;
+  //   left: -30px;
+  //   opacity: 0.7;
+  //   width: 700px;
+
+  //   @media (max-height: 1000px) {
+  //     width: 500px;
+  //   }
+  //   @include mq (o-pc) {
+  //     // left: 40px;
+  //     width: min(75vw, 500px);
+  //   }
+  //   @include mq (o-sp) {
+  //     // left: 20px;
+  //   }
+  // }
+  &-company {
+    position: absolute;
+    left: 150px;
+    opacity: 0.6;
+    position: absolute;
+    top: 70%;
+    left: 40%;
+    transform: translate(-50%, -50%);
+
+    @include mq (o-pc) {
+      top: 65%;
+      left: 35%;
+    }
+
+    @include mq (o-sp) {
+    }
+
+    @media (max-height: 1000px) {
+      bottom: 150px;
+    }
+  }
+
+  &-company-img {
+    width: 700px;
+
+    @media (max-height: 1000px) {
+      width: 500px;
+    }
+
+    @include mq (o-pc) {
+      width: 450px;
+    }
+    @include mq (o-tb) {
+      width: min(75vw, 500px);
+    }
+    @include mq (o-sp) {
+      width: min(75vw, 500px);
+    }
+  }
+}

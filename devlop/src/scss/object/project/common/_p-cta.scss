@@ -1,0 +1,153 @@
+@use "global" as *;
+
+.p-cta {
+  background-color: $bg-yellow;
+  padding: 150px;
+  @include mq (o-pc-l) {
+    padding: 80px;
+  }
+  @include mq (o-tb) {
+    padding: 64px 48px;
+  }
+
+  @include mq (o-sp) {
+    padding: 56px 32px;
+  }
+  @include mq (o-sp-m) {
+    padding: 56px 16px;
+  }
+}
+
+.p-cta-inner {
+  background-color: $white;
+  padding: 125px;
+  text-align: center;
+  @include mq (o-pc-l) {
+    padding: 80px 48px;
+  }
+
+  @include mq (o-tb) {
+    padding: 56px 32px;
+  }
+  @include mq (o-sp-m) {
+    padding: 56px 10px;
+  }
+}
+
+.p-cta-copy {
+  font-size: rem(40);
+  color: $yellow;
+  font-weight: 700;
+  margin-bottom: 36px;
+  @include mq (o-pc) {
+    line-height: 1.3;
+  }
+
+  @include mq (o-tb) {
+    margin-bottom: 24px;
+    span {
+      font-size: rem(40);
+      letter-spacing: 0;
+    }
+  }
+
+  @include mq (o-sp) {
+    font-size: min(6.2vw, rem(32));
+    span {
+      font-size: rem(22);
+    }
+  }
+
+  @include mq (o-sp-m) {
+    font-size: min(7.4vw, rem(32));
+    span {
+      font-size: rem(16);
+    }
+  }
+}
+
+.p-cta-text {
+  color: $blue;
+  font-size: rem(20);
+  line-height: calc(58/24);
+  margin-bottom: 40px;
+
+  @include mq (o-pc) {
+    line-height: calc(50/25);
+  }
+
+  @include mq (o-tb) {
+    font-size: rem(18);
+  }
+  @include mq (o-sp) {
+    font-size: min(2.7vw, rem(16));
+  }
+  @include mq (o-sp-m) {
+  }
+}
+
+// .p-cta-btns {
+//   margin-bottom: 64px;
+// }
+
+.p-cta-btn {
+  display: inline-block;
+  width: calc((100% - 60px) / 2);
+  max-width: 470px;
+  color: $white;
+  background-color: $orange;
+  font-weight: 700;
+  padding: 24px;
+  font-size: min(2vw, 2.2rem);
+  border-radius: 12px;
+
+  @include mq (o-pc) {
+    width: calc((100% - 25px)/ 2);
+    font-size: min(2.4vw, 2.5rem);
+    padding: 24px 16px;
+  }
+
+  @include mq (o-tb) {
+    width: 100%;
+    font-size: rem(32);
+    padding: 24px 16px;
+  }
+
+  @include mq (o-sp) {
+    font-size: min(4.5vw,2rem);
+    border-radius: 12px;
+  }
+  @include mq (o-sp-m) {
+    font-size: min(5.4vw,2rem);
+  }
+
+  // &:first-child {
+
+  //   margin-right: 20px;
+
+  //   @include mq (o-tb) {
+  //     margin-right: 0;
+  //     margin-bottom: 28px;
+  //   }
+  // }
+  // &:last-child {
+  //   background-color: $yellow;
+  // }
+}
+
+.p-cta-telText {
+  font-size: rem(32);
+  color: $blue;
+  font-weight: 500;
+  margin-bottom: 16px;
+
+  @include mq (o-sp-m) {
+    font-size: rem(26);
+  }
+}
+
+.p-cta-tel {
+  &-img {
+    width: 540px;
+  }
+}

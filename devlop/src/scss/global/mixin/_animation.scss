@@ -1,0 +1,56 @@
+@use "../setting/" as *;
+
+@mixin txt-border ($bg: $black, $h: 10%, $btm: -4px) {
+  position: relative;
+  display: inline-block;
+  text-decoration: none;
+  &::after {
+      position: absolute;
+      bottom: $btm;
+      left: 0;
+      content: '';
+      width: 100%;
+      height: $h;
+      background: $bg;
+      transform: scale(0, 1);
+      transform-origin: left top;      // left top:左=>右 top top:中央から
+      transition: transform .5s;
+  }
+  &:hover::after {
+      transform-origin: left top;      //アニメーションはここで調整
+      transform: scale(1, 1);
+  }
+}
+
+@mixin bgLRextend($duration: 2s, $b: 10%, $h: 25%, $z: -1) {
+  animation-name: underL;
+  animation-duration: $duration;
+  animation-fill-mode: forwards;
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: $b;
+  z-index: $z;
+  width: 100%;
+  height: $h;
+  background-color: #19B8FF;
+}
+
+@keyframes underL {
+  0% {
+    transform-origin: left;
+    transform: scaleX(0);
+  }
+
+  100% {
+    transform-origin: left;
+    transform: scaleX(1);
+  }
+}
+
+a {
+  transition: opacity 0.3s;
+  &:hover {
+    opacity: 0.85;
+  }
+}

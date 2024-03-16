@@ -1,0 +1,89 @@
+@use "global" as *;
+
+.u-pc-l-show {
+  display: none;
+  @include mq (o-pc-l) {
+    display: block;
+  }
+}
+
+.u-pc-l-none {
+  display: block;
+  @include mq (o-pc-l) {
+    display: none;
+  }
+}
+
+.u-pc-show {
+  display: none;
+
+  @include mq (o-pc) {
+    display: block;
+  }
+}
+
+.u-pc-none {
+  display: block;
+  @include mq (o-pc) {
+    display: none;
+  }
+}
+
+
+.u-tb-show {
+  display: none;
+
+  @include mq (o-tb) {
+    display: block;
+  }
+}
+
+.u-tb-none {
+  //タブレット以下で表示
+  display: block;
+
+  @include mq (o-tb) {
+    display: none;
+  }
+}
+
+
+.u-sp-show {
+  display: none;
+
+  @include mq (o-sp) {
+    display: block;
+  }
+}
+
+.u-sp-none {
+
+  @include mq (o-sp) {
+    display: none;
+  }
+}
+
+.u-sp-m-show {
+  display: none;
+  @include mq (o-sp-m) {
+    display: block;
+  }
+}
+.u-sp-m-none {
+  display: block;
+  @include mq (o-sp-m) {
+    display: none;
+  }
+}
+
+.u-tb-show-sp-show {
+  display: none;
+
+  @include mq (o-tb) {
+    display: block;
+  }
+
+  @include mq (o-sp) {
+    display: none;
+  }
+}

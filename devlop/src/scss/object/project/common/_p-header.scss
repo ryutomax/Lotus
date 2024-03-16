@@ -1,0 +1,32 @@
+@use "global" as *;
+
+.content {
+  .wp-block-group {
+    display: none;
+  }
+}
+
+.p-header {
+}
+
+.p-header-inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100vw;
+  height: 85px;
+  padding: 0px 100px;
+  background-color: $t-white;
+
+  @include mq (o-pc-l) {
+    padding: 0px 8px;
+  }
+}
+
+.p-header-logo {
+  margin-right: 8px;
+  &-link {}
+  &-img {
+    width: 230px;
+  }
+}

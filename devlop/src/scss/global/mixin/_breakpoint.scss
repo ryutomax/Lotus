@@ -1,0 +1,36 @@
+// breakpoint
+$SP-S: 374;
+$SP-M: 480;
+$SP: 748;
+$TB: 950;
+$PC: 1200;
+$BigPC: 1700;
+$breakpoints : ( // "sp":"screen and (max-width:#{$SP}px)"
+  'sp-tb': 'print, screen and (max-width: #{$TB}px) and (min-width: #{$SP + 1}px)',
+  "o-sp-s" :"print, screen and (max-width:#{$SP-S + 1}px)",
+  "o-sp-m" :"print, screen and (max-width:#{$SP-M + 1}px)",
+  "o-sp" :"print, screen and (max-width:#{$SP + 1}px)",
+  "o-tb" :"print, screen and (max-width:#{$TB + 1}px)",
+  "o-pc" :"print, screen and (max-width:#{$PC + 1}px)",
+  "o-mac" :"print, screen and (max-width:1366px)",
+  "o-pc-l":"print, screen and (max-width:#{$BigPC + 1}px)",
+) !default;
+
+// @mixin mq($breakpoint) {
+//   @media #{inspect(map-get($breakpoints, $breakpoint))} {
+//     @content;
+//   }
+// }
+
+@mixin mq($breakpoint) {
+  @media #{map-get($breakpoints, $breakpoint)} {
+    @content;
+  }
+}
+
+// ie用
+@mixin ie {
+  @media all and (-ms-high-contrast: none) {
+    @content;
+  }
+}

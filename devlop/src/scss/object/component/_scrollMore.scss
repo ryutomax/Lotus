@@ -1,0 +1,70 @@
+@use "global" as *;
+
+.c-scrollMore {
+  position: absolute;
+  left: 50%;
+  bottom: 50px;
+  transform: translate(-50%, -50%);
+  opacity: 0.8;
+
+  @include mq (o-sp-m) {
+    bottom: 45px;
+  }
+
+  span {
+    position: relative;
+    font-family: $ff-gothic;
+    font-stretch: condensed;
+    font-size: rem(15);
+    font-weight: 600;
+    color: $white;
+    letter-spacing: 0.14em;
+
+    @include mq (o-sp-m) {
+      font-size: rem(10);
+    }
+
+    &::after {
+      content: "";
+      width: 7px;
+      height: 7px;
+      background-color: $white;
+      border-radius: 50%;
+      position: absolute;
+      bottom: -15px;
+      left: 48%;
+      transform: translate(-50%, -50%);
+      opacity: 0;
+      animation: circleMove 2s infinite;
+    }
+  }
+}
+
+::-webkit-full-page-media,
+:future,
+:root .c-scrollMore {
+
+  // @include mq (o-sp) {
+  //   bottom: 24px;
+  // }
+}
+
+@keyframes circleMove {
+  0% {
+    bottom: -15px;
+    opacity: 0;
+  }
+
+  40% {
+    opacity: 1;
+  }
+
+  80% {
+    bottom: -40px;
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 0;
+  }
+}

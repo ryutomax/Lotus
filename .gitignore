@@ -1,0 +1,12 @@
+node_modules
+index.html
+# *.js
+app-min.css
+bundle.js
+noBundle-min.js
+bundle.js.LICENSE.txt
+top_mv.mp4
+assets/images/*
+
+.git
+.vscode

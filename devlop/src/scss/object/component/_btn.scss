@@ -1,0 +1,28 @@
+@use "global" as *;
+
+.c-btn {
+  color: $white;
+  font-size: rem(20);
+  font-weight: 900;
+  text-align: center;
+  background-color: $blue;
+  padding: 8px 24px 12px 24px;
+  border-radius: 55px;
+}
+
+.c-toUpBtn {
+  position: absolute;
+  bottom: 40px;
+  right: 10px;
+  background-color: #f28705;
+  color: $white;
+  width: 70px;
+  height: 70px;
+  font-size: 65px;
+  padding: 10px;
+  text-align: center;
+
+  @include mq (o-sp) {
+    bottom: 54px;
+  }
+}
