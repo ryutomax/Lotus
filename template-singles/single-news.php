@@ -17,9 +17,12 @@
 			$_SESSION['post_url'] = get_permalink();
             $title = get_the_title();
 			$post = get_page_by_title($title, OBJECT, 'gallery');
-			$link = get_permalink($post->ID);
+			if ($post) {
+				$link = get_permalink($post->ID);
+				$gallery_link = '<a href="' . esc_url($link) . '">画像ギャラリーへ</a>';
+			}
         ?>
-        <!-- <a href="<?php echo esc_url($link); ?>">画像ギャラリーへ</a> -->
+        <?php echo $gallery_link; ?>
 		<?php the_content(); ?>
 	</div>
 	<?php echo $pagination; ?>

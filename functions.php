@@ -4,6 +4,8 @@ function enqueue_styles() {
 	$version = date('Ymd-His'); // バージョン番号を設定
 
 	wp_enqueue_style('style',  get_template_directory_uri() .'/dist/assets/css/app-min.css', [], $version, 'all');
+	wp_enqueue_style('slick',  get_template_directory_uri() .'/dist/assets/vender/slick-1.8.1/slick/slick.css', [], $version, 'all');
+	wp_enqueue_style('slick-theme',  get_template_directory_uri() .'/dist/assets/vender/slick-1.8.1/slick/slick-theme.css', [], $version, 'all');
 }
 add_action('wp_enqueue_scripts', 'enqueue_styles');
 function enqueue_scripts()
@@ -11,10 +13,11 @@ function enqueue_scripts()
 	$version = date('Ymd-Hi'); // バージョン番号を設定
 
 	if (is_home() || is_front_page()) {
-		wp_enqueue_script('top', get_theme_file_uri('/assets/js/nonBundle/top-min.js'), [], $version, true);
+		wp_enqueue_script('top', get_theme_file_uri('/dist/assets/js/parts/top-min.js'), [], $version, true);
 	}
-
-	wp_enqueue_script('bundle', get_template_directory_uri() . '/assets/js/bundle.js', [], $version, true);
+	wp_enqueue_script('jQuery', get_template_directory_uri() . '/dist/assets/vender/jquery-3.7.1.min.js', [], $version, true);
+	wp_enqueue_script('slick-min', get_template_directory_uri() . '/dist/assets/vender/slick-1.8.1/slick/slick.min.js', [], $version, true);
+	wp_enqueue_script('bundle', get_template_directory_uri() . '/dist/assets/js/bundle.js', [], $version, true);
 	// wp_enqueue_script('noBundle', get_template_directory_uri() . '/assets/js/nonBundle/noBundle-min.js', [], $css_version, true);
 }
 add_action('wp_enqueue_scripts', 'enqueue_scripts');

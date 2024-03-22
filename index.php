@@ -14,7 +14,15 @@
               </div>
               <!-- /.p-mv-inner -->
             </section>
-            <?php get_template_part('template-parts/cta') ?>
-            <?php get_template_part('template-parts/recommend') ?>
+            <div class="visual">
+                <div><img src="https://placehold.jp/150x150.png"></div>
+                <div><img src="https://placehold.jp/3d4070/ffffff/150x150.png"></div>
+                <div><img src="https://placehold.jp/ff1900/ffffff/150x150.png"></div>
+            </div>
           </main>
           <?php get_template_part('template-parts/footer') ?>
+          <script>
+            $('.visual').slick({
+              dots: true,
+            });
+          </script>
