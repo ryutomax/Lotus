@@ -2,7 +2,7 @@
   <div class="p-header-inner">
     <h1 class="p-header-logo c-logo">
       <a class="p-header-logo-link" href="<?= esc_url(home_url('/')) ?>">
-        <img src="<?php echo esc_url(get_template_directory_uri() . '/'); ?>assets/images/common/header/header-logo.png" alt="株式会社ディッジ 海外サポート" class="p-header-logo-img">
+        <img src="<?php echo esc_url(get_template_directory_uri() . '/'); ?>dist/assets/images/common/header/header-logo.png" alt="株式会社ディッジ 海外サポート" class="p-header-logo-img">
       </a>
     </h1>
     <div class="search-form">

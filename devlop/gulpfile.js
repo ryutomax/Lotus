@@ -35,10 +35,10 @@ const srcPath = {
 
 };
 const distPath = {
-  'css': '../dist/assets/css',
-  'img': '../dist/assets/images',
-  'js': '../dist/assets/js/parts',
-  'item': '../dist/',
+  'css': '../assets/css',
+  'img': '../assets/images',
+  'js': '../assets/js/parts',
+  'item': '../',
 };
 
 // ========================================
@@ -46,7 +46,7 @@ const distPath = {
 // ========================================
 const webpackTask = () => {
   return webpackStream(webpackConfig, webpack)
-    .pipe(dest("../dist/assets/js/"));
+    .pipe(dest("../assets/js/"));
 }
 
 // ========================================
@@ -123,19 +123,19 @@ const imgMin = () => {
 // ========================================
 // **ローカルサーバー起動
 // ========================================
-const buildServer = () => {
-  browserSync.init({
-    server: './dist/',
-    port: 8080,
-    ui: false,
-  });
-}
+// const buildServer = () => {
+//   browserSync.init({
+//     server: './dist/',
+//     port: 8080,
+//     ui: false,
+//   });
+// }
 
-/* リロード */
-const browserReload = (done) => {
-  browserSync.reload();
-  done();
-}
+// /* リロード */
+// const browserReload = (done) => {
+//   browserSync.reload();
+//   done();
+// }
 
 // ========================================
 // ** buildTask管理(起動時)
@@ -146,10 +146,10 @@ const buildTask = series(cssSass, jsFunc, webpackTask, imgMin);
 // ** watch管理(変更時)
 // ========================================
 const watchTask = () => {
-  watch(srcPath.img, parallel(imgMin, browserReload));
-  watch(srcPath.scss, series(cssSass, browserReload));
-  watch(srcPath.js, parallel(jsFunc, browserReload));
-  watch(srcPath.js, series(webpackTask, browserReload));
+  watch(srcPath.img, parallel(imgMin));
+  watch(srcPath.scss, series(cssSass));
+  watch(srcPath.js, parallel(jsFunc));
+  watch(srcPath.js, series(webpackTask));
 
 }
 
@@ -157,4 +157,4 @@ const watchTask = () => {
 // ** parallel：並列処理
 // =========================
 //exports.w = parallel(watchTask);
-exports.def = parallel(buildTask, watchTask, buildServer);
+exports.def = parallel(buildTask, watchTask);

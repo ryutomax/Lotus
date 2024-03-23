@@ -68,21 +68,7 @@ module.exports = {
           },
         ],
         sideEffects: true,
-      },
-
-      // {
-      //   enforce: 'pre',
-      //   test: /\.js$/,
-      //   exclude: /node_modules/,
-      //   loader: 'eslint-loader',
-      // },
-    ],
-  },
-
-  // devServer: {
-  //   contentBase: path.resolve(__dirname, 'dist'),
-  //   port: 8080,
-  //   open: true,
-  // },
-  // }
+      }
+    ]
+  }
 }

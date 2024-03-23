@@ -64,16 +64,16 @@
 ?>
 <?php get_template_part('template-parts/footer') ?>
 <script>
-    <?php 
-        $lastNumber = "";
-        $now_gallery_page_link = get_the_permalink();
-        if (preg_match("/\/(\d+)\/?$/", $now_gallery_page_link, $matches)) {
-            $lastNumber = $matches[1];
-        }
-    ?>
+
+    let currentUrl = window.location.href;
+    let match = currentUrl.match(/(\d+)\/?$/);
+    let lastNumber = 0;
+    if (match && match != 1) {
+        lastNumber = match[1] - 1;
+    }
 
     $('.visual').slick({
         dots: true,
-        initialSlide: <?php $lastNumber ?>, //スライド初期表示 クリックした画像リンクを保存して
+        initialSlide: lastNumber, //スライド初期表示 クリックした画像リンクを保存して
     });
 </script>
