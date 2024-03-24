@@ -50,7 +50,7 @@ function create_post_type() {
 	post_type_template('game', 'ゲーム', 9);
 	post_type_template('entertainment', 'エンタメ', 10);
 	post_type_template('gallery', '画像ギャラリ―', 11);
-	post_type_template('event', '作品情報', 12);
+	post_type_template('work-info', '作品情報', 12);
 	post_type_template('event', 'イベント情報', 13);
 	post_type_template('profile', 'プロフィール', 14);
 }
@@ -101,9 +101,6 @@ function post_type_template ($postTypeName, $label, $menuPosition) {
 
 function change_menu_label() {
 	global $menu, $submenu;
-	$menu[10][0] = '画像・ファイル';
-	$submenu['upload.php'][5][0] = '画像・ファイル一覧';
-	$submenu['upload.php'][10][0] = '画像・ファイルを追加';
 	unset($menu[2]); //ダッシュボード
 	unset($menu[4]); //スペース
 	unset($menu[10]);//メディア
@@ -115,7 +112,9 @@ function change_menu_label() {
 	// $menu[]
 	// $menu[15];//
 	// $menu[25];
-	$menu[19] = ["メディア", "upload_files", "upload.php", "", "menu-top menu-icon-media" ,"menu-media" ,"dashicons-admin-media"];
+	$menu[19] = ["画像・ファイル", "upload_files", "upload.php", "", "menu-top menu-icon-media" ,"menu-media" ,"dashicons-admin-media"];
+	$submenu['upload.php'][5][0] = '画像・ファイル一覧';
+	$submenu['upload.php'][10][0] = '画像・ファイルを追加';
 }
 add_action( 'admin_menu', 'change_menu_label' );
 

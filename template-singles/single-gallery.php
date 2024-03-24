@@ -1,6 +1,39 @@
-<?php session_start(); ?>
 <?php get_template_part('template-parts/head') ?>
 <?php get_template_part('template-parts/header') ?>
+
+<?php
+$title = get_the_title();
+$post_type = '';
+
+$args = array(
+    'post_type' => ['news', 'music', 'game', 'interview', 'animation', 'entertainment'], // カスタム投稿タイプのスラッグを指定
+    'posts_per_page' => -1, // 全ての記事を対象にする
+    'post_status' => 'publish',
+    'post_title' => $title, // 指定したタイトル
+);
+
+$custom_query = new WP_Query($args);
+
+// 各記事の情報を取得して処理
+if ($custom_query->have_posts()) {
+    while ($custom_query->have_posts()) {
+        $custom_query->the_post();
+        $post_type = get_post_type(); // 記事の投稿タイプを取得
+    }
+    wp_reset_postdata();
+} else {
+    // 該当する記事がない場合の処理を行う
+}
+    $home_url = esc_url(home_url('/'));
+
+    $breadcrumb_args = [
+        'breadcrumb_slug_arr' => [$post_type, $title],
+        'breadcrumb_arr' => [$post_type, $title, '画像ギャラリー']
+    ];
+
+    get_template_part('template-parts/breadcrumb', null, $breadcrumb_args);
+?>
+
 <?php
     if(have_posts()):
     while(have_posts()):
@@ -8,7 +41,13 @@
 ?>
 <div class="content">
     <h1><?php echo the_title(); ?></h1>
-    <a href="<?php echo esc_url($_SESSION['post_url']); ?>">記事へ戻る</a>
+    <?php
+        $post = get_page_by_title($title, OBJECT, 'news');
+        if ($post) {
+            $link = get_permalink($post->ID);
+            echo '<a href="' . esc_url($link) . '">記事へ戻る</a>';
+        }
+    ?>
     <?php the_content(); ?>
 <p class="page_num">
     <!-- 画像にページ区切りのリンクを付与 -->
@@ -28,8 +67,6 @@
 <?php
     $post_id = get_the_ID(); // 例として投稿ID 1 を使用
     $image_urls = get_images_from_post($post_id);
-    $home_url = esc_url(home_url('/'));
-    $title = get_the_title();
 
     $gallery_per_page_link = $home_url . 'gallery/' . $title;
 

@@ -2,293 +2,53 @@
 
 .p-footer {
   position: relative;
-  background-color: $bg-green;
+  background-color: #707070;
 }
 
 .p-footer-inner {
   display: flex;
-  justify-content: space-around;
-  padding: 40px 150px;
+  justify-content: space-between;
+  padding: 80px 150px 40px 150px;
   max-width: 1700px;
   margin: 0 auto;
-
-  @include mq (o-pc-l) {
-    padding: 40px 40px 80px 40px;
-  }
-
-  @include mq (o-pc) {
-    flex-direction: column;
-    justify-content: flex-start;
-  }
-
-  @include mq (o-sp) {
-    padding: 40px 24px 100px 24px;
-  }
 }
 
-.p-footer-info {}
 
 .p-footer-logo {
-  width: 400px;
-  margin-bottom: 48px;
-  @include mq (o-pc) {
-    width: 80%;
-    max-width: 485px;
-  }
-
-  @include mq (o-sp-m) {
-    width: 100%;
-    margin-bottom: 30px;
-  }
-}
-
-.p-footer-adress {
+  font-size: rem(12);
   color: $white;
-  font-size: rem(18);
-  font-style: normal;
-  line-height: calc(50/30);
-  letter-spacing: 2px;
-
-  @include mq (o-pc-l) {
-    font-size: rem(16);
-  }
-  @include mq (o-pc) {
-    margin-bottom: 50px;
-  }
-  @include mq (o-sp-m) {
-    margin-bottom: 100px;
-  }
+  font-weight: 400;
 }
 
-.p-footer-navWrap {
-  display: flex;
-  justify-content: space-between;
-  justify-content: flex-end;
-  padding-top: 20px;
-
-  @include mq (o-pc) {
-    width: 100%;
-    justify-content: flex-start;
-    flex-wrap: wrap;
-    padding-top: 0;
-  }
-
-  @include mq (o-sp-m) {
-    flex-direction: column;
-  }
-
+.p-footer-logo-link {
+  display: block;
+  width: 160px;
+  margin-top: 16px;
 }
 
-.p-footer-nav-btns,
+
 .p-footer-nav {
   display: flex;
-  flex-direction: column;
-
-  @include mq (o-pc) {
-    width: 320px;
-    &:first-child {
-      position: relative;
-      width: 227px;
-      width: max(30%, 227px);
-      margin-right: 24px;
-
-      &::after {
-        content: "";
-        position: absolute;
-        width: 2px;
-        height: 80%;
-        background-color: $white;
-        right: 0;
-      }
-    }
-  }
-
-  @include mq (o-sp-m) {
-    width: 250px;
-    &:first-child {
-
-      &::after {
-        content: "";
-        width: 0;
-      }
-    }
-  }
 
   &-link {
     color: $white;
-    font-size: rem(18);
+    font-size: rem(14);
     width: fit-content;
-    margin-bottom: 36px;
-    @include txt-border($white, 2px, -4px);
+    padding: 0 12px;
+    height: 16px;
 
-    @include mq (o-pc) {
-      font-size: rem(20);
-    }
-    @include mq (o-tb) {
-      margin-bottom: 50px;
-    }
-    @include mq (o-sp) {
+    &:not(:last-child) {
+      border-right: 2px solid $white;
     }
   }
-
-  &-btn {
-    font-size: rem(18);
-    font-weight: 700;
-    padding: 14px 22px 16px 22px;
-    border-radius: 12px;
-    background-color: $yellow;
-
-    @include mq (o-sp) {
-      font-size: rem(20);
-      padding: 18px 16px 20px 16px;
-    }
-
-    &:first-child {
-      margin-bottom: 24px;
-    }
-    @include mq (o-sp-m) {
-      font-size: rem(16);
-    }
-  }
-}
-
-.p-footer-nav {
-  width: 180px;
-  margin-right: 64px;
-  @include mq (o-pc) {
-    width: 100%;
-    max-width: 240px;
-    margin-right: 32px;
-  }
-
-  @include mq (o-tb) {
-    margin-bottom: 48px;
-  }
-  @include mq (o-sp) {
-    width: 200px;
-    margin-right: 0;
-  }
-  &:first-child {
-    width: 112px;
-    @include mq (o-pc) {
-      width: 100%;
-      max-width: 240px;
-    }
-
-    @include mq (o-sp) {
-      width: 180px;
-      margin-right: 32px;
-    }
-    @include mq (o-sp-m) {
-      margin-bottom: 0;
-    }
-  }
-}
-
-.p-footer-nav-btns {
-  @include mq (o-pc) {
-    width: 100%;
-    max-width: 310px;
-    margin: 0 auto;
-  }
-  @include mq (o-tb) {
-    max-width: 350px;
-    margin: 0;
-  }
-}
-
-.p-footer-nav-text {
-  font-weight: 900;
-  color: #fff;
-  margin-bottom: 28px;
-  text-align: center;
-
-  @include mq (o-pc) {
-    width: 320px;
-  }
-
-  @include mq (o-tb) {
-    display: none;
-  }
-}
-
-.p-footer-nav-item {
-  text-align: center;
-
-  &:first-child {
-    position: relative;
-    margin-right: 24px;
-
-    @include mq (o-sp) {
-      margin-right: 36px;
-    }
-
-    &::after {
-      content: "";
-      position: absolute;
-      top: 4px;
-      right: -14px;
-      width: 1px;
-      height: 12px;
-      background-color: $black;
-      border-radius: 15px;
-
-      @include mq (o-sp) {
-        right: -18px;
-      }
-    }
-
-  }
-
-  &:nth-child(2) {
-    @include mq (o-sp) {
-      position: relative;
-      margin-right: 36px;
-
-      &::after {
-        content: "";
-        position: absolute;
-        top: 4px;
-        right: -18px;
-        width: 1px;
-        height: 12px;
-        background-color: $black;
-        border-radius: 15px;
-      }
-    }
-  }
-
-  &:last-child {
-    width: 100%;
-    margin-top: 16px;
-
-    @include mq (o-sp) {
-      width: auto;
-      margin: 0;
-    }
-  }
-}
-
-::-webkit-full-page-media,
-:future,
-:root .p-footer-nav-item:first-child::after,
-:root .p-footer-nav-item:nth-child(2)::after {
-  top: 2px;
 }
 
 .p-footer-copyright {
   display: inline-block;
   text-align: center;
   width: 100%;
-  font-size: rem(16);
+  font-size: rem(12);
   color: $white;
-  background-color: #0b7979;
-  padding: 8px;
+  padding: 8px 8px 40px 8px;
   letter-spacing: 2px;
-
-  @include mq (o-sp) {
-    line-height: 1.3;
-    font-size: rem(14);
-  }
-
 }

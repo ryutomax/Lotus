@@ -1,25 +1,29 @@
 <header class="l-header p-header u-zindex_100">
   <div class="p-header-inner">
-    <h1 class="p-header-logo c-logo">
-      <a class="p-header-logo-link" href="<?= esc_url(home_url('/')) ?>">
-        <img src="<?php echo esc_url(get_template_directory_uri() . '/'); ?>dist/assets/images/common/header/header-logo.png" alt="株式会社ディッジ 海外サポート" class="p-header-logo-img">
-      </a>
-    </h1>
-    <div class="search-form">
-        <?php get_search_form(); ?>
+    <div class="p-header-top">
+      <h1 class="p-header-logo c-logo">
+        <a class="p-header-logo-link" href="<?= esc_url(home_url('/')) ?>">
+          <img src="<?php echo esc_url(get_template_directory_uri() . '/'); ?>assets/images/header/header-logo.png" alt="Lotus クリエイターの言葉を伝えるエンタメ総合メディア" class="p-header-logo-img">
+        </a>
+        クリエイターの言葉を伝えるエンタメ総合メディア
+      </h1>
+      <div class="p-header-search">
+          <?php get_search_form(); ?>
+      </div>
     </div>
-    <div class="p-header-inner-right">
+    <div class="p-header-btm">
       <nav class="p-header-nav">
-        <span class="p-header-nav-wrap js-menu-show">
-          <a href="<?= esc_url(home_url('/')) ?>" class="p-header-nav-link">TOP</a>
-          <a href="<?= esc_url(home_url('/')) ?>service" class="p-header-nav-link">サービス内容</a>
-          <a href="<?= esc_url(home_url('/')) ?>company" class="p-header-nav-link">会社概要</a>
-        </span>
-        <button class="p-header-menuBtn js-menu-btn" aria-label="Menuを開く">
+        <a href="<?= esc_url(home_url('/')) ?>AboutUs" class="p-header-nav-link"><span>A</span>bout Us</a>
+        <a href="<?= esc_url(home_url('/')) ?>news" class="p-header-nav-link"><span>N</span>ews</a>
+        <a href="<?= esc_url(home_url('/')) ?>music" class="p-header-nav-link"><span>M</span>usic</a>
+        <a href="<?= esc_url(home_url('/')) ?>animation" class="p-header-nav-link"><span>A</span>nimation</a>
+        <a href="<?= esc_url(home_url('/')) ?>game" class="p-header-nav-link"><span>G</span>ame</a>
+        <a href="<?= esc_url(home_url('/')) ?>entertainment" class="p-header-nav-link"><span>E</span>ntertainment</a>
+        <!-- <button class="p-header-menuBtn js-menu-btn" aria-label="Menuを開く">
           <span class="p-header-menuBtn-bar js-menu-btn-bar u-zindex_1"></span>
           <span class="p-header-menuBtn-bar js-menu-btn-bar u-zindex_1"></span>
           <span class="p-header-menuBtn-bar js-menu-btn-bar u-zindex_1"></span>
-        </button>
+        </button> -->
       </nav>
       <!-- /.p-header-nav -->
     </div>
