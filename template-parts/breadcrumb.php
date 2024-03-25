@@ -1,12 +1,12 @@
 <?php
 $breadcrumb_slug_arr = '';
 $breadcrumb_arr = '';
-if ( isset( $breadcrumb_args['breadcrumb_slug_arr'] ) ) {
-    $breadcrumb_slug_arr = $breadcrumb_args['breadcrumb_slug_arr'];
+if ( isset( $args['breadcrumb_slug_arr'] ) ) {
+    $breadcrumb_slug_arr = $args['breadcrumb_slug_arr'];
 }
 
-if ( isset( $breadcrumb_args['breadcrumb_arr'] ) ) {
-    $breadcrumb_arr = $breadcrumb_args['breadcrumb_arr'];
+if ( isset( $args['breadcrumb_arr'] ) ) {
+    $breadcrumb_arr = $args['breadcrumb_arr'];
 }
 // ========================================
 // $page_type [0:カテゴリー, 1:カテゴリー個別, 2:画像ギャラリー, 3:固定ページ]

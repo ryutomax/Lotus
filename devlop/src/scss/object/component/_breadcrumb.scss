@@ -1,0 +1,22 @@
+@use "global" as *;
+
+.breadcrumb-list {
+  display: flex;
+  padding: 24px 16px;
+}
+
+.breadcrumb-item {
+  margin-right: 24px;
+}
+
+.breadcrumb-item:has(>a) {
+  position: relative;
+  &::before {
+    content: ">";
+    position: absolute;
+    top: 50%;
+    left: 125%;
+    transform: translate(-50%, -50%);
+  }
+}
+

@@ -2,28 +2,29 @@
 <?php get_template_part('template-parts/header') ?>
 
 <?php
-$title = get_the_title();
-$post_type = '';
+    $title = get_the_title();
+    $post_id = get_the_ID();
+    $post_type = '';
 
-$args = array(
-    'post_type' => ['news', 'music', 'game', 'interview', 'animation', 'entertainment'], // カスタム投稿タイプのスラッグを指定
-    'posts_per_page' => -1, // 全ての記事を対象にする
-    'post_status' => 'publish',
-    'post_title' => $title, // 指定したタイトル
-);
+    $args = array(
+        'post_type' => ['news', 'music', 'game', 'interview', 'animation', 'entertainment'], // カスタム投稿タイプのスラッグを指定
+        'posts_per_page' => -1, // 全ての記事を対象にする
+        'post_status' => 'publish',
+        'post_title' => $title, // 指定したタイトル
+    );
 
-$custom_query = new WP_Query($args);
+    $custom_query = new WP_Query($args);
 
-// 各記事の情報を取得して処理
-if ($custom_query->have_posts()) {
-    while ($custom_query->have_posts()) {
-        $custom_query->the_post();
-        $post_type = get_post_type(); // 記事の投稿タイプを取得
+    // 各記事の情報を取得して処理
+    if ($custom_query->have_posts()) {
+        while ($custom_query->have_posts()) {
+            $custom_query->the_post();
+            $post_type = get_post_type(); // 記事の投稿タイプを取得
+        }
+        wp_reset_postdata();
+    } else {
+        // 該当する記事がない場合の処理を行う
     }
-    wp_reset_postdata();
-} else {
-    // 該当する記事がない場合の処理を行う
-}
     $home_url = esc_url(home_url('/'));
 
     $breadcrumb_args = [
@@ -49,23 +50,22 @@ if ($custom_query->have_posts()) {
         }
     ?>
     <?php the_content(); ?>
-<p class="page_num">
-    <!-- 画像にページ区切りのリンクを付与 -->
-    <?php
-        wp_link_pages(
-            array(
-                'before' => '<div class="page-links">' . __(''),
-                'after'  => '</div>',
-                'next_or_number' => 'next',
-                'nextpagelink'     => __('NEXT'),
-                'previouspagelink' => __('PREV'),
-            )
-        );
-    ?>
-</p>
+    <p class="page_num">
+        <!-- 画像にページ区切りのリンクを付与 -->
+        <?php
+            wp_link_pages(
+                array(
+                    'before' => '<div class="page-links">' . __(''),
+                    'after'  => '</div>',
+                    'next_or_number' => 'next',
+                    'nextpagelink'     => __('NEXT'),
+                    'previouspagelink' => __('PREV'),
+                )
+            );
+        ?>
+    </p>
 <?php endwhile; endif; ?>
 <?php
-    $post_id = get_the_ID(); // 例として投稿ID 1 を使用
     $image_urls = get_images_from_post($post_id);
 
     $gallery_per_page_link = $home_url . 'gallery/' . $title;
@@ -103,7 +103,8 @@ if ($custom_query->have_posts()) {
 <script>
 
     let currentUrl = window.location.href;
-    let match = currentUrl.match(/(\d+)\/?$/);
+    // let match = currentUrl.match(/(\d+)\/?$/);
+    let match = currentUrl.match(/\/(\d+)\//);
     let lastNumber = 0;
     if (match && match != 1) {
         lastNumber = match[1] - 1;

@@ -4,12 +4,12 @@
 	$title = get_the_title();
 	$post_type = get_post_type();
     $home_url = esc_url(home_url('/'));
-    $breadcrumb_args = [
+    $args = [
         'breadcrumb_slug_arr' => [$post_type],
         'breadcrumb_arr' => [$post_type, $title]
     ];
 
-    get_template_part('template-parts/breadcrumb', null, $breadcrumb_args);
+    get_template_part('template-parts/breadcrumb', null, $args);
 ?>
 <div class="l-main">
 	<?php
