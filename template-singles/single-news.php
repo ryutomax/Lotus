@@ -29,7 +29,10 @@
 					$gallery_link = '<a href="' . esc_url($link) . '">画像ギャラリーへ</a>';
 				}
 			?>
+			<?php if(isset($gallery_link)): ?>
 			<?php echo $gallery_link; ?>
+			<?php endif; ?>
+			
 			<?php the_content(); ?>
 		</div>
 		<?php echo $pagination; ?>

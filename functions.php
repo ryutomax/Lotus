@@ -44,7 +44,6 @@ add_filter( 'mwform_validation_mw-wp-form-5', 'my_exam_validation_rule', 10, 3 )
 function create_post_type() {
 
 	post_type_template('news', 'ニュース', 5);
-	post_type_template('interview', 'インタビュー', 6);
 	post_type_template('music', '音楽', 7);
 	post_type_template('animation', 'アニメ', 8);
 	post_type_template('game', 'ゲーム', 9);

@@ -1,5 +1,26 @@
 <?php get_template_part('template-parts/head') ?>
 <?php get_template_part('template-parts/header') ?>
+
+<?php
+// POSTされたデータがある場合、どのボタンがクリックされたかを表示
+    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+        // 'button'の値を取得
+        $buttonValue = $_POST['button'];
+        echo "<p>ボタン{$buttonValue}がクリックされました。</p>";
+    } else {
+        echo "<p>ボタンinterviewがクリックされました。</p>";
+    }
+?>
+
+<form action="" method="post">
+    <button type="submit" name="button" value="interview">interview</button>
+    <button type="submit" name="button" value="column">column</button>
+    <button type="submit" name="button" value="report">report</button>
+    <button type="submit" name="button" value="another">another</button>
+</form>
+
+
+
 <?php
     $args = array(
     'post_type' => 'news',// 投稿タイプを指定
@@ -10,6 +31,7 @@
     while ( $news_query->have_posts() ):
         $news_query->the_post();
 ?>
+
 
 <article class="news-item">
     <a href="<?php the_permalink(); ?>" class="news-item__inner">
