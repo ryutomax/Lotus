@@ -30,7 +30,7 @@
             <div class="p-articles">
               <article class="p-article">
                 <time class="p-article-time" datetime=""></time>
-                <img src="" alt="" class="p-article-thumb">
+                <img src="" alt="" class="p-article-thumbnail">
                 <h2 class="p-article-title"></h2>
                 <ul class="p-article-tags">
                   <li class="p-article-tag"></li>

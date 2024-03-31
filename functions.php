@@ -96,6 +96,18 @@ function post_type_template ($postTypeName, $label, $menuPosition) {
 			'update_count_callback' => '_update_post_term_count',
 		]
 	);
+
+	register_taxonomy(
+		"{$postTypeName}-bind",
+		$postTypeName,
+		[
+			'label' => '紐づけタグ',
+			'hierarchical' => false,
+			'public' => true,
+			'show_in_rest' => true,
+			'update_count_callback' => '_update_post_term_count',
+		]
+	);
 }
 
 function change_menu_label() {
