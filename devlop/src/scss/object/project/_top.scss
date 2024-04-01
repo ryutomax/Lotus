@@ -1,0 +1,107 @@
+@use "global" as *;
+
+.p-top {
+  padding: 20px;
+}
+.p-top-googleAd {
+  height: 175px;
+  padding: 20px 0;
+  margin-bottom: 64px;
+}
+
+.p-mid-googleAd {
+  height: 300px;
+  padding: 20px 0;
+  margin-bottom: 80px;
+}
+
+.p-googleAd-inner {
+  border: 2px solid $black;
+  height: 100%;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.p-top-slider {
+  margin: 0 -20px;
+}
+
+.p-top-slider-item {
+  position: relative;
+  height: 300px;
+}
+
+.p-top-slider-img {
+  height: 300px;
+  object-fit: cover;
+}
+
+.p-top-slider-info {
+  position: absolute;
+  left: 16px;
+  bottom: 24px;
+}
+
+.p-top-slider-tag {
+  color: $white;
+  background-color: rgb(255, 217, 0);
+  font-size: rem(12);
+}
+
+.p-top-slider-title {
+  color: $white;
+  font-size: rem(16);
+}
+
+.p-topContent {
+  display: flex;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.p-content {
+  width: 70%;
+}
+
+.p-pickUp {
+  position: relative;
+  border: 2px solid $black;
+  width: calc(100% - 23px);
+  margin-left: auto;
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: -32px;
+    left: -25px;
+    background-image: url(../images/top/pick_up_news.png);
+    background-size: contain;
+    display: inline-block;
+    background-repeat: no-repeat;
+    vertical-align: middle;
+    width: 250px;
+    height: 70px;
+  }
+}
+
+.p-pickUp-title {}
+
+.p-pickUp-list {
+  display: block;
+}
+.p-pickUp-article {
+  height: 250px;
+}
+
+.p-pickUp-article-link {}
+
+.p-pickUp-article-thumbnail {
+  height: 150px;
+  width: 150px;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.p-pickUp-article-time {}
+
+.p-pickUp-article-text {}

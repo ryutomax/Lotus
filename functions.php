@@ -3,9 +3,9 @@
 function enqueue_styles() {
 	$version = date('Ymd-His'); // バージョン番号を設定
 
-	wp_enqueue_style('style',  get_template_directory_uri() .'/assets/css/app-min.css', [], $version, 'all');
 	wp_enqueue_style('slick',  get_template_directory_uri() .'/assets/vender/slick-1.8.1/slick/slick.css', [], $version, 'all');
 	wp_enqueue_style('slick-theme',  get_template_directory_uri() .'/assets/vender/slick-1.8.1/slick/slick-theme.css', [], $version, 'all');
+	wp_enqueue_style('style',  get_template_directory_uri() .'/assets/css/app-min.css', [], $version, 'all');
 }
 add_action('wp_enqueue_scripts', 'enqueue_styles');
 function enqueue_scripts()
