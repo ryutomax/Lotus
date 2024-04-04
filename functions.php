@@ -24,7 +24,7 @@ add_action('wp_enqueue_scripts', 'enqueue_scripts');
 
 // ========================================
 // バリデーション
-// // ========================================
+// ========================================
 function my_exam_validation_rule( $Validation, $data, $Data ) {
 
 	$Validation->set_rule( 'お名前', 'noEmpty', array( 'message' => '※お名前を入力してください。' ) );
@@ -44,20 +44,19 @@ add_filter( 'mwform_validation_mw-wp-form-5', 'my_exam_validation_rule', 10, 3 )
 //投稿タイプ生成　呼び出し
 function create_post_type() {
 
-	post_type_template('news', 'ニュース', 5);
-	post_type_template('music', '音楽', 7);
-	post_type_template('anime', 'アニメ', 8);
-	post_type_template('game', 'ゲーム', 9);
-	post_type_template('entertainment', 'エンタメ', 10);
-	post_type_template('gallery', '画像ギャラリ―', 11);
-	post_type_template('work-info', '作品情報', 12);
-	post_type_template('event', 'イベント情報', 13);
-	post_type_template('profile', 'プロフィール', 14);
+	post_type_template('music', 'Music', 7, true);
+	post_type_template('anime', 'Anime', 8, true);
+	post_type_template('game', 'Game', 9, true);
+	post_type_template('entertainment', 'Entertainment', 10, true);
+	post_type_template('gallery', '画像ギャラリ―', 11, false);
+	post_type_template('work-info', '作品情報', 12, false);
+	post_type_template('event', 'イベント情報', 13, false);
+	post_type_template('profile', 'プロフィール', 14, false);
 }
 add_action( 'init', 'create_post_type' );
 
 //投稿タイプ生成
-function post_type_template ($postTypeName, $label, $menuPosition) {
+function post_type_template ($postTypeName, $label, $menuPosition, $main_type) {
 	$postTypeSupports = [  // supports のパラメータを設定する配列（初期値だと title と editor のみ投稿画面で使える）
 		'title',  // 記事タイトル
 		'editor',  // 記事本文
@@ -76,28 +75,30 @@ function post_type_template ($postTypeName, $label, $menuPosition) {
 		]
 	);
 
-	register_taxonomy(
-		"{$postTypeName}-cat",
-		$postTypeName,
-		[
-			'label' => 'カテゴリー',
-			'hierarchical' => true,
-			'public' => true,
-			'show_in_rest' => true,
-		]
-	);
+	if ($main_type == true) {
+		register_taxonomy(
+			"{$postTypeName}-cat",
+			$postTypeName,
+			[
+				'label' => 'カテゴリー',
+				'hierarchical' => true,
+				'public' => true,
+				'show_in_rest' => true,
+			]
+		);
 
-	register_taxonomy(
-		"{$postTypeName}-tag",
-		$postTypeName,
-		[
-			'label' => 'タグ',
-			'hierarchical' => false,
-			'public' => true,
-			'show_in_rest' => true,
-			'update_count_callback' => '_update_post_term_count',
-		]
-	);
+		register_taxonomy(
+			"{$postTypeName}-tag",
+			$postTypeName,
+			[
+				'label' => 'タグ',
+				'hierarchical' => false,
+				'public' => true,
+				'show_in_rest' => true,
+				'update_count_callback' => '_update_post_term_count',
+			]
+		);
+	}
 
 	register_taxonomy(
 		"{$postTypeName}-bind",
@@ -146,36 +147,6 @@ function hide_add_new_custom_category() {
     }
 }
 add_action( 'admin_enqueue_scripts', 'hide_add_new_custom_category' );
-
-function custom_admin_posts_filter($query) {
-    global $pagenow;
-    if (is_admin() && $pagenow == 'edit.php' && !empty($_GET['post_locate'])) {
-        $query->query_vars['tax_query'] = array(
-            array(
-                'taxonomy' => 'post_locate',
-                'field' => 'term_id',
-                'terms' => $_GET['post_locate']
-            )
-        );
-    }
-}
-add_filter('parse_query', 'custom_admin_posts_filter');
-
-function custom_admin_posts_filter_restrict_manage_posts() {
-    $taxonomy = 'post_locate';
-    if ($taxonomy) {
-        wp_dropdown_categories(array(
-            'show_option_all' => 'Show All Categories',
-            'taxonomy' => $taxonomy,
-            'name' => 'post_locate',
-            'orderby' => 'name',
-            'selected' => $_GET['post_locate'],
-            'show_count' => true,
-            'hide_empty' => true,
-        ));
-    }
-}
-add_action('restrict_manage_posts', 'custom_admin_posts_filter_restrict_manage_posts');
 
 function change_menu_label() {
 	global $menu, $submenu;
