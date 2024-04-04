@@ -41,11 +41,12 @@ function my_exam_validation_rule( $Validation, $data, $Data ) {
 // mwform_validation_mw-wp-form-OOO
 add_filter( 'mwform_validation_mw-wp-form-5', 'my_exam_validation_rule', 10, 3 );
 
+//投稿タイプ生成　呼び出し
 function create_post_type() {
 
 	post_type_template('news', 'ニュース', 5);
 	post_type_template('music', '音楽', 7);
-	post_type_template('animation', 'アニメ', 8);
+	post_type_template('anime', 'アニメ', 8);
 	post_type_template('game', 'ゲーム', 9);
 	post_type_template('entertainment', 'エンタメ', 10);
 	post_type_template('gallery', '画像ギャラリ―', 11);
@@ -55,6 +56,7 @@ function create_post_type() {
 }
 add_action( 'init', 'create_post_type' );
 
+//投稿タイプ生成
 function post_type_template ($postTypeName, $label, $menuPosition) {
 	$postTypeSupports = [  // supports のパラメータを設定する配列（初期値だと title と editor のみ投稿画面で使える）
 		'title',  // 記事タイトル
@@ -109,6 +111,71 @@ function post_type_template ($postTypeName, $label, $menuPosition) {
 		]
 	);
 }
+
+//複数のカスタム投稿タイプに同じタクソノミーを付与
+function custom_taxonomy_post_locate() {
+    $labels = array(
+        'name' => _x('Locations', 'taxonomy general name'),
+        'singular_name' => _x('Location', 'taxonomy singular name'),
+        // その他のラベル設定...
+    );
+
+    $args = array(
+        'labels' => $labels,
+        'hierarchical' => true, // このタクソノミーが階層化される（カテゴリーのように）かどうか
+        'public' => true,
+        'show_ui' => true,
+        'show_admin_column' => true,
+		'show_in_rest' => true,
+        'query_var' => true,
+        'rewrite' => array('slug' => 'location'),
+    );
+
+    // カスタム投稿タイプ 'custom_post_type1' と 'custom_post_type2' にタクソノミーを適用
+    register_taxonomy('post_locate', array('game', 'music' , 'entertainment', 'anime'), $args);
+}
+// init アクションフックを使用して、カスタムタクソノミーを初期化
+add_action('init', 'custom_taxonomy_post_locate');
+
+// 「新規カテゴリー追加」を非表示
+function hide_add_new_custom_category() {
+    $screen = get_current_screen();
+    if ($screen->id == '投稿タイプ') { // '投稿タイプ'を実際のカスタム投稿タイプのスラッグに置き換えてください
+        $css = '.taxonomy-post-locate .term-add-new-wrapper { display: none; }'; // 'post-locate' を実際のタクソノミーのスラッグに置き換えてください
+        wp_add_inline_style( 'wp-admin', $css );
+    }
+}
+add_action( 'admin_enqueue_scripts', 'hide_add_new_custom_category' );
+
+function custom_admin_posts_filter($query) {
+    global $pagenow;
+    if (is_admin() && $pagenow == 'edit.php' && !empty($_GET['post_locate'])) {
+        $query->query_vars['tax_query'] = array(
+            array(
+                'taxonomy' => 'post_locate',
+                'field' => 'term_id',
+                'terms' => $_GET['post_locate']
+            )
+        );
+    }
+}
+add_filter('parse_query', 'custom_admin_posts_filter');
+
+function custom_admin_posts_filter_restrict_manage_posts() {
+    $taxonomy = 'post_locate';
+    if ($taxonomy) {
+        wp_dropdown_categories(array(
+            'show_option_all' => 'Show All Categories',
+            'taxonomy' => $taxonomy,
+            'name' => 'post_locate',
+            'orderby' => 'name',
+            'selected' => $_GET['post_locate'],
+            'show_count' => true,
+            'hide_empty' => true,
+        ));
+    }
+}
+add_action('restrict_manage_posts', 'custom_admin_posts_filter_restrict_manage_posts');
 
 function change_menu_label() {
 	global $menu, $submenu;
