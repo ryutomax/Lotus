@@ -45,13 +45,14 @@ add_filter( 'mwform_validation_mw-wp-form-5', 'my_exam_validation_rule', 10, 3 )
 function create_post_type() {
 
 	post_type_template('music', 'Music', 7, true);
-	post_type_template('anime', 'Anime', 8, true);
+	post_type_template('animation', 'Anime', 8, true);
 	post_type_template('game', 'Game', 9, true);
 	post_type_template('entertainment', 'Entertainment', 10, true);
 	post_type_template('gallery', '画像ギャラリ―', 11, false);
-	post_type_template('work-info', '作品情報', 12, false);
-	post_type_template('event', 'イベント情報', 13, false);
-	post_type_template('profile', 'プロフィール', 14, false);
+	post_type_template('meta-info', '付属情報', 12, false);
+	// post_type_template('work-info', '作品情報', 12, false);
+	// post_type_template('event', 'イベント情報', 13, false);
+	// post_type_template('profile', 'プロフィール', 14, false);
 }
 add_action( 'init', 'create_post_type' );
 
@@ -76,16 +77,6 @@ function post_type_template ($postTypeName, $label, $menuPosition, $main_type) {
 	);
 
 	if ($main_type == true) {
-		register_taxonomy(
-			"{$postTypeName}-cat",
-			$postTypeName,
-			[
-				'label' => 'カテゴリー',
-				'hierarchical' => true,
-				'public' => true,
-				'show_in_rest' => true,
-			]
-		);
 
 		register_taxonomy(
 			"{$postTypeName}-tag",
@@ -114,13 +105,24 @@ function post_type_template ($postTypeName, $label, $menuPosition, $main_type) {
 }
 
 //複数のカスタム投稿タイプに同じタクソノミーを付与
-function custom_taxonomy_post_locate() {
-    $labels = array(
-        'name' => _x('Locations', 'taxonomy general name'),
-        'singular_name' => _x('Location', 'taxonomy singular name'),
-        // その他のラベル設定...
-    );
+function add_custom_taxonomy() {
 
+    $args = array(
+        'labels' => 'カテゴリー',
+        'hierarchical' => true, // このタクソノミーが階層化される（カテゴリーのように）かどうか
+        'public' => true,
+        'show_ui' => true,
+        'show_admin_column' => true,
+		'show_in_rest' => true,
+        'query_var' => true,
+        'rewrite' => array('slug' => 'category'),
+    );
+	register_taxonomy('category', array('game', 'music' , 'entertainment', 'anime'), $args);
+
+    $labels = array(
+        'name' => _x('表示位置指定', 'taxonomy general name'),
+        'singular_name' => _x('Location', 'taxonomy singular name')
+    );
     $args = array(
         'labels' => $labels,
         'hierarchical' => true, // このタクソノミーが階層化される（カテゴリーのように）かどうか
@@ -131,12 +133,10 @@ function custom_taxonomy_post_locate() {
         'query_var' => true,
         'rewrite' => array('slug' => 'location'),
     );
-
-    // カスタム投稿タイプ 'custom_post_type1' と 'custom_post_type2' にタクソノミーを適用
     register_taxonomy('post_locate', array('game', 'music' , 'entertainment', 'anime'), $args);
 }
 // init アクションフックを使用して、カスタムタクソノミーを初期化
-add_action('init', 'custom_taxonomy_post_locate');
+add_action('init', 'add_custom_taxonomy');
 
 // 「新規カテゴリー追加」を非表示
 function hide_add_new_custom_category() {

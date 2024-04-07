@@ -6,9 +6,9 @@
 
     <?php get_template_part( 'template-singles/single-game'); ?>
 
-<?php elseif(is_single() && ('anime' == get_post_type())):?>
+<?php elseif(is_single() && ('animation' == get_post_type())):?>
 
-    <?php get_template_part( 'template-singles/single-anime'); ?>
+    <?php get_template_part( 'template-singles/single-animation'); ?>
 
 <?php elseif(is_single() && ('entertainment' == get_post_type())):?>
 

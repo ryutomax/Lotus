@@ -27,23 +27,5 @@
 	</div>
 	<?php echo $pagination; ?>
 <?php endwhile; endif; ?>
-<?php
-	// 投稿の内容を取得
-	$content = get_the_content();
-
-	// DOMDocumentクラスを利用してHTMLをロード
-	$dom = new DOMDocument();
-	@$dom->loadHTML(mb_convert_encoding($content, 'HTML-ENTITIES', 'UTF-8'));
-
-	// 特定のクラスを持つ要素をXPathで検索
-	$finder = new DomXPath($dom);
-	$classname="wp-block-group";
-	$nodes = $finder->query("//*[contains(concat(' ', normalize-space(@class), ' '), ' $classname ')]");
-
-	// 該当する要素のみ出力
-	foreach ($nodes as $node) {
-		echo $dom->saveHTML($node);
-	}
-?>
 </div>
 <?php get_template_part('template-parts/footer') ?>

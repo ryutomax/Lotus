@@ -13,8 +13,8 @@
     </div>
     <div class="p-header-btm">
       <nav class="p-header-nav">
-        <a href="<?= esc_url(home_url('/')) ?>AboutUs" class="p-header-nav-link"><span>A</span>bout Us</a>
-        <a href="<?= esc_url(home_url('/')) ?>news" class="p-header-nav-link"><span>N</span>ews</a>
+        <a href="<?= esc_url(home_url('/')) ?>aboutus" class="p-header-nav-link"><span>A</span>bout Us</a>
+        <a href="<?= esc_url(home_url('/')) ?>newslist" class="p-header-nav-link"><span>N</span>ews</a>
         <a href="<?= esc_url(home_url('/')) ?>music" class="p-header-nav-link"><span>M</span>usic</a>
         <a href="<?= esc_url(home_url('/')) ?>animation" class="p-header-nav-link"><span>A</span>nimation</a>
         <a href="<?= esc_url(home_url('/')) ?>game" class="p-header-nav-link"><span>G</span>ame</a>

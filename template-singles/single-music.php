@@ -51,15 +51,14 @@
 		<?php echo $pagination; ?>
 	<?php endwhile; endif; ?>
 	<!-- 作品情報 -->
-	<section class="p-work-info">
-		<h2 class="p-work-info-title">作品情報</h2>
+	<section class="p-meta-info">
 		<?php
 			$args = array(
-				'post_type' => 'work-info', // カスタム投稿タイプのスラッグを指定
+				'post_type' => 'meta-info', // カスタム投稿タイプのスラッグを指定
 				'posts_per_page' => -1, // 全ての該当する投稿を取得
 				'tax_query' => array(
 					array(
-						'taxonomy' => 'work-info-bind',
+						'taxonomy' => 'meta-info-bind',
 						'field'    => 'slug',
 						'terms'    => $terms_name,
 					),
@@ -71,66 +70,7 @@
 				while ($query->have_posts()) :
 					$query->the_post();
 		?>
-			<h2><?php the_title(); ?></h2>
-			<div class="p-work-info-content">
-				<?php the_content(); ?>
-			</div>
-		<?php endwhile;
-			wp_reset_postdata(); // グローバルの$postオブジェクトをリセット
-		endif; ?>
-	</section>
-	<!-- イベント情報 -->
-	<section class="p-event">
-		<h2 class="p-event-title">イベント情報</h2>
-		<?php
-			$args = array(
-				'post_type' => 'event', // カスタム投稿タイプのスラッグを指定
-				'posts_per_page' => -1, // 全ての該当する投稿を取得
-				'tax_query' => array(
-					array(
-						'taxonomy' => 'event-bind',
-						'field'    => 'slug',
-						'terms'    => $terms_name,
-					),
-				),
-			);
-			$query = new WP_Query($args);
-
-			if ($query->have_posts()):
-				while ($query->have_posts()) :
-					$query->the_post();
-		?>
-			<h2><?php the_title(); ?></h2>
-			<div class="p-event-content">
-				<?php the_content(); ?>
-			</div>
-		<?php endwhile;
-			wp_reset_postdata(); // グローバルの$postオブジェクトをリセット
-		endif; ?>
-	</section>
-	<!-- プロフィール -->
-	<section class="p-profile">
-		<h2 class="p-profile-title">プロフィール</h2>
-		<?php
-			$args = array(
-				'post_type' => 'profile', // カスタム投稿タイプのスラッグを指定
-				'posts_per_page' => -1, // 全ての該当する投稿を取得
-				'tax_query' => array(
-					array(
-						'taxonomy' => 'profile-bind',
-						'field'    => 'slug',
-						'terms'    => $terms_name,
-					),
-				),
-			);
-			$query = new WP_Query($args);
-
-			if ($query->have_posts()):
-				while ($query->have_posts()) :
-					$query->the_post();
-		?>
-			<h2><?php the_title(); ?></h2>
-			<div class="p-profile-content">
+			<div class="p-meta-info-content">
 				<?php the_content(); ?>
 			</div>
 		<?php endwhile;
