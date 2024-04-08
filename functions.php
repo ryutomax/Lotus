@@ -56,6 +56,9 @@ function create_post_type() {
 }
 add_action( 'init', 'create_post_type' );
 
+//アイキャッチ画像
+add_theme_support( 'post-thumbnails' );
+
 //投稿タイプ生成
 function post_type_template ($postTypeName, $label, $menuPosition, $main_type) {
 	$postTypeSupports = [  // supports のパラメータを設定する配列（初期値だと title と editor のみ投稿画面で使える）
@@ -117,7 +120,7 @@ function add_custom_taxonomy() {
         'query_var' => true,
         'rewrite' => array('slug' => 'category'),
     );
-	register_taxonomy('category', array('game', 'music' , 'entertainment', 'anime'), $args);
+	register_taxonomy('category', array('game', 'music' , 'entertainment', 'animation'), $args);
 
     $labels = array(
         'name' => _x('表示位置指定', 'taxonomy general name'),
@@ -133,20 +136,20 @@ function add_custom_taxonomy() {
         'query_var' => true,
         'rewrite' => array('slug' => 'location'),
     );
-    register_taxonomy('post_locate', array('game', 'music' , 'entertainment', 'anime'), $args);
+    register_taxonomy('post_locate', array('game', 'music' , 'entertainment', 'animation'), $args);
 }
 // init アクションフックを使用して、カスタムタクソノミーを初期化
 add_action('init', 'add_custom_taxonomy');
 
 // 「新規カテゴリー追加」を非表示
-function hide_add_new_custom_category() {
-    $screen = get_current_screen();
-    if ($screen->id == '投稿タイプ') { // '投稿タイプ'を実際のカスタム投稿タイプのスラッグに置き換えてください
-        $css = '.taxonomy-post-locate .term-add-new-wrapper { display: none; }'; // 'post-locate' を実際のタクソノミーのスラッグに置き換えてください
-        wp_add_inline_style( 'wp-admin', $css );
+function my_admin_style() {
+    echo '<style>
+    div.components-flex-item {
+        display:none;
     }
+    </style>'.PHP_EOL;
 }
-add_action( 'admin_enqueue_scripts', 'hide_add_new_custom_category' );
+add_action('admin_print_styles', 'my_admin_style');
 
 function change_menu_label() {
 	global $menu, $submenu;

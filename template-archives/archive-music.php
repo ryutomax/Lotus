@@ -1,10 +1,43 @@
 <?php get_template_part('template-parts/head') ?>
 <?php get_template_part('template-parts/header') ?>
+
 <?php
-    $args = array(
-    'post_type' => 'music',// 投稿タイプを指定
-    'posts_per_page' => 10,// 表示する記事数
-    );
+// POSTされたデータがある場合、どのボタンがクリックされたかを表示
+    $buttonValue = "all";
+    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+        $buttonValue = $_POST['button'];
+    }
+?>
+
+<form action="" method="post">
+    <button type="submit" name="button" value="all">all</button>
+    <button type="submit" name="button" value="news">news</button>
+    <button type="submit" name="button" value="interview">interview</button>
+    <button type="submit" name="button" value="column">column</button>
+    <button type="submit" name="button" value="report">report</button>
+    <button type="submit" name="button" value="another">another</button>
+</form>
+<?php
+    $args = [];
+    if ($buttonValue == "all") {
+        $args = array(
+            'post_type' => 'music',
+            'posts_per_page' => 15,
+        );
+    } else {
+        $args = array(
+            'post_type' => 'music',
+            'posts_per_page' => 15,
+            'tax_query' => [
+                array(
+                    'taxonomy' => 'category',   // カスタムタクソノミーを指定
+                    'field'    => 'slug',       // タームの"slug"または"id"を指定
+                    'terms'    => $buttonValue, // 絞り込みたいタームを指定
+                )
+            ]
+        );
+    }
+    
     $news_query = new WP_Query( $args );
     if ( $news_query->have_posts() ):
     while ( $news_query->have_posts() ):

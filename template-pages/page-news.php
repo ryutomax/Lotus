@@ -8,29 +8,38 @@ Template Name: News一覧
 
 <?php
 // POSTされたデータがある場合、どのボタンがクリックされたかを表示
+    $buttonValue = "all";
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         // 'button'の値を取得
         $buttonValue = $_POST['button'];
-        echo "<p>ボタン{$buttonValue}がクリックされました。</p>";
-    } else {
-        echo "<p>ボタンinterviewがクリックされました。</p>";
     }
 ?>
 
 <form action="" method="post">
-    <button type="submit" name="button" value="interview">interview</button>
-    <button type="submit" name="button" value="column">column</button>
-    <button type="submit" name="button" value="report">report</button>
-    <button type="submit" name="button" value="another">another</button>
+    <button type="submit" name="button" value="all">all</button>
+    <button type="submit" name="button" value="music">music</button>
+    <button type="submit" name="button" value="game">game</button>
+    <button type="submit" name="button" value="animation">anime</button>
+    <button type="submit" name="button" value="entertainment">entertainment</button>
 </form>
 
-
-
 <?php
+
+    if ($buttonValue == "all") {
+        $buttonValue = ['music', 'game', 'animation', 'entertainment'];
+    }
     $args = array(
-    'post_type' => 'news',// 投稿タイプを指定
-    'posts_per_page' => 10,// 表示する記事数
+        'post_type' => $buttonValue,
+        'posts_per_page' => 15,
+        'tax_query' => [
+            array(
+                'taxonomy' => 'category',   // カスタムタクソノミーを指定
+                'field'    => 'slug',       // タームの"slug"または"id"を指定
+                'terms'    => 'news', // 絞り込みたいタームを指定
+            )
+        ]
     );
+
     $news_query = new WP_Query( $args );
     if ( $news_query->have_posts() ):
     while ( $news_query->have_posts() ):
