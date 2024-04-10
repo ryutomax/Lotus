@@ -1,6 +1,15 @@
 <?php get_template_part('template-parts/head') ?>
 <?php get_template_part('template-parts/header') ?>
+<?php
+	$post_type = get_post_type();
 
+    $args = [
+        'breadcrumb_slug_arr' => [],
+        'breadcrumb_arr' => [$post_type]
+    ];
+
+    get_template_part('template-parts/breadcrumb', null, $args);
+?>
 <?php
 // POSTされたデータがある場合、どのボタンがクリックされたかを表示
     $buttonValue = "all";

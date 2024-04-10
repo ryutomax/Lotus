@@ -15,6 +15,7 @@ Template Name: News一覧
     }
 ?>
 
+
 <form action="" method="post">
     <button type="submit" name="button" value="all">all</button>
     <button type="submit" name="button" value="music">music</button>
