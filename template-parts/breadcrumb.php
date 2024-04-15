@@ -17,7 +17,7 @@ function generate_breadcrumb($breadcrumb_slug_arr, $breadcrumb_arr)
     $html = '';
     for ($i = 0; $i < count($breadcrumb_arr); $i++) {
         if ($i == count($breadcrumb_arr) - 1) {
-            $html .= '<li class="breadcrumb-item">' . $breadcrumb_arr[$i] . '</li>';
+            $html .= '<li class="c-breadcrumb-item">' . $breadcrumb_arr[$i] . '</li>';
         } else {
             $href = "";
 
@@ -30,17 +30,17 @@ function generate_breadcrumb($breadcrumb_slug_arr, $breadcrumb_arr)
                 default:
             }
 
-            $html .= '<li class="breadcrumb-item"><a href="' . $href . '">' . $breadcrumb_arr[$i] . '</a></li>';
+            $html .= '<li class="c-breadcrumb-item"><a href="' . $href . '">' . $breadcrumb_arr[$i] . '</a></li>';
         }
     }
     return $html;
 }
 ?>
-<div id="breadcrumb" class="breadcrumb">
-    <div class="breadcrumb-inner">
-        <div class="breadcrumb-cont">
-            <ol class="breadcrumb-list">
-                <li class="breadcrumb-item"><a href="<?= esc_url(home_url('/')) ?>">TOP</a></li>
+<div id="breadcrumb" class="c-breadcrumb">
+    <div class="c-breadcrumb-inner">
+        <div class="c-breadcrumb-cont">
+            <ol class="c-breadcrumb-list">
+                <li class="c-breadcrumb-item"><a href="<?= esc_url(home_url('/')) ?>">TOP</a></li>
                 <?php echo generate_breadcrumb($breadcrumb_slug_arr, $breadcrumb_arr); ?>
             </ol>
         </div>

@@ -2,7 +2,7 @@
 1. yarn のインストール
 npm install
 npm i yarn -D
-yarn -v
+yarn -v  (./node_modules/.bin/yarn -v)
 
 v1.22.19
 

@@ -1,15 +1,15 @@
 @use "global" as *;
 
-.breadcrumb-list {
+.c-breadcrumb-list {
   display: flex;
   padding: 24px 16px;
 }
 
-.breadcrumb-item {
+.c-breadcrumb-item {
   margin-right: 24px;
 }
 
-.breadcrumb-item:has(>a) {
+.c-breadcrumb-item:has(>a) {
   position: relative;
   text-decoration: underline;
   &::before {

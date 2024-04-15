@@ -18,7 +18,7 @@
 .p-googleAd-inner {
   border: 2px solid $black;
   height: 100%;
-  max-width: 1000px;
+  max-width: 1200px;
   margin: 0 auto;
 }
 
@@ -29,11 +29,12 @@
 .p-top-slider-item {
   position: relative;
   height: 300px;
-  filter: grayscale(0.3);
+  filter: brightness(0.6);
+  transition: filter 0.3s;
 }
 
 .slick-current {
-  filter: grayscale(0);
+  filter: brightness(0.8);
 }
 
 .p-top-slider-img {
@@ -61,19 +62,22 @@
 
 .p-topContent {
   display: flex;
-  max-width: 1000px;
+  max-width: 1200px;
   margin: 0 auto;
 }
 
 .p-content {
-  width: 70%;
+  width: calc(100% - 300px);
+  margin-right: 85px;
 }
 
 .p-pickUp {
   position: relative;
   border: 2px solid $black;
   width: calc(100% - 23px);
+  margin-bottom: 80px;
   margin-left: auto;
+  padding: 24px;
 
   &::before {
     content: "";
@@ -90,24 +94,59 @@
   }
 }
 
-.p-pickUp-title {}
+.p-pickUp-title {
+  display: none;
+}
 
 .p-pickUp-list {
-  display: block;
+  display: flex;
 }
 .p-pickUp-article {
   height: 250px;
+  width: 25%;
+  margin: 0 8px;
 }
 
 .p-pickUp-article-link {}
 
 .p-pickUp-article-thumbnail {
-  height: 150px;
-  width: 150px;
+  display: block;
+  margin: 0 auto;
+  margin-bottom: 12px;
+  height: 140px;
+  width: 140px;
   object-fit: cover;
   border-radius: 50%;
+  box-shadow: 1px 2px 7px #00000026;
 }
 
-.p-pickUp-article-time {}
+.p-pickUp-article-time {
+  display: inline-block;
+  font-size: rem(14);
+  font-weight: 600;
+  margin-bottom: 8px;
+}
 
 .p-pickUp-article-text {}
+
+.p-articles {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.p-article {
+  width: 30%;
+}
+
+.p-article-link {}
+
+.p-article-time {}
+
+.p-article-thumbnail {}
+
+.p-article-title {}
+
+.p-article-tags {}
+
+.p-article-tag {}

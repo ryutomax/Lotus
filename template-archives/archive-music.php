@@ -32,11 +32,13 @@
         $args = array(
             'post_type' => 'music',
             'posts_per_page' => 15,
+            'post_status' => 'publish',
         );
     } else {
         $args = array(
             'post_type' => 'music',
             'posts_per_page' => 15,
+            'post_status' => 'publish',
             'tax_query' => [
                 array(
                     'taxonomy' => 'category',   // カスタムタクソノミーを指定

@@ -1,5 +1,4 @@
 <?php
-
 function enqueue_styles() {
 	$version = date('Ymd-His'); // バージョン番号を設定
 
@@ -23,7 +22,7 @@ function enqueue_scripts()
 add_action('wp_enqueue_scripts', 'enqueue_scripts');
 
 // ========================================
-// バリデーション
+// お問い合わせ バリデーション
 // ========================================
 function my_exam_validation_rule( $Validation, $data, $Data ) {
 
@@ -118,7 +117,6 @@ function add_custom_taxonomy() {
         'show_admin_column' => true,
 		'show_in_rest' => true,
         'query_var' => true,
-        'rewrite' => array('slug' => 'category'),
     );
 	register_taxonomy('category', array('game', 'music' , 'entertainment', 'animation'), $args);
 
@@ -134,7 +132,6 @@ function add_custom_taxonomy() {
         'show_admin_column' => true,
 		'show_in_rest' => true,
         'query_var' => true,
-        'rewrite' => array('slug' => 'location'),
     );
     register_taxonomy('post_locate', array('game', 'music' , 'entertainment', 'animation'), $args);
 }

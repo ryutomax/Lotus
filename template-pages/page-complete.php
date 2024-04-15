@@ -15,14 +15,18 @@ Template Name: お問い合わせ（資料請求）送信完了
               </div>
               <!-- /.p-mv-inner -->
             </section>
-            <div class="p-breadcrumbs">
-              <a href="<?= esc_url(home_url('/')) ?>">TOP</a>
-              <span>＞</span>
-              <a href="<?= esc_url(home_url('/')) ?>contact/">お問い合わせ（資料請求）</a>
-              <span>＞</span>
-              <span>送信完了</span>
+            <div id="breadcrumb" class="c-breadcrumb">
+              <div class="c-breadcrumb-inner">
+                  <div class="c-breadcrumb-cont">
+                      <ol class="c-breadcrumb-list">
+                        <li class="c-breadcrumb-item"><a href="<?= esc_url(home_url('/')) ?>">TOP</a></li>
+                        <li class="c-breadcrumb-item"><a href="<?= esc_url(home_url('/')) ?>contact">取材申込フォーム</a></li>
+                        <li class="c-breadcrumb-item">送信完了</li>
+                      </ol>
+                  </div>
+              </div>
             </div>
-            <!-- /.p-breadcrumbs -->
+            <!-- /.c-breadcrumb -->
             <div class="wp-block-group has-global-padding is-layout-constrained">
               <h1 style="margin-bottom:var(--wp--preset--spacing--40);" class="wp-block-post-title">お問い合わせ（資料請求）</h1>
             </div>

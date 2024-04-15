@@ -32,6 +32,7 @@ Template Name: News一覧
     $args = array(
         'post_type' => $buttonValue,
         'posts_per_page' => 15,
+        'post_status' => 'publish',
         'tax_query' => [
             array(
                 'taxonomy' => 'category',   // カスタムタクソノミーを指定
