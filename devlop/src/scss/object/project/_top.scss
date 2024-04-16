@@ -137,13 +137,25 @@
 
 .p-article {
   width: 30%;
+  margin-bottom: 80px;
 }
 
-.p-article-link {}
+.p-article-link {
+  display: block;
+  position: relative;
+}
 
-.p-article-time {}
+.p-article-time {
+  position: absolute;
+  left: 0;
+  top: -25px;
+  transform: rotate(30deg);
+}
 
-.p-article-thumbnail {}
+.p-article-thumbnail {
+  height: 160px;
+  object-fit: cover;
+}
 
 .p-article-title {}
 
