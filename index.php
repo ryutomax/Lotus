@@ -125,7 +125,13 @@
                 <article class="p-article">
                   <a class="p-article-link" href="<?php echo get_the_permalink(); ?>">
                     <time class="p-article-time" datetime="<?= get_the_date('Y.m.d'); ?>"><?= get_the_date('Y.m.d'); ?></time>
-                    <img src="<?php print get_the_post_thumbnail_url(); ?>" alt="<?php the_title(); ?>" class="p-article-thumbnail">
+                    <?php $thumbnail = get_the_post_thumbnail_url(); 
+                      if (!$thumbnail) {
+                        $thumbnail = esc_url(get_template_directory_uri() . '/'). 'assets/images/common/thumbnail-none.png';
+                      }
+                    ?>
+                    <img src="<?php print $thumbnail; ?>" alt="<?php the_title(); ?>" class="p-article-thumbnail">
+                    <!-- カスタム投稿タイプ　出力 -->
                     <h2 class="p-article-title"><?php the_title(); ?></h2>
                     <ul class="p-article-tags">
                       <li class="p-article-tag"></li>
@@ -136,7 +142,7 @@
                   endif;
                   wp_reset_postdata();
                 ?>
-              
+              <button class="p-articles-more" id="add-more">もっと見る</button>
             </div>
           </section>
           <section class="p-side"></section>
