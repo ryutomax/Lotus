@@ -131,13 +131,16 @@
 
 .p-articles {
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-start;
   flex-wrap: wrap;
+  margin-right: -40px;
 }
 
+$mr: 32px;
 .p-article {
-  width: 30%;
+  width: calc((100% - $mr*3) / 3);
   margin-bottom: 80px;
+  margin-right: $mr;
 }
 
 .p-article-link {
@@ -148,8 +151,10 @@
 .p-article-time {
   position: absolute;
   left: 0;
-  top: -25px;
-  transform: rotate(30deg);
+  top: -26px;
+  transform: rotate(-15deg);
+  font-size: rem(14);
+  font-weight: 700;
 }
 
 .p-article-thumbnail {
@@ -162,3 +167,13 @@
 .p-article-tags {}
 
 .p-article-tag {}
+
+.p-articles-bottom {
+  display: block;
+  width: 100%;
+}
+
+.p-articles-more {
+  display: inline-block;
+  margin: 0 auto;
+}

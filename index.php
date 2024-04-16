@@ -29,7 +29,12 @@
 
           <div class="p-top-slider-item">
             <a href="" class="p-top-slider-link">
-              <?php $thumbnail = get_the_post_thumbnail_url(); ?>
+              <?php
+                $thumbnail = get_the_post_thumbnail_url();
+                if (!$thumbnail) {
+                  $thumbnail = esc_url(get_template_directory_uri() . '/'). 'assets/images/common/thumbnail-none.jpg';
+                }
+              ?>
               <img class="p-top-slider-img" src="<?php print $thumbnail; ?>" alt="<?php the_title(); ?>">
               <div class="p-top-slider-info">
                 <?php
@@ -90,7 +95,13 @@
                 ?>
                 <article class="p-pickUp-article">
                   <a class="p-pickUp-article-link" href="<?php echo get_the_permalink(); ?>">
-                    <img class="p-pickUp-article-thumbnail" src="<?php print get_the_post_thumbnail_url(); ?>" alt="<?php the_title(); ?>">
+                    <?php
+                      $thumbnail = get_the_post_thumbnail_url();
+                      if (!$thumbnail) {
+                        $thumbnail = esc_url(get_template_directory_uri() . '/'). 'assets/images/common/thumbnail-none.jpg';
+                      }
+                    ?>
+                    <img class="p-pickUp-article-thumbnail" src="<?php print $thumbnail; ?>" alt="<?php the_title(); ?>">
                     <time class="p-pickUp-article-time" datetime="<?= get_the_date('Y.m.d'); ?>"><?= get_the_date('Y.m.d'); ?></time>
                     <?php
                       $content = get_the_content();
@@ -125,14 +136,34 @@
                 <article class="p-article">
                   <a class="p-article-link" href="<?php echo get_the_permalink(); ?>">
                     <time class="p-article-time" datetime="<?= get_the_date('Y.m.d'); ?>"><?= get_the_date('Y.m.d'); ?></time>
-                    <?php $thumbnail = get_the_post_thumbnail_url(); 
+                    <?php
+                      $thumbnail = get_the_post_thumbnail_url();
                       if (!$thumbnail) {
-                        $thumbnail = esc_url(get_template_directory_uri() . '/'). 'assets/images/common/thumbnail-none.png';
+                        $thumbnail = esc_url(get_template_directory_uri() . '/'). 'assets/images/common/thumbnail-none.jpg';
                       }
                     ?>
                     <img src="<?php print $thumbnail; ?>" alt="<?php the_title(); ?>" class="p-article-thumbnail">
                     <!-- カスタム投稿タイプ　出力 -->
                     <h2 class="p-article-title"><?php the_title(); ?></h2>
+                    <?php
+                      $post_type = get_post_type();
+                      switch ($post_type) {
+                        case 'music':
+                            $bgc = 'background-color: #59d5e0;';
+                            break;
+                        case 'game':
+                            $bgc = 'background-color: #9195f6;';
+                            break;
+                        case 'animation':
+                            $bgc = 'background-color: #f4538a;';
+                            break;
+                        case 'entertainment':
+                            $bgc = 'background-color: #faa300;';
+                            break;
+                      }
+                      $post_type_object = get_post_type_object($post_type);
+                    ?>
+                    <span class="p-top-slider-tag" style="<?= $bgc; ?>"><?php echo esc_html($post_type_object->labels->name); ?></span>
                     <ul class="p-article-tags">
                       <li class="p-article-tag"></li>
                     </ul>
@@ -142,7 +173,9 @@
                   endif;
                   wp_reset_postdata();
                 ?>
-              <button class="p-articles-more" id="add-more">もっと見る</button>
+              <div class="p-articles-bottom">
+                <button class="p-articles-more" id="add-more">もっと見る</button>
+              </div>
             </div>
           </section>
           <section class="p-side"></section>
