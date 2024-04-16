@@ -164,6 +164,14 @@ $mr: 32px;
 
 .p-article-title {}
 
+.p-article-type {
+  color: $white;
+  width: fit-content;
+  margin-left: auto;
+  display: block;
+  text-align: end;
+}
+
 .p-article-tags {}
 
 .p-article-tag {}

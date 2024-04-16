@@ -113,8 +113,9 @@
                     <p class="p-pickUp-article-text"><?php echo $content; ?></p>
                   </a>
                 </article>
-
-                <?php endwhile;
+                
+                <?php
+                  endwhile;
                   endif;
                   wp_reset_postdata();
                 ?>
@@ -122,6 +123,7 @@
             </div>
             <div class="p-articles">
               <?php
+                  $article_count = 1;
                   $args = array(
                       'post_type' => ['music', 'game', 'animation', 'entertainment'],
                       'posts_per_page' => 30,
@@ -133,6 +135,47 @@
                     while ( $query->have_posts() ):
                         $query->the_post();
                 ?>
+                  
+                <?php if($article_count > 15): ?>
+                  <div class="p-article-blind" style="display: none;">
+                    <article class="p-article">
+                      <a class="p-article-link" href="<?php echo get_the_permalink(); ?>">
+                        <time class="p-article-time" datetime="<?= get_the_date('Y.m.d'); ?>"><?= get_the_date('Y.m.d'); ?></time>
+                        <?php
+                          $thumbnail = get_the_post_thumbnail_url();
+                          if (!$thumbnail) {
+                            $thumbnail = esc_url(get_template_directory_uri() . '/'). 'assets/images/common/thumbnail-none.jpg';
+                          }
+                        ?>
+                        <img src="<?php print $thumbnail; ?>" alt="<?php the_title(); ?>" class="p-article-thumbnail">
+                        <!-- カスタム投稿タイプ　出力 -->
+                        <h2 class="p-article-title"><?php the_title(); ?></h2>
+                        <?php
+                          $post_type = get_post_type();
+                          switch ($post_type) {
+                            case 'music':
+                                $bgc = 'background-color: #59d5e0;';
+                                break;
+                            case 'game':
+                                $bgc = 'background-color: #9195f6;';
+                                break;
+                            case 'animation':
+                                $bgc = 'background-color: #f4538a;';
+                                break;
+                            case 'entertainment':
+                                $bgc = 'background-color: #faa300;';
+                                break;
+                          }
+                          $post_type_object = get_post_type_object($post_type);
+                        ?>
+                        <span class="p-article-type" style="<?= $bgc; ?>"><?php echo esc_html($post_type_object->labels->name); ?></span>
+                        <ul class="p-article-tags">
+                          <li class="p-article-tag"></li>
+                        </ul>
+                      </a>
+                    </article>
+                  </div>
+                <?php else: ?>
                 <article class="p-article">
                   <a class="p-article-link" href="<?php echo get_the_permalink(); ?>">
                     <time class="p-article-time" datetime="<?= get_the_date('Y.m.d'); ?>"><?= get_the_date('Y.m.d'); ?></time>
@@ -163,13 +206,16 @@
                       }
                       $post_type_object = get_post_type_object($post_type);
                     ?>
-                    <span class="p-top-slider-tag" style="<?= $bgc; ?>"><?php echo esc_html($post_type_object->labels->name); ?></span>
+                    <span class="p-article-type" style="<?= $bgc; ?>"><?php echo esc_html($post_type_object->labels->name); ?></span>
                     <ul class="p-article-tags">
                       <li class="p-article-tag"></li>
                     </ul>
                   </a>
                 </article>
-                <?php endwhile;
+                <?php endif; ?>
+                <?php
+                  $article_count++;
+                  endwhile;
                   endif;
                   wp_reset_postdata();
                 ?>
