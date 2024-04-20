@@ -124,13 +124,12 @@
             <div class="p-articles">
               <?php
                   $article_count = 1;
-                  $args = array(
+                  $query = new WP_Query( array(
                       'post_type' => ['music', 'game', 'animation', 'entertainment'],
                       'posts_per_page' => 30,
                       'post_status' => 'publish',
-                  );
+                  ));
 
-                  $query = new WP_Query( $args );
                     if ( $query->have_posts() ):
                     while ( $query->have_posts() ):
                         $query->the_post();

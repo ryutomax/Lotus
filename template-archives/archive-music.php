@@ -27,18 +27,21 @@
     <button type="submit" name="button" value="another">another</button>
 </form>
 <?php
+    $paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
     $args = [];
     if ($buttonValue == "all") {
         $args = array(
             'post_type' => 'music',
-            'posts_per_page' => 15,
+            'posts_per_page' => 1,
             'post_status' => 'publish',
+            'paged' => $paged,
         );
     } else {
         $args = array(
             'post_type' => 'music',
             'posts_per_page' => 15,
             'post_status' => 'publish',
+            'paged' => $paged,
             'tax_query' => [
                 array(
                     'taxonomy' => 'category',   // カスタムタクソノミーを指定
@@ -49,10 +52,10 @@
         );
     }
     
-    $news_query = new WP_Query( $args );
-    if ( $news_query->have_posts() ):
-    while ( $news_query->have_posts() ):
-        $news_query->the_post();
+    $wp_query = new WP_Query( $args );
+    if ( $wp_query->have_posts() ):
+    while ( $wp_query->have_posts() ):
+        $wp_query->the_post();
 ?>
 
 <article class="news-item">
@@ -72,4 +75,9 @@
     endif;
     wp_reset_postdata();
 ?>
+<div class="pagination">
+<?php echo paginate_links( array ( 'type' => 'list',
+	'prev_text' => '«',
+	'next_text' => '»'
+)); ?>
 <?php get_template_part('template-parts/footer') ?>

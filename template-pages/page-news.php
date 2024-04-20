@@ -31,7 +31,7 @@ Template Name: News一覧
     }
     $args = array(
         'post_type' => $buttonValue,
-        'posts_per_page' => 15,
+        'posts_per_page' => 5,
         'post_status' => 'publish',
         'tax_query' => [
             array(
@@ -42,10 +42,10 @@ Template Name: News一覧
         ]
     );
 
-    $news_query = new WP_Query( $args );
-    if ( $news_query->have_posts() ):
-    while ( $news_query->have_posts() ):
-        $news_query->the_post();
+    $wp_query = new WP_Query( $args );
+    if ( $wp_query->have_posts() ):
+    while ( $wp_query->have_posts() ):
+        $wp_query->the_post();
 ?>
 
 
@@ -60,8 +60,9 @@ Template Name: News一覧
     </div>
     </a>
 </article>
-
-<?php endwhile;
+<?php
+    endwhile;
+    
     endif;
     wp_reset_postdata();
 ?>
