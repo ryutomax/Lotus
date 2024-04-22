@@ -75,9 +75,13 @@
     endif;
     wp_reset_postdata();
 ?>
-<div class="pagination">
-<?php echo paginate_links( array ( 'type' => 'list',
-	'prev_text' => '«',
-	'next_text' => '»'
-)); ?>
+<div class="p-pagination">
+<?php echo paginate_links(
+    array (
+        'type' => 'list',
+        'prev_text' => '＜',
+        'next_text' => '＞'
+    ));
+?>
+</div>
 <?php get_template_part('template-parts/footer') ?>

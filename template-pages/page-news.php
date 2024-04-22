@@ -25,7 +25,7 @@ Template Name: News一覧
 </form>
 
 <?php
-
+    $paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
     if ($buttonValue == "all") {
         $buttonValue = ['music', 'game', 'animation', 'entertainment'];
     }
@@ -33,6 +33,7 @@ Template Name: News一覧
         'post_type' => $buttonValue,
         'posts_per_page' => 5,
         'post_status' => 'publish',
+        'paged' => $paged,
         'tax_query' => [
             array(
                 'taxonomy' => 'category',   // カスタムタクソノミーを指定
@@ -62,8 +63,18 @@ Template Name: News一覧
 </article>
 <?php
     endwhile;
-    
     endif;
     wp_reset_postdata();
 ?>
+<div class="p-pagination">
+<?php echo paginate_links(
+    array (
+        'type' => 'list',
+        'prev_text' => '＜',
+        'next_text' => '＞',
+        'end_size'  => 1, // 両端のページ数
+        'mid_size'  => 2,
+    ));
+?>
+</div>
 <?php get_template_part('template-parts/footer') ?>
