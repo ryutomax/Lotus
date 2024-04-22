@@ -9,49 +9,42 @@
     ];
 
     get_template_part('template-parts/breadcrumb', null, $args);
-?>
-<?php
-// POSTされたデータがある場合、どのボタンがクリックされたかを表示
+
     $buttonValue = "all";
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $buttonValue = $_POST['button'];
     }
 ?>
 
-<form action="" method="post">
-    <button type="submit" name="button" value="all">all</button>
-    <button type="submit" name="button" value="news">news</button>
-    <button type="submit" name="button" value="interview">interview</button>
-    <button type="submit" name="button" value="column">column</button>
-    <button type="submit" name="button" value="report">report</button>
-    <button type="submit" name="button" value="another">another</button>
+<form action="" method="post" class="p-article-header">
+    <button class="p-article-tab" type="submit" name="button" value="all"><span>A</span>LL</button>
+    <button class="p-article-tab" class="p-article-tab" type="submit" name="button" value="news"><span>N</span>EWS</button>
+    <button class="p-article-tab" type="submit" name="button" value="interview"><span>I</span>NTERVIEW</button>
+    <button class="p-article-tab" type="submit" name="button" value="column"><span>C</span>OLUMN</button>
+    <button class="p-article-tab" type="submit" name="button" value="report"><span>R</span>EPORT</button>
+    <button class="p-article-tab" type="submit" name="button" value="another"><span>A</span>NOTHER</button>
 </form>
 <?php
     $paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
     $args = [];
     if ($buttonValue == "all") {
-        $args = array(
-            'post_type' => 'music',
-            'posts_per_page' => 1,
-            'post_status' => 'publish',
-            'paged' => $paged,
-        );
-    } else {
-        $args = array(
-            'post_type' => 'music',
-            'posts_per_page' => 15,
-            'post_status' => 'publish',
-            'paged' => $paged,
-            'tax_query' => [
-                array(
-                    'taxonomy' => 'category',   // カスタムタクソノミーを指定
-                    'field'    => 'slug',       // タームの"slug"または"id"を指定
-                    'terms'    => $buttonValue, // 絞り込みたいタームを指定
-                )
-            ]
-        );
+        $buttonValue = ['news', 'interview', 'column', 'report', 'another'];
     }
-    
+    $args = array(
+        'post_type' => 'music',
+        'posts_per_page' => 1,
+        'post_status' => 'publish',
+        'paged' => $paged,
+        'tax_query' => [
+            [
+                'taxonomy' => 'category',   // カスタムタクソノミーを指定
+                'field'    => 'slug',       // タームの"slug"または"id"を指定
+                'terms'    => $buttonValue, // 絞り込みたいタームを指定
+            ]
+        ]
+    );
+
+
     $wp_query = new WP_Query( $args );
     if ( $wp_query->have_posts() ):
     while ( $wp_query->have_posts() ):

@@ -37,12 +37,8 @@ function generate_breadcrumb($breadcrumb_slug_arr, $breadcrumb_arr)
 }
 ?>
 <div id="breadcrumb" class="c-breadcrumb">
-    <div class="c-breadcrumb-inner">
-        <div class="c-breadcrumb-cont">
-            <ol class="c-breadcrumb-list">
-                <li class="c-breadcrumb-item"><a href="<?= esc_url(home_url('/')) ?>">TOP</a></li>
-                <?php echo generate_breadcrumb($breadcrumb_slug_arr, $breadcrumb_arr); ?>
-            </ol>
-        </div>
-    </div>
+    <ol class="c-breadcrumb-list">
+        <li class="c-breadcrumb-item"><a href="<?= esc_url(home_url('/')) ?>">TOP</a></li>
+        <?php echo generate_breadcrumb($breadcrumb_slug_arr, $breadcrumb_arr); ?>
+    </ol>
 </div>

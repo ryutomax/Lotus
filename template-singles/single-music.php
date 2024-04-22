@@ -79,9 +79,15 @@
 	</section>
 
 	<div class="p-sns">
-		<a href="https://social-plugins.line.me/lineit/share?url=<?php echo $page_url; ?>" target="_blank">Line</a>
-		<a href="http://www.facebook.com/share.php?u=<?php echo $page_url; ?>" target="_blank">Facebook</a>
-		<a href="https://twitter.com/share?url=<?php echo $page_url; ?>" target="_blank">X</a>
+		<a class="p-sns-link" href="https://social-plugins.line.me/lineit/share?url=<?php echo $page_url; ?>" target="_blank">
+			<img src="<?= esc_url(get_template_directory_uri() . '/'); ?>assets/images/common/sns_instagram_icon.png" alt="<?php the_title(); ?>">
+		</a>
+		<a class="p-sns-link" href="http://www.facebook.com/share.php?u=<?php echo $page_url; ?>" target="_blank">
+			<img src="<?= esc_url(get_template_directory_uri() . '/'); ?>assets/images/common/sns_x_icon.png" alt="<?php the_title(); ?>">
+		</a>
+		<a class="p-sns-link" href="https://twitter.com/share?url=<?php echo $page_url; ?>" target="_blank">
+			<img src="<?= esc_url(get_template_directory_uri() . '/'); ?>assets/images/common/sns_youtube_icon.png" alt="<?php the_title(); ?>">
+		</a>
 	</div>
 </div>
 <?php get_template_part('template-parts/footer') ?>
