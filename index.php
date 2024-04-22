@@ -3,6 +3,7 @@
     <!-- 閉じタグは_footer.ejs -->
     <?php get_template_part('template-parts/header') ?>
     <?php get_template_part('template-parts/contactIcon') ?>
+    <?php require_once('template-parts/post_type_info.php'); ?>
       <main class="l-main p-top">
         <section class="p-top-googleAd">
           <div class="p-googleAd-inner"></div>
@@ -39,23 +40,8 @@
               <div class="p-top-slider-info">
                 <?php
                   $post_type = get_post_type();
-                  switch ($post_type) {
-                    case 'music':
-                        $bgc = 'background-color: #59d5e0;';
-                        break;
-                    case 'game':
-                        $bgc = 'background-color: #9195f6;';
-                        break;
-                    case 'animation':
-                        $bgc = 'background-color: #f4538a;';
-                        break;
-                    case 'entertainment':
-                        $bgc = 'background-color: #faa300;';
-                        break;
-                  }
-                  $post_type_object = get_post_type_object($post_type);
                 ?>
-                <span class="p-top-slider-tag" style="<?= $bgc; ?>"><?php echo esc_html($post_type_object->labels->name); ?></span>
+                <span class="p-top-slider-tag" style="<?= get_post_type_info($post_type)['color']; ?>"><?= get_post_type_info($post_type)['name']; ?></span>
                 <h2 class="p-top-slider-title"><?php the_title(); ?></h2>
               </div>
             </a>
@@ -71,7 +57,6 @@
         </section>
         <div class="p-topContent">
           <section class="p-content">
-
             <div class="p-pickUp">
               <h2 class="p-pickUp-title">Pick Up News</h2>
               <div class="p-pickUp-list">
@@ -149,23 +134,8 @@
                       <h2 class="p-article-title"><?php the_title(); ?></h2>
                       <?php
                         $post_type = get_post_type();
-                        switch ($post_type) {
-                          case 'music':
-                              $bgc = 'background-color: #59d5e0;';
-                              break;
-                          case 'game':
-                              $bgc = 'background-color: #9195f6;';
-                              break;
-                          case 'animation':
-                              $bgc = 'background-color: #f4538a;';
-                              break;
-                          case 'entertainment':
-                              $bgc = 'background-color: #faa300;';
-                              break;
-                        }
-                        $post_type_object = get_post_type_object($post_type);
                       ?>
-                      <span class="p-article-type" style="<?= $bgc; ?>"><?php echo esc_html($post_type_object->labels->name); ?></span>
+                      <span class="p-article-type" style="<?= get_post_type_info($post_type)['color']; ?>"><?= get_post_type_info($post_type)['name']; ?></span>
                       <ul class="p-article-tags">
                         <li class="p-article-tag"></li>
                       </ul>
@@ -189,23 +159,8 @@
                         <h2 class="p-article-title"><?php the_title(); ?></h2>
                         <?php
                           $post_type = get_post_type();
-                          switch ($post_type) {
-                            case 'music':
-                                $bgc = 'background-color: #59d5e0;';
-                                break;
-                            case 'game':
-                                $bgc = 'background-color: #9195f6;';
-                                break;
-                            case 'animation':
-                                $bgc = 'background-color: #f4538a;';
-                                break;
-                            case 'entertainment':
-                                $bgc = 'background-color: #faa300;';
-                                break;
-                          }
-                          $post_type_object = get_post_type_object($post_type);
                         ?>
-                        <span class="p-article-type" style="<?= $bgc; ?>"><?php echo esc_html($post_type_object->labels->name); ?></span>
+                        <span class="p-article-type" style="<?= get_post_type_info($post_type)['color']; ?>"><?= get_post_type_info($post_type)['name']; ?></span>
                         <ul class="p-article-tags">
                           <li class="p-article-tag"></li>
                         </ul>
