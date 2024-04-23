@@ -1,7 +1,6 @@
 @use "global" as *;
 
 .p-top {
-  padding: 20px;
 }
 .p-top-googleAd {
   height: 175px;
@@ -60,7 +59,7 @@
   font-size: rem(16);
 }
 
-.p-topContent {
+.p-mainContent {
   display: flex;
   max-width: 1200px;
   margin: 0 auto;
