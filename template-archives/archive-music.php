@@ -31,58 +31,89 @@
                 <button class="p-article-tab<?php $tabActive = $buttonValue == 'report' ?  ' is-tabActive' : ''; echo $tabActive; ?>" type="submit" name="button" value="report"><span>R</span>EPORT</button>
                 <button class="p-article-tab<?php $tabActive = $buttonValue == 'another' ?  ' is-tabActive' : ''; echo $tabActive; ?>" type="submit" name="button" value="another"><span>A</span>NOTHER</button>
             </form>
-            <?php
-                $paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
-                $args = [];
-                if ($buttonValue == "all") {
-                    $buttonValue = ['news', 'interview', 'column', 'report', 'another'];
-                }
-                $args = array(
-                    'post_type' => 'music',
-                    'posts_per_page' => 1,
-                    'post_status' => 'publish',
-                    'paged' => $paged,
-                    'tax_query' => [
-                        [
-                            'taxonomy' => 'category',   // カスタムタクソノミーを指定
-                            'field'    => 'slug',       // タームの"slug"または"id"を指定
-                            'terms'    => $buttonValue, // 絞り込みたいタームを指定
-                        ]
-                    ]
-                );
+            <div class="p-articles">
+              <?php
+                  $paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
+                  $args = [];
+                  if ($buttonValue == "all") {
+                      $buttonValue = ['news', 'interview', 'column', 'report', 'another'];
+                  }
+                  $args = array(
+                      'post_type' => 'music',
+                      'posts_per_page' => 15,
+                      'post_status' => 'publish',
+                      'paged' => $paged,
+                      'tax_query' => [
+                          [
+                              'taxonomy' => 'category',   // カスタムタクソノミーを指定
+                              'field'    => 'slug',       // タームの"slug"または"id"を指定
+                              'terms'    => $buttonValue, // 絞り込みたいタームを指定
+                          ]
+                      ]
+                  );
 
 
-                $wp_query = new WP_Query( $args );
-                if ( $wp_query->have_posts() ):
-                while ( $wp_query->have_posts() ):
-                    $wp_query->the_post();
-            ?>
+                  $wp_query = new WP_Query( $args );
+                  if ( $wp_query->have_posts() ):
+                  while ( $wp_query->have_posts() ):
+                      $wp_query->the_post();
+              ?>
 
-            <article class="news-item">
-                <a href="<?php the_permalink(); ?>" class="news-item__inner">
-                <div class="news-item__media js-img-bg">
-                    <img src="<?php print $thumbnail; ?>" alt="">
-                </div>
-                <div class="news-item__body">
-                    <h2 class="news-item__title"><?php the_title(); ?></h2>
-                    <time datetime="the_time( 'Y-m-d' )"><?php the_time( 'Y.m.d' ); ?></time>
-                </div>
+              <article class="p-article">
+                <a class="p-article-link" href="<?php echo get_the_permalink(); ?>">
+                    <time class="p-article-time" datetime="<?= get_the_date('Y.m.d'); ?>"><?= get_the_date('Y.m.d'); ?></time>
+                    <?php
+                      $thumbnail = get_the_post_thumbnail_url();
+                      if (!$thumbnail) {
+                          $thumbnail = esc_url(get_template_directory_uri() . '/'). 'assets/images/common/thumbnail-none.jpg';
+                      }
+                    ?>
+                    <img src="<?php print $thumbnail; ?>" alt="<?php the_title(); ?>" class="p-article-thumbnail">
+                    <!-- カスタム投稿タイプ出力 -->
+                    <h2 class="p-article-title"><?php the_title(); ?></h2>
+                    <span class="p-article-type" style="background-color: black;">
+                    <?php
+                      $post_id = get_the_ID(); // 現在の投稿IDを取得
+                      $terms = wp_get_post_terms($post_id, 'category', array('fields' => 'names'));
+
+                      if (!is_wp_error($terms) && !empty($terms)) {
+                        foreach ($terms as $term_name) {
+
+                          switch ($term_name) {
+                            case 'interview':
+                              echo 'インタビュー';
+                              break;
+                            case 'report':
+                              echo 'レポート';
+                              break;
+                            case 'another':
+                              echo 'その他';
+                              break;
+                          }
+                        }
+                      }
+                    ?>
+                    </span>
+                    <ul class="p-article-tags">
+                      <li class="p-article-tag"></li>
+                    </ul>
                 </a>
-            </article>
+              </article>
 
-            <?php
-                endwhile;
-                endif;
-                wp_reset_postdata();
-            ?>
-            <div class="p-pagination">
-                <?php echo paginate_links(
-                    array (
-                        'type' => 'list',
-                        'prev_text' => '＜',
-                        'next_text' => '＞'
-                    ));
-                ?>
+              <?php
+                  endwhile;
+                  endif;
+                  wp_reset_postdata();
+              ?>
+              <div class="p-pagination">
+                  <?php echo paginate_links(
+                      array (
+                          'type' => 'list',
+                          'prev_text' => '＜',
+                          'next_text' => '＞'
+                      ));
+                  ?>
+              </div>
             </div>
           </section>
           <section class="p-side"></section>

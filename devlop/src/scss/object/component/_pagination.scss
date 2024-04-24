@@ -1,6 +1,7 @@
 @use "global" as *;
 
 .p-pagination {
+  width: 100%;
   ul {
     display: flex;
     justify-content: center;

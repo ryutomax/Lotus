@@ -57,6 +57,7 @@
       </section>
       <div class="p-mainContent">
         <section class="p-content">
+          <!-- ピックアップニュース -->
           <div class="p-pickUp">
             <h2 class="p-pickUp-title">Pick Up News</h2>
             <div class="p-pickUp-list">
@@ -98,7 +99,6 @@
                   <p class="p-pickUp-article-text"><?php echo $content; ?></p>
                 </a>
               </article>
-              
               <?php
                 endwhile;
                 endif;
@@ -106,6 +106,7 @@
               ?>
             </div>
           </div>
+          <!-- 記事一覧 -->
           <div class="p-articles">
             <?php
                 $article_count = 1;
@@ -114,6 +115,8 @@
                     'posts_per_page' => 30,
                     'post_status' => 'publish',
                 ));
+                // 表示記事数取得
+                $article_num = $query->found_posts;
 
                   if ( $query->have_posts() ):
                   while ( $query->have_posts() ):
@@ -155,7 +158,7 @@
                         }
                       ?>
                       <img src="<?php print $thumbnail; ?>" alt="<?php the_title(); ?>" class="p-article-thumbnail">
-                      <!-- カスタム投稿タイプ　出力 -->
+                      <!-- カスタム投稿タイプ出力 -->
                       <h2 class="p-article-title"><?php the_title(); ?></h2>
                       <?php
                         $post_type = get_post_type();
@@ -166,10 +169,6 @@
                       </ul>
                     </a>
                   </article>
-                  <?php if ($article_count == 30): ?>
-                  </div>
-                  <!-- p-article-blind -->
-                  <?php endif; ?>
               <?php endif; ?>
               <?php
                 $article_count++;
@@ -177,9 +176,17 @@
                 endif;
                 wp_reset_postdata();
               ?>
+              <!-- 最後の記事でタグを閉じる 記事カウント件数＝表示記事数-->
+              <?php if ($article_count == $article_num + 1): ?>
+                </div>
+                <!-- p-article-blind -->
+              <?php endif; ?>
+            <!-- 15件以下で非表示 -->
+            <?php if($article_count > 16) : ?>
             <div class="p-articles-bottom">
               <button class="p-articles-more" id="add-more">もっと見る</button>
             </div>
+            <?php endif; ?>
           </div>
         </section>
         <section class="p-side"></section>

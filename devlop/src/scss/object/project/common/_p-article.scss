@@ -2,6 +2,7 @@
 
 .p-article-header {
   display: flex;
+  margin-bottom: 80px;
 }
 
 .p-article-tab {
@@ -49,6 +50,8 @@ $mr: 32px;
 .p-article-thumbnail {
   height: 160px;
   object-fit: cover;
+  border-radius: 30px 0;
+  box-shadow: 1px 1px 4px #00000030;
 }
 
 .p-article-title {}
@@ -59,6 +62,7 @@ $mr: 32px;
   margin-left: auto;
   display: block;
   text-align: end;
+  padding: 2px;
 }
 
 .p-article-tags {}
@@ -85,4 +89,5 @@ $mr: 32px;
   display: flex;
   justify-content: flex-start;
   flex-wrap: wrap;
+  width: 100%;
 }
