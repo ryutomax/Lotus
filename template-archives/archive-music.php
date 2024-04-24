@@ -6,6 +6,7 @@
         <section class="p-top-googleAd">
             <div class="p-googleAd-inner"></div>
         </section>
+		
         <?php
             $post_type = get_post_type();
 
@@ -21,103 +22,111 @@
                 $buttonValue = $_POST['button'];
             }
         ?>
+		<div class="p-articles-head">
+			<h2 class="p-articles-title">MUSIC<span>ミュージック</span></h2>
+			<p class="p-articles-lead">邦楽、洋楽、HIP-HOPのニュースやコラム、話題のシンガー、バンドのインタビューやライブレポート</p>
+		</div>
         <div class="p-mainContent">
-          <section class="p-content">
-            <form action="" method="post" class="p-article-header">
-                <button class="p-article-tab<?php $tabActive = $buttonValue == 'all' ?  ' is-tabActive' : ''; echo $tabActive; ?>" type="submit" name="button" value="all"><span>A</span>LL</button>
-                <button class="p-article-tab<?php $tabActive = $buttonValue == 'news' ?  ' is-tabActive' : ''; echo $tabActive; ?>" class="p-article-tab" type="submit" name="button" value="news"><span>N</span>EWS</button>
-                <button class="p-article-tab<?php $tabActive = $buttonValue == 'interview' ?  ' is-tabActive' : ''; echo $tabActive; ?>" type="submit" name="button" value="interview"><span>I</span>NTERVIEW</button>
-                <button class="p-article-tab<?php $tabActive = $buttonValue == 'column' ?  ' is-tabActive' : ''; echo $tabActive; ?>" type="submit" name="button" value="column"><span>C</span>OLUMN</button>
-                <button class="p-article-tab<?php $tabActive = $buttonValue == 'report' ?  ' is-tabActive' : ''; echo $tabActive; ?>" type="submit" name="button" value="report"><span>R</span>EPORT</button>
-                <button class="p-article-tab<?php $tabActive = $buttonValue == 'another' ?  ' is-tabActive' : ''; echo $tabActive; ?>" type="submit" name="button" value="another"><span>A</span>NOTHER</button>
-            </form>
-            <div class="p-articles">
-              <?php
-                  $paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
-                  $args = [];
-                  if ($buttonValue == "all") {
-                      $buttonValue = ['news', 'interview', 'column', 'report', 'another'];
-                  }
-                  $args = array(
-                      'post_type' => 'music',
-                      'posts_per_page' => 15,
-                      'post_status' => 'publish',
-                      'paged' => $paged,
-                      'tax_query' => [
-                          [
-                              'taxonomy' => 'category',   // カスタムタクソノミーを指定
-                              'field'    => 'slug',       // タームの"slug"または"id"を指定
-                              'terms'    => $buttonValue, // 絞り込みたいタームを指定
-                          ]
-                      ]
-                  );
+            <section class="p-content">
+				<form action="" method="post" class="p-article-header">
+					<button class="p-article-tab<?php $tabActive = $buttonValue == 'all' ?  ' is-tabActive' : ''; echo $tabActive; ?>" type="submit" name="button" value="all"><span>A</span>LL</button>
+					<button class="p-article-tab<?php $tabActive = $buttonValue == 'news' ?  ' is-tabActive' : ''; echo $tabActive; ?>" class="p-article-tab" type="submit" name="button" value="news"><span>N</span>EWS</button>
+					<button class="p-article-tab<?php $tabActive = $buttonValue == 'interview' ?  ' is-tabActive' : ''; echo $tabActive; ?>" type="submit" name="button" value="interview"><span>I</span>NTERVIEW</button>
+					<button class="p-article-tab<?php $tabActive = $buttonValue == 'column' ?  ' is-tabActive' : ''; echo $tabActive; ?>" type="submit" name="button" value="column"><span>C</span>OLUMN</button>
+					<button class="p-article-tab<?php $tabActive = $buttonValue == 'report' ?  ' is-tabActive' : ''; echo $tabActive; ?>" type="submit" name="button" value="report"><span>R</span>EPORT</button>
+					<button class="p-article-tab<?php $tabActive = $buttonValue == 'another' ?  ' is-tabActive' : ''; echo $tabActive; ?>" type="submit" name="button" value="another"><span>A</span>NOTHER</button>
+				</form>
+				<div class="p-articles">
+					<?php
+						$paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
+						$args = [];
+						if ($buttonValue == "all") {
+							$buttonValue = ['news', 'interview', 'column', 'report', 'another'];
+						}
+						$args = array(
+							'post_type' => 'music',
+							'posts_per_page' => 15,
+							'post_status' => 'publish',
+							'paged' => $paged,
+							'tax_query' => [
+								[
+									'taxonomy' => 'category',   // カスタムタクソノミーを指定
+									'field'    => 'slug',       // タームの"slug"または"id"を指定
+									'terms'    => $buttonValue, // 絞り込みたいタームを指定
+								]
+							]
+						);
 
 
-                  $wp_query = new WP_Query( $args );
-                  if ( $wp_query->have_posts() ):
-                  while ( $wp_query->have_posts() ):
-                      $wp_query->the_post();
-              ?>
+						$wp_query = new WP_Query( $args );
+						if ( $wp_query->have_posts() ):
+						while ( $wp_query->have_posts() ):
+							$wp_query->the_post();
+					?>
 
-              <article class="p-article">
-                <a class="p-article-link" href="<?php echo get_the_permalink(); ?>">
-                    <time class="p-article-time" datetime="<?= get_the_date('Y.m.d'); ?>"><?= get_the_date('Y.m.d'); ?></time>
-                    <?php
-                      $thumbnail = get_the_post_thumbnail_url();
-                      if (!$thumbnail) {
-                          $thumbnail = esc_url(get_template_directory_uri() . '/'). 'assets/images/common/thumbnail-none.jpg';
-                      }
-                    ?>
-                    <img src="<?php print $thumbnail; ?>" alt="<?php the_title(); ?>" class="p-article-thumbnail">
-                    <!-- カスタム投稿タイプ出力 -->
-                    <h2 class="p-article-title"><?php the_title(); ?></h2>
-                    <span class="p-article-type" style="background-color: black;">
-                    <?php
-                      $post_id = get_the_ID(); // 現在の投稿IDを取得
-                      $terms = wp_get_post_terms($post_id, 'category', array('fields' => 'names'));
+					<article class="p-article">
+					<a class="p-article-link" href="<?php echo get_the_permalink(); ?>">
+						<time class="p-article-time" datetime="<?= get_the_date('Y.m.d'); ?>"><?= get_the_date('Y.m.d'); ?></time>
+						<?php
+							$thumbnail = get_the_post_thumbnail_url();
+							if (!$thumbnail) {
+								$thumbnail = esc_url(get_template_directory_uri() . '/'). 'assets/images/common/thumbnail-none.jpg';
+							}
+						?>
+						<img src="<?php print $thumbnail; ?>" alt="<?php the_title(); ?>" class="p-article-thumbnail">
+						<!-- カスタム投稿タイプ出力 -->
+						<h2 class="p-article-title"><?php the_title(); ?></h2>
+						<span class="p-article-type" style="background-color: black;">
+						<?php
+							$post_id = get_the_ID(); // 現在の投稿IDを取得
+							$terms = wp_get_post_terms($post_id, 'category', array('fields' => 'names'));
 
-                      if (!is_wp_error($terms) && !empty($terms)) {
-                        foreach ($terms as $term_name) {
-
-                          switch ($term_name) {
-                            case 'interview':
-                              echo 'インタビュー';
-                              break;
-                            case 'report':
-                              echo 'レポート';
-                              break;
-                            case 'another':
-                              echo 'その他';
-                              break;
-                          }
-                        }
-                      }
-                    ?>
-                    </span>
-                    <ul class="p-article-tags">
-                      <li class="p-article-tag"></li>
-                    </ul>
-                </a>
-              </article>
-
-              <?php
-                  endwhile;
-                  endif;
-                  wp_reset_postdata();
-              ?>
-              <div class="p-pagination">
-                  <?php echo paginate_links(
-                      array (
-                          'type' => 'list',
-                          'prev_text' => '＜',
-                          'next_text' => '＞'
-                      ));
-                  ?>
-              </div>
-            </div>
-          </section>
-          <section class="p-side"></section>
-        </div>
+						if (!is_wp_error($terms) && !empty($terms)) {
+							foreach ($terms as $term_name) {
+								switch ($term_name) {
+									case 'news':
+											echo 'ニュース';
+											break;
+									case 'interview':
+											echo 'インタビュー';
+											break;
+									case 'column':
+											echo 'コラム';
+											break;
+									case 'report':
+											echo 'レポート';
+											break;
+									default:
+											echo 'その他';
+											break;
+								}
+							}
+						}
+						?>
+						</span>
+						<ul class="p-article-tags">
+							<li class="p-article-tag"></li>
+						</ul>
+					</a>
+					</article>
+					<?php
+						endwhile;
+						endif;
+						wp_reset_postdata();
+					?>
+					<div class="p-pagination">
+						<?php echo paginate_links(
+							array (
+								'type' => 'list',
+								'prev_text' => '＜',
+								'next_text' => '＞'
+							));
+						?>
+					</div>
+				</div>
+			</section>
+			<section class="p-side"></section>
+		</div>
         <!-- ./p-mainContent -->
     </main>
     <?php get_template_part('template-parts/footer') ?>
