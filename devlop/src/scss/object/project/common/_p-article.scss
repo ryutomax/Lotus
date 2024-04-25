@@ -55,20 +55,29 @@ $mr: 32px;
 
 .p-articles-head {
   width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
   margin-bottom: 40px;
 }
 
 .p-articles-title {
-  display: inline-block;
-  color: $white;
-  background-color: $black;
+
   margin-bottom: 16px;
   font-size: rem(24);
-  line-height: 24px;
-  span {
+  line-height: 48px;
+  .p-articles-title-eng {
+    display: inline-block;
+    color: $white;
+    background-color: $black;
+    letter-spacing: -0.05em;
+    font-weight: 300;
+    padding: 0 16px;
+  }
+  .p-articles-title-kana {
     display: inline-block;
     color: $black;
     background-color: $music-blue;
+    padding: 0 16px;
   }
 }
 

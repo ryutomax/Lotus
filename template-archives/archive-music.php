@@ -23,7 +23,7 @@
             }
         ?>
 		<div class="p-articles-head">
-			<h2 class="p-articles-title">MUSIC<span>ミュージック</span></h2>
+			<h2 class="p-articles-title"><span class="p-articles-title-eng">MUSIC</span><span class="p-articles-title-kana">ミュージック</span></h2>
 			<p class="p-articles-lead">邦楽、洋楽、HIP-HOPのニュースやコラム、話題のシンガー、バンドのインタビューやライブレポート</p>
 		</div>
         <div class="p-mainContent">
