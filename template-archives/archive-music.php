@@ -6,7 +6,6 @@
         <section class="p-top-googleAd">
             <div class="p-googleAd-inner"></div>
         </section>
-		
         <?php
             $post_type = get_post_type();
 
