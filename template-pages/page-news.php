@@ -69,7 +69,7 @@ Template Name: News一覧
 <div class="p-pagination">
 <?php echo paginate_links(
     array (
-        'type' => 'list',
+        'type' => 'plain',
         'prev_text' => '＜',
         'next_text' => '＞',
         'end_size'  => 1, // 両端のページ数

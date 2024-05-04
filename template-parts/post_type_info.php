@@ -21,7 +21,7 @@
           $post_name = 'エンタメ';
           break;
     }
-    return array('color' => $bgc, 'name' => $post_name);
+    return ['color' => $bgc, 'name' => $post_name];
   }
 
 ?>

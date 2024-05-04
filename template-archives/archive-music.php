@@ -1,4 +1,7 @@
-<?php get_template_part('template-parts/head') ?>
+<?php
+	get_template_part('template-parts/head');
+	require_once(locate_template('template-parts/module_func.php', true, true));
+?>
 <div class="l-wrap">
     <!-- 閉じタグは_footer.ejs -->
     <?php get_template_part('template-parts/header') ?>
@@ -11,7 +14,7 @@
 
             $args = [
                 'breadcrumb_slug_arr' => [],
-                'breadcrumb_arr' => [$post_type]
+                'breadcrumb_arr' => ['ミュージック']
             ];
 
             get_template_part('template-parts/breadcrumb', null, $args);
@@ -27,7 +30,7 @@
 		</div>
         <div class="p-mainContent">
             <section class="p-content">
-				<form action="" method="post" class="p-article-header">
+				<form action="<?= esc_url( home_url('/') );?>music" method="post" class="p-article-header">
 					<button class="p-article-tab<?php $tabActive = $buttonValue == 'all' ?  ' is-tabActive' : ''; echo $tabActive; ?>" type="submit" name="button" value="all"><span>A</span>LL</button>
 					<button class="p-article-tab<?php $tabActive = $buttonValue == 'news' ?  ' is-tabActive' : ''; echo $tabActive; ?>" class="p-article-tab" type="submit" name="button" value="news"><span>N</span>EWS</button>
 					<button class="p-article-tab<?php $tabActive = $buttonValue == 'interview' ?  ' is-tabActive' : ''; echo $tabActive; ?>" type="submit" name="button" value="interview"><span>I</span>NTERVIEW</button>
@@ -64,49 +67,33 @@
 					?>
 
 					<article class="p-article">
-					<a class="p-article-link" href="<?php echo get_the_permalink(); ?>">
-						<time class="p-article-time" datetime="<?= get_the_date('Y.m.d'); ?>"><?= get_the_date('Y.m.d'); ?></time>
-						<?php
-							$thumbnail = get_the_post_thumbnail_url();
-							if (!$thumbnail) {
-								$thumbnail = esc_url(get_template_directory_uri() . '/'). 'assets/images/common/thumbnail-none.jpg';
-							}
-						?>
-						<img src="<?php print $thumbnail; ?>" alt="<?php the_title(); ?>" class="p-article-thumbnail">
-						<!-- カスタム投稿タイプ出力 -->
-						<h2 class="p-article-title"><?php the_title(); ?></h2>
-						<span class="p-article-type" style="background-color: black;">
-						<?php
-							$post_id = get_the_ID(); // 現在の投稿IDを取得
-							$terms = wp_get_post_terms($post_id, 'category', array('fields' => 'names'));
-
-						if (!is_wp_error($terms) && !empty($terms)) {
-							foreach ($terms as $term_name) {
-								switch ($term_name) {
-									case 'news':
-											echo 'ニュース';
-											break;
-									case 'interview':
-											echo 'インタビュー';
-											break;
-									case 'column':
-											echo 'コラム';
-											break;
-									case 'report':
-											echo 'レポート';
-											break;
-									default:
-											echo 'その他';
-											break;
+						<a class="p-article-link" href="<?php echo get_the_permalink(); ?>">
+							<time class="p-article-time" datetime="<?= get_the_date('Y.m.d'); ?>"><?= get_the_date('Y.m.d'); ?></time>
+							<?php
+								$thumbnail = get_the_post_thumbnail_url();
+								if (!$thumbnail) {
+									$thumbnail = esc_url(get_template_directory_uri() . '/'). 'assets/images/common/thumbnail-none.jpg';
 								}
-							}
-						}
-						?>
-						</span>
-						<ul class="p-article-tags">
-							<li class="p-article-tag"></li>
-						</ul>
-					</a>
+							?>
+							<img src="<?php print $thumbnail; ?>" alt="<?php the_title(); ?>" class="p-article-thumbnail">
+							<!-- カスタム投稿タイプ出力 -->
+							<h2 class="p-article-title"><?php the_title(); ?></h2>
+							<span class="p-article-type" style="background-color: black;">
+							<?php
+								$post_id = get_the_ID(); // 現在の投稿IDを取得
+								$terms = wp_get_post_terms($post_id, 'category', array('fields' => 'names'));
+
+								if (!is_wp_error($terms) && !empty($terms)) {
+									foreach ($terms as $term_name) {
+										echo convert_jp($term_name);
+									}
+								}
+							?>
+							</span>
+							<ul class="p-article-tags">
+								<li class="p-article-tag"></li>
+							</ul>
+						</a>
 					</article>
 					<?php
 						endwhile;
@@ -116,9 +103,11 @@
 					<div class="p-pagination">
 						<?php echo paginate_links(
 							array (
-								'type' => 'list',
+								'type' => 'plain',
 								'prev_text' => '＜',
-								'next_text' => '＞'
+								'next_text' => '＞',
+								'end_size'  => 1, // 両端のページ数
+								'mid_size'  => 2,
 							));
 						?>
 					</div>

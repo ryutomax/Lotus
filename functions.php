@@ -14,6 +14,9 @@ function enqueue_scripts()
 	if (is_home() || is_front_page()) {
 		wp_enqueue_script('top', get_theme_file_uri('/assets/js/parts/top-min.js'), [], $version, true);
 	}
+	if (is_single()) {
+		wp_enqueue_script('single', get_theme_file_uri('/assets/js/parts/single-min.js'), [], $version, true);
+	}
 	wp_enqueue_script('jQuery', get_template_directory_uri() . '/assets/vender/jquery-3.7.1.min.js', [], $version, true);
 	wp_enqueue_script('slick-min', get_template_directory_uri() . '/assets/vender/slick-1.8.1/slick/slick.min.js', [], $version, true);
 	wp_enqueue_script('bundle', get_template_directory_uri() . '/assets/js/bundle.js', [], $version, true);
@@ -85,10 +88,17 @@ function post_type_template ($postTypeName, $label, $menuPosition, $main_type) {
 			$postTypeName,
 			[
 				'label' => 'タグ',
+				'labels' => array(
+					'all_items' => 'タグ一覧',
+					'add_new_item' => 'タグを追加',
+					'name' => 'タグ',
+					'singular_name' => 'タグ',
+				),
 				'hierarchical' => false,
 				'public' => true,
+				'show_ui' => true,
 				'show_in_rest' => true,
-				'update_count_callback' => '_update_post_term_count',
+				// 'update_count_callback' => '_update_post_term_count',
 			]
 		);
 	}
@@ -98,10 +108,17 @@ function post_type_template ($postTypeName, $label, $menuPosition, $main_type) {
 		$postTypeName,
 		[
 			'label' => '紐づけタグ',
+			'labels' => array(
+				'all_items' => '紐づけタグ一覧',
+				'add_new_item' => '紐づけタグを追加',
+				'name' => '紐づけタグ',
+				'singular_name' => '紐づけタグ',
+			),
 			'hierarchical' => false,
 			'public' => true,
+			'show_ui' => true,
 			'show_in_rest' => true,
-			'update_count_callback' => '_update_post_term_count',
+			// 'update_count_callback' => '_update_post_term_count',
 		]
 	);
 }
@@ -115,7 +132,7 @@ function add_custom_taxonomy() {
         'public' => true,
         'show_ui' => true,
         'show_admin_column' => true,
-		'show_in_rest' => true,
+				'show_in_rest' => true,
         'query_var' => true,
     );
 	register_taxonomy('category', array('game', 'music' , 'entertainment', 'animation'), $args);
@@ -130,7 +147,7 @@ function add_custom_taxonomy() {
         'public' => true,
         'show_ui' => true,
         'show_admin_column' => true,
-		'show_in_rest' => true,
+				'show_in_rest' => true,
         'query_var' => true,
     );
     register_taxonomy('post_locate', array('game', 'music' , 'entertainment', 'animation'), $args);
@@ -141,7 +158,7 @@ add_action('init', 'add_custom_taxonomy');
 // 「新規カテゴリー追加」を非表示
 function my_admin_style() {
     echo '<style>
-    div.components-flex-item {
+    div.components-flex-item > button {
         display:none;
     }
     </style>'.PHP_EOL;

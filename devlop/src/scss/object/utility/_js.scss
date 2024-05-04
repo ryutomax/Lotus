@@ -1,5 +1,13 @@
 @use "global" as *;
 
+.is-display-none {
+  display: none;
+}
+
+.is-display-block {
+  display: block;
+}
+
 //ヘッダーナビ　メニュー
 
 .is-menu-show {

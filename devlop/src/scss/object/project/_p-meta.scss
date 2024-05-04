@@ -1,0 +1,88 @@
+@use "global" as *;
+
+.p-meta-info {
+  max-width: 1000px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.p-meta-info-content {
+
+  .wp-block-group__inner-container {
+    padding: 8px;
+  }
+}
+
+.p-meta-info-content {
+
+  >.wp-block-group {
+
+    .wp-block-group {
+      margin-bottom: 24px;
+
+      .wp-block-group { //アコーディオン内
+        margin-bottom: 0;
+      }
+    }
+
+    &:first-child { //作品情報
+      .wp-block-group {
+        background-color: #eeeeee;
+      }
+    }
+
+    &:nth-child(2) { //イベント情報
+      .wp-block-group {
+        background-color: #eeeeee;
+      }
+    }
+
+    &:last-child { //プロフィール
+      .wp-block-group {
+        background-color: $white;
+        border: 1px solid $black;
+      }
+    }
+  }
+
+  .wp-block-details {
+    border: 1px solid $black;
+    padding: 8px;
+  }
+
+  summary {
+    display: block;
+    font-size: rem(18);
+    padding: 16px;
+    list-style: none;
+    text-align: center;
+    position: relative;
+    margin: -8px;
+
+    &::after {
+      content: "";
+      position: absolute;
+      background-image: url(../images/meta_info/icon_toggle_plus.svg);
+      background-size: contain;
+      background-repeat: no-repeat;
+      width: 20px;
+      height: 20px;
+      top: 52%;
+      left: 58%;
+      transform: translate(-50%, -50%);
+    }
+  }
+
+  h2.wp-block-heading {
+    font-size: rem(18);
+    margin-bottom: 8px;
+    padding-left: 8px;
+  }
+  
+}
+
+.p-single-music {
+  h2.wp-block-heading {
+    border-left: 2px solid $music-blue;
+  }
+}

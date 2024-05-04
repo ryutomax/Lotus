@@ -7,7 +7,6 @@ Template Name: 会社概要
     <div class="l-wrap">
       <!-- 閉じタグは_footer.ejs -->
         <?php get_template_part('template-parts/header') ?>
-        <?php get_template_part('template-parts/contactIcon') ?>
           <main class="l-main">
             <section class="p-mv"  style="background-image: url(<?php echo esc_url(get_template_directory_uri() . '/'); ?>assets/images/home/mv/home_mv_bg.png);">
               <div class="p-mv-inner">

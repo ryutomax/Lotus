@@ -21,12 +21,12 @@ function generate_breadcrumb($breadcrumb_slug_arr, $breadcrumb_arr)
         } else {
             $href = "";
 
-            switch ($breadcrumb_arr[$i]) {
-                case $breadcrumb_arr[0]:
-                    $href = $home_url . $breadcrumb_arr[0];
+            switch ($breadcrumb_slug_arr[$i]) {
+                case $breadcrumb_slug_arr[0]:
+                    $href = $home_url . $breadcrumb_slug_arr[0];
                     break;
-                case $breadcrumb_arr[1]:
-                    $href = $home_url . $breadcrumb_arr[0] . '/' . $breadcrumb_arr[1];
+                case $breadcrumb_slug_arr[1]:
+                    $href = $home_url . $breadcrumb_slug_arr[0] . '/' . $breadcrumb_slug_arr[1];
                 default:
             }
 

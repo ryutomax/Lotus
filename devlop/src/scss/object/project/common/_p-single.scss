@@ -1,0 +1,72 @@
+@use "global" as *;
+
+.p-single {
+  margin-bottom: 80px;
+
+  .wp-block-buttons {
+    justify-content: center;
+    margin-top: 40px;
+  }
+
+  .wp-element-button {
+    position: relative;
+    border-radius: 0;
+    &::before {
+      content: "次のページ";
+      position: absolute;
+      top: -40%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      color: $black;
+      width: 100px;
+    }
+  }
+}
+
+.p-single-type {
+  display: inline-block;
+  color: $white;
+  margin-bottom: 12px;
+  padding: 4px;
+  text-shadow: 1px 1px 3px #00000029;
+}
+
+.p-single-title {
+  font-size: rem(24);
+  margin-bottom: 36px;
+}
+
+.p-single-date {
+  display: inline-block;
+  margin-bottom: 4px;
+}
+.p-single-thumbnail {
+  margin-bottom: 24px;
+  box-shadow: 1px 1px 4px #00000033;
+}
+
+.p-single-gallery {
+  display: block;
+  text-align: center;
+}
+
+.p-single-gallery-link {
+  display: inline-block;
+  position: relative;
+  background-color: #d9d9d9;
+  font-size: rem(20);
+  padding: 16px 40px 16px 70px;
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: 54%;
+    left: 10%;
+    transform: translate(-50%, -50%);
+    background-image: url(../images/meta_info/icon_camera.svg);
+    background-repeat: no-repeat;
+    background-size: contain;
+    width: 30px;
+    height: 30px;
+  }
+}
