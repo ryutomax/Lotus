@@ -4,7 +4,7 @@ Template Name: 会社概要
 */
 ?>
   <?php get_template_part('template-parts/head') ?>
-    <div class="l-wrap">
+    
       <!-- 閉じタグは_footer.ejs -->
         <?php get_template_part('template-parts/header') ?>
           <main class="l-main">

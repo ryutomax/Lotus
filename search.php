@@ -1,25 +1,69 @@
-<?php get_template_part('template-parts/head') ?>
-<?php get_template_part('template-parts/header') ?>
-<div class="search-result">
-    <p><?php echo '「'.get_search_query().'」の検索結果：' .$wp_query->found_posts. ' 件の記事が該当しました。';?></p>
-</div>
+<?php
+  get_template_part('template-parts/head');
+  require_once(locate_template('template-parts/module_func.php', true, true));
+  get_template_part('template-parts/header');
+?>
 
-<div class="container">
-    <main class="main">
-    <?php if (have_posts()): ?>
-        <?php while(have_posts()) : the_post();?>
-        <div class="contents">
-          <h2><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>
-          <?php the_excerpt(); ?>
-          <div class="content-date">
-            <p>投稿日：<?php echo get_the_date(); ?>投稿時間：<?php the_time(); ?>カテゴリー：<?php the_category(" , "); ?></p>
-          </div>
+
+  <main class="l-main">
+    <section class="p-top-googleAd">
+      <div class="p-googleAd-inner"></div>
+    </section>
+    <?php
+        $br_text = '「'.get_search_query().'」の検索結果';
+        $args = [
+            'breadcrumb_slug_arr' => [],
+            'breadcrumb_arr' => [$br_text]
+        ];
+
+        get_template_part('template-parts/breadcrumb', null, $args);
+
+    ?>
+    <div class="p-mainContent">
+      <section class="p-content">
+        <div class="p-search-result">
+          <p><?php echo '検索結果：' .$wp_query->found_posts. ' 件';?></p>
         </div>
-       <?php endwhile; ?>
-
-       <?php else: ?>
-           <p>該当する記事はありませんでした。</p>
-       <?php endif; ?>
-    </main>
-</div>
+        <div class="p-articles">
+        <?php if (have_posts()): ?>
+          <?php while(have_posts()) : the_post();?>
+          <article class="p-article">
+            <a class="p-article-link" href="<?php echo get_the_permalink(); ?>">
+              <time class="p-article-time" datetime="<?= get_the_date('Y.m.d'); ?>"><?= get_the_date('Y.m.d'); ?></time>
+              <?php
+                $thumbnail = get_the_post_thumbnail_url();
+                if (!$thumbnail) {
+                  $thumbnail = esc_url(get_template_directory_uri() . '/'). 'assets/images/common/thumbnail-none.jpg';
+                }
+              ?>
+              <img src="<?php print $thumbnail; ?>" alt="<?php the_title(); ?>" class="p-article-thumbnail">
+              <!-- カスタム投稿タイプ出力 -->
+              <h2 class="p-article-title"><?php the_title(); ?></h2>
+              <?php
+                $post_type = get_post_type();
+              ?>
+              <span class="p-article-type" style="<?= get_post_type_info($post_type)['color']; ?>"><?= get_post_type_info($post_type)['name']; ?></span>
+              <ul class="p-article-tags">
+                <li class="p-article-tag"></li>
+              </ul>
+            </a>
+          </article>
+          <?php endwhile; ?>
+        <?php else: ?>
+            <p>該当する記事はありませんでした。</p>
+        <?php endif; ?>
+        </div>
+      </section>
+      <section class="p-side">
+        <div class="p-side01"></div>
+        <div class="p-side02"></div>
+        <div class="p-side03"></div>
+        <div class="p-side04"></div>
+        <div class="p-side05"></div>
+        <div class="p-side06"></div>
+      </section>
+    </div>
+    
+    </div>
+  </main>
 <?php get_template_part('template-parts/footer') ?>

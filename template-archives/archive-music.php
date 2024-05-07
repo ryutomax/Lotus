@@ -2,34 +2,34 @@
 	get_template_part('template-parts/head');
 	require_once(locate_template('template-parts/module_func.php', true, true));
 ?>
-<div class="l-wrap">
+
     <!-- 閉じタグは_footer.ejs -->
     <?php get_template_part('template-parts/header') ?>
     <main class="l-main">
-        <section class="p-top-googleAd">
-            <div class="p-googleAd-inner"></div>
-        </section>
-        <?php
-            $post_type = get_post_type();
+			<section class="p-top-googleAd">
+					<div class="p-googleAd-inner"></div>
+			</section>
+			<?php
+					$post_type = get_post_type();
 
-            $args = [
-                'breadcrumb_slug_arr' => [],
-                'breadcrumb_arr' => ['ミュージック']
-            ];
+					$args = [
+							'breadcrumb_slug_arr' => [],
+							'breadcrumb_arr' => ['ミュージック']
+					];
 
-            get_template_part('template-parts/breadcrumb', null, $args);
+					get_template_part('template-parts/breadcrumb', null, $args);
 
-            $buttonValue = "all";
-            if ($_SERVER["REQUEST_METHOD"] == "POST") {
-                $buttonValue = $_POST['button'];
-            }
-        ?>
+					$buttonValue = "all";
+					if ($_SERVER["REQUEST_METHOD"] == "POST") {
+							$buttonValue = $_POST['button'];
+					}
+			?>
 		<div class="p-articles-head">
 			<h2 class="p-articles-title"><span class="p-articles-title-eng">MUSIC</span><span class="p-articles-title-kana">ミュージック</span></h2>
 			<p class="p-articles-lead">邦楽、洋楽、HIP-HOPのニュースやコラム、話題のシンガー、バンドのインタビューやライブレポート</p>
 		</div>
-        <div class="p-mainContent">
-            <section class="p-content">
+    <div class="p-mainContent">
+      <section class="p-content">
 				<form action="<?= esc_url( home_url('/') );?>music" method="post" class="p-article-header">
 					<button class="p-article-tab<?php $tabActive = $buttonValue == 'all' ?  ' is-tabActive' : ''; echo $tabActive; ?>" type="submit" name="button" value="all"><span>A</span>LL</button>
 					<button class="p-article-tab<?php $tabActive = $buttonValue == 'news' ?  ' is-tabActive' : ''; echo $tabActive; ?>" class="p-article-tab" type="submit" name="button" value="news"><span>N</span>EWS</button>

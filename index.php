@@ -1,8 +1,7 @@
 <?php get_template_part('template-parts/head') ?>
-  <div class="l-wrap">
+  
     <!-- 閉じタグは_footer.ejs -->
     <?php get_template_part('template-parts/header') ?>
-    <?php get_template_part('template-parts/contactIcon') ?>
     <?php require_once('template-parts/post_type_info.php'); ?>
     <main class="l-main p-top">
       <section class="p-top-googleAd">
@@ -29,7 +28,7 @@
         ?>
 
         <div class="p-top-slider-item">
-          <a href="" class="p-top-slider-link">
+          <a href="<?php echo get_the_permalink(); ?>" class="p-top-slider-link">
             <?php
               $thumbnail = get_the_post_thumbnail_url();
               if (!$thumbnail) {
@@ -114,6 +113,8 @@
                     'post_type' => ['music', 'game', 'animation', 'entertainment'],
                     'posts_per_page' => 30,
                     'post_status' => 'publish',
+                    'orderby' => 'date',
+                    'order' => 'DESC'
                 ));
                 // 表示記事数取得
                 $article_num = $query->found_posts;
@@ -181,15 +182,22 @@
                 </div>
                 <!-- p-article-blind -->
               <?php endif; ?>
-            <!-- 15件以下で非表示 -->
-            <?php if($article_count > 16) : ?>
+          </div>
+          <!-- 15件以下で非表示 -->
+          <?php if($article_count > 16) : ?>
             <div class="p-articles-bottom">
               <button class="p-articles-more" id="add-more">もっと見る</button>
             </div>
             <?php endif; ?>
-          </div>
         </section>
-        <section class="p-side"></section>
+        <section class="p-side">
+          <div class="p-side01"></div>
+          <div class="p-side02"></div>
+          <div class="p-side03"></div>
+          <div class="p-side04"></div>
+          <div class="p-side05"></div>
+          <div class="p-side06"></div>
+        </section>
       </div>
     </main>
     <?php get_template_part('template-parts/footer') ?>
@@ -202,8 +210,4 @@
         $('#blind-area').addClass('is-more-show');
         $(this).css('display', 'none')
       });
-      // $('.p-pickUp-list').slick({
-      //   dots: true,
-      //   slidesToShow: 4,
-      // });
     </script>

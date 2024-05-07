@@ -2,14 +2,15 @@
 
 
 .p-aboutUs {
-  background-image: url(../images/about_us/aboutUs_bg.png);
+  background-image: url(../images/about_us/aboutUs_bg.jpg);
   background-size: cover;
   margin: 0 -20px;
   padding: 20px 0 0 0;
 }
+
 .p-aboutUs-top {
   text-align: center;
-  margin-bottom: 8vw;
+  margin-bottom: 3vw;
 }
 
 .p-aboutUs-top-title {
@@ -45,22 +46,144 @@
   padding: 16px 100px;
 }
 
-.p-aboutUs-sec {}
+.p-aboutUs-cont {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 140px;
+}
 
-.p-aboutUs-sec-info {}
+.p-aboutUs-sec {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  max-width: 1000px;
 
-.p-aboutUs-sec-title {}
+  a {
+    position: relative;
+      display: inline-block;
+      padding: 18px 0 18px 20px;
+      width: 280px;
+      background-color: white;
 
-.p-aboutUs-sec-text {}
+      &::after {
+        content: "";
+        position: absolute;
+        background-repeat: no-repeat;
+        background-size: contain;
+        width: 15px;
+        height: 9px;
+        position: absolute;
+        top: 50%;
+        left: 90%;
+        transform: translate(-50%, -50%);
+      }
+  }
 
-.p-aboutUs-sec-btn {}
+  &:nth-child(odd) {
+    .p-aboutUs-sec-info {
+      margin-right: 40px;
+    }
+  }
+  &:nth-child(even) {
+    flex-direction: row-reverse;
+    .p-aboutUs-sec-info {
+      margin-left: 40px;
+    }
+  }
 
-.p-aboutUs-sec-img {}
+  &:not(:last-child) {
+    margin-bottom: 80px;
+  }
 
-.p-aboutUs-bottom {}
+  &:first-child {
+    color: $music-blue;
+    a {
+      color: $music-blue;
+      border: 2px solid $music-blue;
+      &::after {
+        background-image: url(../images/about_us/arrow-blue.png);
+      }
+    }
+  }
 
-.p-aboutUs-bottom-head {}
+  &:nth-child(2) {
+    color: $anime-pink;
+    a {
+      color: $anime-pink;
+      border: 2px solid $anime-pink;
+      &::after {
+        background-image: url(../images/about_us/arrow-pink.png);
+      }
+    }
+  }
 
-.p-aboutUs-bottom-text {}
+  &:nth-child(3) {
+    color: $game-purple;
+    a {
+      color: $game-purple;
+      border: 2px solid $game-purple;
+      &::after {
+        background-image: url(../images/about_us/arrow-purple.png);
+      }
+    }
+  }
 
-.p-aboutUs-bottom-btn {}
+  &:nth-child(4) {
+    color: $enter-orange;
+    a {
+      color: $enter-orange;
+      border: 2px solid $enter-orange;
+      &::after {
+        background-image: url(../images/about_us/arrow-orange.png);
+      }
+    }
+  }
+}
+
+.p-aboutUs-sec-title {
+  font-size: rem(64);
+  letter-spacing: -0.05em;
+  font-weight: 300;
+  font-style: italic;
+  margin-bottom: 48px;
+  span {
+    font-size: rem(16);
+    margin-left: 20px;
+    letter-spacing: 0em;
+  }
+}
+
+.p-aboutUs-sec-text {
+  line-height: 2;
+  margin-bottom: 40px;
+}
+
+.p-aboutUs-sec-img {
+  width: 425px;
+}
+.p-aboutUs-bottom {
+  text-align: center;
+  padding-bottom: 100px;
+}
+
+.p-aboutUs-bottom-title {
+  font-size: rem(48);
+  margin-bottom: 24px;
+}
+
+.p-aboutUs-bottom-intro {
+  line-height: 1.7;
+  font-size: rem(18);
+  margin-bottom: 24px;
+}
+
+.p-aboutUs-bottom-btn {
+  display: inline-block;
+  background-color: $black;
+  color: $white;
+  width: 250px;
+  line-height: 50px;
+  margin: 0 auto;
+}

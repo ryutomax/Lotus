@@ -4,7 +4,7 @@ Template Name: お問い合わせ（資料請求）送信完了
 */
 ?>
   <?php get_template_part('template-parts/head') ?>
-    <div class="l-wrap">
+    
       <!-- 閉じタグは_footer.ejs -->
         <?php get_template_part('template-parts/header') ?>
           <main class="l-main">
