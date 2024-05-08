@@ -3,8 +3,6 @@
   require_once(locate_template('template-parts/module_func.php', true, true));
   get_template_part('template-parts/header');
 ?>
-
-
   <main class="l-main">
     <section class="p-top-googleAd">
       <div class="p-googleAd-inner"></div>
@@ -22,7 +20,19 @@
     <div class="p-mainContent">
       <section class="p-content">
         <div class="p-search-result">
-          <p><?php echo '検索結果：' .$wp_query->found_posts. ' 件';?></p>
+        <?php
+          $i = 0;
+          if (have_posts()) {
+            while(have_posts()) {
+              the_post();
+              $i++;
+            }
+          } else {
+
+          }
+          wp_reset_postdata();
+        ?>
+          <p><?php echo '検索結果：' .$i. ' 件';?></p>
         </div>
         <div class="p-articles">
         <?php if (have_posts()): ?>
@@ -42,7 +52,9 @@
               <?php
                 $post_type = get_post_type();
               ?>
-              <span class="p-article-type" style="<?= get_post_type_info($post_type)['color']; ?>"><?= get_post_type_info($post_type)['name']; ?></span>
+              <div class="p-article-type">
+                <span class="p-article-type-item" style="<?= get_post_type_info($post_type)['color']; ?>"><?= get_post_type_info($post_type)['name']; ?></span>
+              </div>
               <ul class="p-article-tags">
                 <li class="p-article-tag"></li>
               </ul>
@@ -51,7 +63,10 @@
           <?php endwhile; ?>
         <?php else: ?>
             <p>該当する記事はありませんでした。</p>
-        <?php endif; ?>
+        <?php
+          endif;
+          wp_reset_postdata();
+        ?>
         </div>
       </section>
       <section class="p-side">

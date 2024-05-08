@@ -1,4 +1,4 @@
-<?php 
+<?php
   get_template_part('template-parts/head');
   get_template_part('template-parts/module_func');
   get_template_part('template-parts/header');
@@ -139,7 +139,10 @@
                     <?php
                       $post_type = get_post_type();
                     ?>
-                    <span class="p-article-type" style="<?= get_post_type_info($post_type)['color']; ?>"><?= get_post_type_info($post_type)['name']; ?></span>
+                    <div class="p-article-type">
+                      <span class="p-article-type-item" style="<?= get_post_type_info($post_type)['color']; ?>"><?= get_post_type_info($post_type)['name']; ?></span>
+                    </div>
+                    <!-- ./p-article-type -->
                     <ul class="p-article-tags">
                       <li class="p-article-tag"></li>
                     </ul>
@@ -164,7 +167,9 @@
                       <?php
                         $post_type = get_post_type();
                       ?>
-                      <span class="p-article-type" style="<?= get_post_type_info($post_type)['color']; ?>"><?= get_post_type_info($post_type)['name']; ?></span>
+                      <div class="p-article-type">
+                        <span class="p-article-type-item" style="<?= get_post_type_info($post_type)['color']; ?>"><?= get_post_type_info($post_type)['name']; ?></span>
+                      </div>
                       <ul class="p-article-tags">
                         <li class="p-article-tag"></li>
                       </ul>
@@ -183,6 +188,7 @@
                 <!-- p-article-blind -->
               <?php endif; ?>
           </div>
+          <!-- ./p-articles -->
           <!-- 15件以下で非表示 -->
           <?php if($article_count > 16) : ?>
             <div class="p-articles-bottom">

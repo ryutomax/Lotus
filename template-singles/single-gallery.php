@@ -1,4 +1,4 @@
-<?php 
+<?php
     get_template_part('template-parts/head');
     get_template_part('template-parts/header');
     require_once(locate_template('template-parts/module_func.php', true, true));

@@ -187,7 +187,7 @@ add_action( 'admin_menu', 'change_menu_label' );
 // キーワード検索 検索結果調整
 function search_exclude_custom_post_type( $query ) {
 	if ( $query->is_search() && $query->is_main_query() && ! is_admin() ) {
-		$query->set( 'post_type', array( 'post', 'page', 'gallery') ); // 除外したい投稿タイプを除く
+		$query->set( 'post_type', array( 'music', 'game', 'animation', 'entertainment') ); //検索対象を追加
 	}
 }
 add_filter( 'pre_get_posts', 'search_exclude_custom_post_type' );

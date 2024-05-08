@@ -24,7 +24,7 @@
 			?>
 		<div class="p-articles-head">
 			<h2 class="p-articles-title"><span class="p-articles-title-eng">ANIME</span><span class="p-articles-title-kana">アニメ</span></h2>
-			<p class="p-articles-lead">邦楽、洋楽、HIP-HOPのニュースやコラム、話題のシンガー、バンドのインタビューやライブレポート</p>
+			<p class="p-articles-lead">話題のアニメやVTuberなどにまつわるニュース、インタビュー、コラムなどをお届け</p>
 		</div>
     <div class="p-mainContent">
       <section class="p-content">
@@ -95,8 +95,10 @@
 							</ul>
 						</a>
 					</article>
+					<?php endwhile; ?>
+					<?php else: ?>
+							<p>該当する記事がありません。</p>
 					<?php
-						endwhile;
 						endif;
 						wp_reset_postdata();
 					?>
