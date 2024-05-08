@@ -1,8 +1,8 @@
-<?php get_template_part('template-parts/head') ?>
-  
-    <!-- 閉じタグは_footer.ejs -->
-    <?php get_template_part('template-parts/header') ?>
-    <?php require_once('template-parts/post_type_info.php'); ?>
+<?php 
+  get_template_part('template-parts/head');
+  get_template_part('template-parts/module_func');
+  get_template_part('template-parts/header');
+?>
     <main class="l-main p-top">
       <section class="p-top-googleAd">
         <div class="p-googleAd-inner"></div>

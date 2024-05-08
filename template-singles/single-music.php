@@ -41,9 +41,7 @@
 					<?php
 						$terms = wp_get_post_terms($post_id, 'category', array('fields' => 'names'));
 						if (!is_wp_error($terms) && !empty($terms)) {
-							foreach ($terms as $term_name) {
-								echo convert_jp($term_name);
-							}
+							echo convert_jp($terms[0]);
 						}
 					?>
 					</span>
@@ -56,9 +54,6 @@
 						}
 					?>
 					<img src="<?= esc_url($post_thumbnail); ?>" alt="<?php the_title(); ?>" class="p-single-thumbnail">
-					<?php
-
-					?>
 					<?php $gallery_link = generate_gallery_link(); ?>
 					<?php if(isset($gallery_link)): ?>
 						<?php echo $gallery_link; ?>
@@ -87,9 +82,11 @@
 							echo '</div>';
 					}
 				?>
-			<?php endwhile;
+			<?php
+				endwhile;
 				wp_reset_postdata();
-			endif; ?>
+				endif;
+			?>
 			</div>
 			<!-- /.p-single -->
 			<!-- 作品情報 -->
@@ -125,7 +122,14 @@
 				</a>
 			</div>
 		</section>
-		<section class="p-side"></section>
+		<section class="p-side">
+			<div class="p-side01"></div>
+			<div class="p-side02"></div>
+			<div class="p-side03"></div>
+			<div class="p-side04"></div>
+			<div class="p-side05"></div>
+			<div class="p-side06"></div>
+		</section>
 	</div>
 	<!-- ./p-mainContent -->
 </div>

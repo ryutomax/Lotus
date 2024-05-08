@@ -8,4 +8,4 @@ import Loading from './bundle/loading'
 // new Form();
 // new scrollAnime();
 // new Menu();
-// new Loading();
+new Loading();

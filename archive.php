@@ -2,7 +2,7 @@
 
     <?php get_template_part( 'template-archives/archive-music'); ?>
 
-<?php elseif(is_archive() && ('archive-animation' == get_query_var('post_type'))):?>
+<?php elseif(is_archive() && ('animation' == get_query_var('post_type'))):?>
 
     <?php get_template_part( 'template-archives/archive-animation'); ?>
 

@@ -40,4 +40,4 @@
     <?php wp_head(); ?>
   </head>
 
-  <body class="">
+  <body class="js-load">

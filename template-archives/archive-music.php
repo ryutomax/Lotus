@@ -1,11 +1,9 @@
 <?php
 	get_template_part('template-parts/head');
 	require_once(locate_template('template-parts/module_func.php', true, true));
+	get_template_part('template-parts/header');
 ?>
-
-    <!-- 閉じタグは_footer.ejs -->
-    <?php get_template_part('template-parts/header') ?>
-    <main class="l-main">
+    <main class="l-main p-music">
 			<section class="p-top-googleAd">
 					<div class="p-googleAd-inner"></div>
 			</section>
@@ -78,18 +76,20 @@
 							<img src="<?php print $thumbnail; ?>" alt="<?php the_title(); ?>" class="p-article-thumbnail">
 							<!-- カスタム投稿タイプ出力 -->
 							<h2 class="p-article-title"><?php the_title(); ?></h2>
-							<span class="p-article-type" style="background-color: black;">
+							<div class="p-article-type">
 							<?php
 								$post_id = get_the_ID(); // 現在の投稿IDを取得
 								$terms = wp_get_post_terms($post_id, 'category', array('fields' => 'names'));
 
 								if (!is_wp_error($terms) && !empty($terms)) {
 									foreach ($terms as $term_name) {
-										echo convert_jp($term_name);
+							?>
+							<span class="p-article-type-item" style="background-color: black;"><?= convert_jp($term_name); ?></span>
+							<?php
 									}
 								}
 							?>
-							</span>
+							</div>
 							<ul class="p-article-tags">
 								<li class="p-article-tag"></li>
 							</ul>
@@ -113,7 +113,14 @@
 					</div>
 				</div>
 			</section>
-			<section class="p-side"></section>
+			<section class="p-side">
+				<div class="p-side01"></div>
+				<div class="p-side02"></div>
+				<div class="p-side03"></div>
+				<div class="p-side04"></div>
+				<div class="p-side05"></div>
+				<div class="p-side06"></div>
+			</section>
 		</div>
         <!-- ./p-mainContent -->
     </main>

@@ -8,14 +8,14 @@ export default class Loading {
       if (event.persisted) {
         // bfcache発動時の処理
         // $('body').removeClass('ja-load');
-        $('body').addClass('is-pageShow');
+        $('.js-load').addClass('is-pageShow');
         window.location.reload();
       }
     });
 
     $(window).on('load', () => {
       // $('body').removeClass('ja-load');
-      $('body').addClass('is-pageShow');
+      $('.js-load').addClass('is-pageShow');
     });
     $(() => {
       // ハッシュリンク(#)と別ウィンドウでページを開く場合はスルー

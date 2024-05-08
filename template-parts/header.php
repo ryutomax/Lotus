@@ -16,7 +16,7 @@
         <a href="<?= esc_url(home_url('/')) ?>aboutus" class="p-header-nav-link"><span>A</span>bout Us</a>
         <a href="<?= esc_url(home_url('/')) ?>newslist" class="p-header-nav-link"><span>N</span>ews</a>
         <a href="<?= esc_url(home_url('/')) ?>music" class="p-header-nav-link"><span>M</span>usic</a>
-        <a href="<?= esc_url(home_url('/')) ?>animation" class="p-header-nav-link"><span>A</span>nimation</a>
+        <a href="<?= esc_url(home_url('/')) ?>animation" class="p-header-nav-link"><span>A</span>nime</a>
         <a href="<?= esc_url(home_url('/')) ?>game" class="p-header-nav-link"><span>G</span>ame</a>
         <a href="<?= esc_url(home_url('/')) ?>entertainment" class="p-header-nav-link"><span>E</span>ntertainment</a>
         <!-- <button class="p-header-menuBtn js-menu-btn" aria-label="Menuを開く">

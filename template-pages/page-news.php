@@ -8,7 +8,7 @@ Template Name: News一覧
     get_template_part('template-parts/head');
     get_template_part('template-parts/header');
 ?>
-<main class="l-main">
+<main class="l-main p-news">
     <section class="p-top-googleAd">
         <div class="p-googleAd-inner"></div>
     </section>
@@ -77,7 +77,9 @@ Template Name: News一覧
                         <!-- カスタム投稿タイプ出力 -->
                         <h2 class="p-article-title"><?php the_title(); ?></h2>
                         <?php $post_type = get_post_type(); ?>
-                        <span class="p-article-type" style="<?= get_post_type_info($post_type)['color']; ?>"><?= get_post_type_info($post_type)['name']; ?></span>
+                        <div class="p-article-type">
+                            <span class="p-article-type-item" style="<?= get_post_type_info($post_type)['color']; ?>"><?= get_post_type_info($post_type)['name']; ?></span>
+                        </div>
                         <ul class="p-article-tags">
                             <li class="p-article-tag"></li>
                         </ul>
@@ -111,4 +113,5 @@ Template Name: News一覧
             <div class="p-side06"></div>
         </section>
     </div>
+</main>
 <?php get_template_part('template-parts/footer') ?>
