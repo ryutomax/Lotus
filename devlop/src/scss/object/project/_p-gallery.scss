@@ -1,0 +1,52 @@
+@use "global" as *;
+
+.p-gallery {}
+
+.p-gallery-return {
+  display: block;
+  width: fit-content;
+  color: $white;
+  background-color: $black;
+  padding: 8px;
+  margin: 0 auto;
+  margin-bottom: 24px;
+  &::before {
+    content: "<";
+  }
+}
+
+.wp-block-image {
+  box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
+  margin-bottom: 24px;
+}
+.p-gallery-page {
+  margin-bottom: 24px;
+  text-align: center;
+
+  a {
+    display: inline-block;
+    color: $white;
+    background-color: $black;
+    padding: 2px;
+  }
+}
+// ========================================
+// slick
+// ========================================
+.slick-list {
+
+  img {
+    height: 100px;
+    object-fit: cover;
+  }
+}
+.slick-next {
+  height: 100px;
+  right: 0;
+}
+
+.slick-prev {
+  height: 100px;
+  left: 0px;
+  z-index: 1;
+}
