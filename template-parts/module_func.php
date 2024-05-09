@@ -157,5 +157,26 @@
 
         return $image_urls;
     }
+    // ========================================
+    // 画像ギャラリーページネーション
+    // ========================================
+    function custom_wp_link_pages($article_link) {
+        // ページネーションの設定
+        $args = array(
+            'before'           => '<div class="p-gallery-page">',
+            'after'            => '</div>',
+            'next_or_number'   => 'next',
+            'nextpagelink'     => __('NEXT'),
+            'previouspagelink' => __('PREV'),
+        );
+
+        $pagination = wp_link_pages($args);
+
+        // 前のページリンクと次のページリンクの間にカスタムリンクを挿入記事へ戻る
+        $custom_link = '<a href="' . esc_url($article_link) .'?>" class="p-gallery-return">記事へ戻る</a>';
+        $pagination = str_replace('</div><div>', '</div>' . $custom_link . '<div>', $pagination);
+    
+        echo $pagination;
+    }
 
 ?>

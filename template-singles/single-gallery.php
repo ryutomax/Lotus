@@ -31,19 +31,20 @@
         <section class="p-content p-gallery">
         <?php if(have_posts()): while(have_posts()): the_post();?>
             <h1 class="p-single-title"><?php the_title(); ?></h1>
-            <a href="<?= esc_url($single_link) ?>" class="p-gallery-return">記事へもどる</a>
             <?php the_content(); ?>
             <!-- 画像にページ区切りのリンクを付与 -->
             <?php
                 wp_link_pages(
-                    array(
-                        'before' => '<div class="p-gallery-page">' . __(''),
+                    [
+                        'before' => '<div id="gallery-page" class="p-gallery-page">' . __(''),
                         'after'  => '</div>',
                         'next_or_number' => 'next',
                         'nextpagelink'     => __('NEXT'),
                         'previouspagelink' => __('PREV'),
-                    )
+                    ]
                 );
+
+                // custom_wp_link_pages($single_link);
             ?>
         <?php endwhile; wp_reset_postdata(); endif; ?>
         <?php
@@ -55,7 +56,7 @@
             foreach ($image_urls as $url) {
                 $post_num++;
             }
-            echo '<p>この記事の画像・動画（' .$post_num. '点）</p>';
+            echo '<p class="p-gallery-num">この記事の画像・動画（' .$post_num. '点）</p>';
 
             echo '<div class="p-slider-visual">';
             // 画像URLの配列をループして表示
@@ -93,4 +94,63 @@
         initialSlide: lastNumber, //スライド初期表示 クリックした画像リンクを保存して
         slidesToShow: 2.325,
     });
+
+    document.addEventListener('DOMContentLoaded', () => {
+        // 'gallery-page'クラスを持つ要素を取得
+        let galleryPage = document.querySelector('#gallery-page');
+
+        if (galleryPage) {
+            // 'gallery-page'内のすべてのリンク(<a>タグ)を取得
+            let links = galleryPage.querySelectorAll('a');
+            let hasNext = false;
+            let hasPrev = false;
+
+            // 各リンクのテキストをチェックして、'NEXT'と'PREV'の有無を確認
+            links.forEach(function(link) {
+                if (link.textContent == 'NEXT') {
+                    hasNext = true;
+                } else if (link.textContent == 'PREV') {
+                    hasPrev = true;
+                }
+            });
+            articleLink = '<a href="<?= esc_url($single_link) ?>" class="p-gallery-return">記事へ戻る</a>'
+
+            // 条件分岐
+            if (hasNext && hasPrev) {
+                let htmlContent = galleryPage.innerHTML;
+                // "<a"の位置を探す
+                let index = htmlContent.indexOf('PREV</a>');
+                if (index !== -1) {
+                    if (index !== -1) {
+                        index += 8;// '</a>'の長さ4を加算
+                        htmlContent = htmlContent.slice(0, index) + articleLink + htmlContent.slice(index);
+                        // galleryPageのinnerHTMLを更新
+                        galleryPage.innerHTML = htmlContent;
+                    }
+                }
+            } else if (hasNext) {
+                let htmlContent = galleryPage.innerHTML;
+                // "<a"の位置を探す
+                let index = htmlContent.indexOf('<a');
+                if (index !== -1) {
+                    // 新しいリンクを"<a"の前に挿入
+                    htmlContent = htmlContent.slice(0, index) + articleLink + htmlContent.slice(index);
+                    galleryPage.innerHTML = htmlContent;
+                }
+            } else if (hasPrev) {
+                let htmlContent = galleryPage.innerHTML;
+                // "<a"の位置を探す
+                let index = htmlContent.indexOf('</a>');
+                if (index !== -1) {
+                    if (index !== -1) {
+                        index += 4;// '</a>'の長さ4を加算
+                        htmlContent = htmlContent.slice(0, index) + articleLink + htmlContent.slice(index);
+                        // galleryPageのinnerHTMLを更新
+                        galleryPage.innerHTML = htmlContent;
+                    }
+                }
+            }
+        }
+    });
+
 </script>

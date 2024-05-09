@@ -10,9 +10,6 @@
   padding: 8px;
   margin: 0 auto;
   margin-bottom: 24px;
-  &::before {
-    content: "<";
-  }
 }
 
 .wp-block-image {
@@ -20,6 +17,8 @@
   margin-bottom: 24px;
 }
 .p-gallery-page {
+  display: flex;
+  justify-content: center;
   margin-bottom: 24px;
   text-align: center;
 
@@ -27,8 +26,15 @@
     display: inline-block;
     color: $white;
     background-color: $black;
-    padding: 2px;
+    padding: 16px 20px;
+    margin: 0 4px;
   }
+}
+
+.p-gallery-num {
+  text-align: center;
+  font-size: rem(20);
+  margin-bottom: 16px;
 }
 // ========================================
 // slick
@@ -36,17 +42,17 @@
 .slick-list {
 
   img {
-    height: 100px;
+    height: 200px;
     object-fit: cover;
   }
 }
 .slick-next {
-  height: 100px;
+  height: 200px;
   right: 0;
 }
 
 .slick-prev {
-  height: 100px;
+  height: 200px;
   left: 0px;
   z-index: 1;
 }
