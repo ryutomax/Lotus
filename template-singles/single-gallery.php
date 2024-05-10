@@ -88,7 +88,6 @@
     if (match && match != 1) {
         lastNumber = match[1] - 1;
     }
-
     $('.p-slider-visual').slick({
         dots: true,
         initialSlide: lastNumber, //スライド初期表示 クリックした画像リンクを保存して
@@ -96,7 +95,6 @@
     });
 
     document.addEventListener('DOMContentLoaded', () => {
-        // 'gallery-page'クラスを持つ要素を取得
         let galleryPage = document.querySelector('#gallery-page');
 
         if (galleryPage) {
@@ -113,7 +111,7 @@
                     hasPrev = true;
                 }
             });
-            articleLink = '<a href="<?= esc_url($single_link) ?>" class="p-gallery-return">記事へ戻る</a>'
+            const articleLink = '<a href="<?= esc_url($single_link) ?>" class="p-gallery-return">記事へ戻る</a>'
 
             // 条件分岐
             if (hasNext && hasPrev) {

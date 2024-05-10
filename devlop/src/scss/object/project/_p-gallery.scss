@@ -15,6 +15,7 @@
 .wp-block-image {
   box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
   margin-bottom: 24px;
+  text-align: center;
 }
 .p-gallery-page {
   display: flex;
@@ -39,20 +40,22 @@
 // ========================================
 // slick
 // ========================================
-.slick-list {
 
-  img {
-    height: 200px;
-    object-fit: cover;
+.p-slider-visual {
+  .slick-list {
+    img {
+      height: 200px;
+      object-fit: cover;
+    }
   }
-}
-.slick-next {
-  height: 200px;
-  right: 0;
-}
+  .slick-next {
+    height: 200px;
+    right: 0;
+  }
 
-.slick-prev {
-  height: 200px;
-  left: 0px;
-  z-index: 1;
+  .slick-prev {
+    height: 200px;
+    left: 0px;
+    z-index: 1;
+  }
 }

@@ -4,6 +4,24 @@
   <?php if (is_home() || is_front_page()) :?>
     <?php $title = "TOP｜Lotus｜株式会社ディッジ"; ?>
     <?php $description = ""; ?>
+  <?php elseif((is_archive() && ('music' == get_query_var('post_type'))) || (is_single() && ('music' == get_post_type()))):?>
+    <?php $title = "ミュージック｜Lotus｜株式会社ディッジ"; ?>
+    <?php $description = ""; ?>
+  <?php elseif(is_archive() && ('animation' == get_query_var('post_type')) || (is_single() && ('animation' == get_post_type()))):?>
+    <?php $title = "アニメ｜Lotus｜株式会社ディッジ"; ?>
+    <?php $description = ""; ?>
+  <?php elseif(is_archive() && ('game' == get_query_var('post_type')) || (is_single() && ('game' == get_post_type()))):?>
+    <?php $title = "ゲーム｜Lotus｜株式会社ディッジ"; ?>
+    <?php $description = ""; ?>
+  <?php elseif(is_archive() && ('entertainment' == get_query_var('post_type')) || (is_single() && ('entertainment' == get_post_type()))):?>
+    <?php $title = "エンタメ｜Lotus｜株式会社ディッジ"; ?>
+    <?php $description = ""; ?>
+  <?php elseif(is_page('newslist')) :?>
+    <?php $title = "ニュース｜Lotus｜株式会社ディッジ"; ?>
+    <?php $description = ""; ?>
+  <?php elseif(is_single() && ('gallery' == get_post_type())) :?>
+    <?php $title = "画像ギャラリー｜Lotus｜株式会社ディッジ"; ?>
+    <?php $description = ""; ?>
   <?php elseif(is_page('contact')) :?>
     <?php $title = "お問い合わせ（資料請求）｜Lotus｜株式会社ディッジ"; ?>
     <?php $description = ""; ?>

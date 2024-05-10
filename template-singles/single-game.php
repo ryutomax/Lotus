@@ -8,7 +8,7 @@
 	$page_url = get_permalink();
 
 	$post_id = get_the_ID();
-	$taxonomy = 'music-bind';
+	$taxonomy = 'game-bind';
 	$terms = get_the_terms($post_id, $taxonomy);
 	$terms_name = "";
 	if (!empty($terms) && !is_wp_error($terms)) {
@@ -21,7 +21,7 @@
 
     $args = [
         'breadcrumb_slug_arr' => [$post_type],
-        'breadcrumb_arr' => ['ミュージック', $title]
+        'breadcrumb_arr' => ['ゲーム', $title]
     ];
 ?>
 <div class="l-main">
@@ -36,7 +36,7 @@
 				$post_id = get_the_ID();
 			?>
 			<div class="p-single">
-				<span class="p-single-type" style="background-color: #59d5e0;">
+				<span class="p-single-type" style="background-color: #9195F6;">
 					<?php
 						$terms = wp_get_post_terms($post_id, 'category', array('fields' => 'names'));
 						if (!is_wp_error($terms) && !empty($terms)) {

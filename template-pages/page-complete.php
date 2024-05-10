@@ -40,7 +40,7 @@ Template Name: お問い合わせ（資料請求）送信完了
               // ここにページの他のコンテンツやテンプレートコードを追加
 
               // ショートコードを呼び出してフォームを表示
-              echo do_shortcode('[mwform_formkey key="5"]');
+              echo do_shortcode('[mwform_formkey key="130"]');
 
               // ここにページの他のコンテンツやテンプレートコードを追加
               ?>
