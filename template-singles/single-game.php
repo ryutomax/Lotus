@@ -1,14 +1,13 @@
 <?php
 	get_template_part('template-parts/head');
 	get_template_part('template-parts/header');
-	get_template_part('template-parts/module_func');
+	require_once(locate_template('template-parts/module_func.php', true, true));
 
 	$title = get_the_title();
 	$post_type = get_post_type();
 	$page_url = get_permalink();
-
 	$post_id = get_the_ID();
-	$taxonomy = 'game-bind';
+	$taxonomy = 'meta-bind';
 	$terms = get_the_terms($post_id, $taxonomy);
 	$terms_name = "";
 	if (!empty($terms) && !is_wp_error($terms)) {
@@ -25,9 +24,12 @@
     ];
 ?>
 <div class="l-main">
+	<section class="p-top-googleAd">
+		<div class="p-googleAd-inner"></div>
+	</section>
 	<?php get_template_part('template-parts/breadcrumb', null, $args); ?>
 	<div class="p-mainContent">
-		<section class="p-content p-single-music">
+		<section class="p-content p-single-game">
 			<?php
 				if(have_posts()):
 					while(have_posts()):
@@ -57,9 +59,11 @@
 				<?php if(isset($gallery_link)): ?>
 					<?php echo $gallery_link; ?>
 				<?php endif; ?>
+				<?php get_template_part('template-parts/sns_share'); ?>
 
-				<?php the_content(); ?>
-			<!-- 次のページへ -->
+				<div class="p-single-cont">
+					<?php the_content(); ?>
+				</div>
 
 				<?php
 					global $page, $numpages;
@@ -96,7 +100,7 @@
 						'posts_per_page' => -1, // 全ての該当する投稿を取得
 						'tax_query' => array(
 							array(
-								'taxonomy' => 'meta-info-bind',
+								'taxonomy' => 'meta-bind',
 								'field'    => 'slug',
 								'terms'    => $terms_name,
 							),
@@ -115,11 +119,7 @@
 					wp_reset_postdata();
 				endif; ?>
 			</section>
-			<div class="p-sns">
-				<a class="p-sns-link" href="http://www.facebook.com/share.php?u=<?php echo $page_url; ?>" target="_blank">
-					<img src="<?= esc_url(get_template_directory_uri() . '/'); ?>assets/images/common/sns_x_icon.png" alt="<?php the_title(); ?>">
-				</a>
-			</div>
+			<?php get_template_part('template-parts/sns_share'); ?>
 		</section>
 		<section class="p-side">
 			<div class="p-side01"></div>

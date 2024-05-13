@@ -31,7 +31,7 @@ Template Name: About Us
   <section class="p-aboutUs-cont">
     <div class="p-aboutUs-sec">
       <div class="p-aboutUs-sec-info">
-        <h3 class="p-aboutUs-sec-title">MUSIC<span>ミュージック</span></h3>
+        <h3 class="p-aboutUs-sec-title"><span class="p-aboutUs-sec-title-main">MUSIC</span><span class="p-aboutUs-sec-title-sub">ミュージック</span></h3>
         <p class="p-aboutUs-sec-text">
           バンドを中心に、J-POPやアイドルなど様々な<br>ジャンルのアーティストを紹介していきます。<br>
           当サイトオリジナルのグッズ販売<br>
@@ -43,7 +43,7 @@ Template Name: About Us
     </div>
     <div class="p-aboutUs-sec">
       <div class="p-aboutUs-sec-info">
-        <h3 class="p-aboutUs-sec-title">ANIME<span>アニメ</span></h3>
+        <h3 class="p-aboutUs-sec-title"><span class="p-aboutUs-sec-title-main">ANIME</span><span class="p-aboutUs-sec-title-sub">アニメ</span></h3>
         <p class="p-aboutUs-sec-text">
           次なるトレンドは彼らが描く。若手やアマチュアクリエイターたちのキャッチ―なインタビューがあなたの心を魅了します。<br>
           クリエイターの他、声優、Vtuber他、アニメに携わる様々なアーティストの今の声をお届けします。
@@ -54,7 +54,7 @@ Template Name: About Us
     </div>
     <div class="p-aboutUs-sec">
       <div class="p-aboutUs-sec-info">
-        <h3 class="p-aboutUs-sec-title">GAME<span>ゲーム</span></h3>
+        <h3 class="p-aboutUs-sec-title"><span class="p-aboutUs-sec-title-main">GAME</span><span class="p-aboutUs-sec-title-sub">ゲーム</span></h3>
         <p class="p-aboutUs-sec-text">
           今や世界ゲームコンテンツ市場の規模は実に26兆8005億円。<br>
           益々広がりを見せるゲームの世界で生きるCGクリエイターやゲームプランナー、ゲームプレイヤーなどのインタビューやコラムをワールドワイドな視点でお届けします。
@@ -65,7 +65,7 @@ Template Name: About Us
     </div>
     <div class="p-aboutUs-sec">
       <div class="p-aboutUs-sec-info">
-        <h3 class="p-aboutUs-sec-title">ENTERTAINMENT<span>エンタメ</span></h3>
+        <h3 class="p-aboutUs-sec-title"><span class="p-aboutUs-sec-title-main">ENTERTAINMENT</span><span class="p-aboutUs-sec-title-sub">エンタメ</span></h3>
         <p class="p-aboutUs-sec-text">
           エンターテインメントの未来を担うのは、彼らの想い。<br>
           アンダーグラウンドな魂がここに。<br>

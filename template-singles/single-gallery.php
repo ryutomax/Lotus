@@ -2,9 +2,7 @@
     get_template_part('template-parts/head');
     get_template_part('template-parts/header');
     require_once(locate_template('template-parts/module_func.php', true, true));
-?>
 
-<?php
     $title = get_the_title();
     $post_id = get_the_ID();
     $post_slug = get_post_field('post_name', $post_id);
@@ -26,6 +24,9 @@
     ];
 ?>
 <div class="l-main">
+    <section class="p-top-googleAd">
+		<div class="p-googleAd-inner"></div>
+	</section>
     <?php get_template_part('template-parts/breadcrumb', null, $breadcrumb_args); ?>
     <div class="p-mainContent">
         <section class="p-content p-gallery">
@@ -98,7 +99,6 @@
         let galleryPage = document.querySelector('#gallery-page');
 
         if (galleryPage) {
-            // 'gallery-page'内のすべてのリンク(<a>タグ)を取得
             let links = galleryPage.querySelectorAll('a');
             let hasNext = false;
             let hasPrev = false;
@@ -131,7 +131,6 @@
                 // "<a"の位置を探す
                 let index = htmlContent.indexOf('<a');
                 if (index !== -1) {
-                    // 新しいリンクを"<a"の前に挿入
                     htmlContent = htmlContent.slice(0, index) + articleLink + htmlContent.slice(index);
                     galleryPage.innerHTML = htmlContent;
                 }
@@ -140,12 +139,10 @@
                 // "<a"の位置を探す
                 let index = htmlContent.indexOf('</a>');
                 if (index !== -1) {
-                    if (index !== -1) {
-                        index += 4;// '</a>'の長さ4を加算
-                        htmlContent = htmlContent.slice(0, index) + articleLink + htmlContent.slice(index);
-                        // galleryPageのinnerHTMLを更新
-                        galleryPage.innerHTML = htmlContent;
-                    }
+                    index += 4;// '</a>'の長さ4を加算
+                    htmlContent = htmlContent.slice(0, index) + articleLink + htmlContent.slice(index);
+                    // galleryPageのinnerHTMLを更新
+                    galleryPage.innerHTML = htmlContent;
                 }
             }
         }

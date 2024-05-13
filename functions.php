@@ -52,9 +52,6 @@ function create_post_type() {
 	post_type_template('entertainment', 'Entertainment', 10, true);
 	post_type_template('gallery', '画像ギャラリ―', 11, false);
 	post_type_template('meta-info', '付属情報', 12, false);
-	// post_type_template('work-info', '作品情報', 12, false);
-	// post_type_template('event', 'イベント情報', 13, false);
-	// post_type_template('profile', 'プロフィール', 14, false);
 }
 add_action( 'init', 'create_post_type' );
 
@@ -63,25 +60,23 @@ add_theme_support( 'post-thumbnails' );
 
 //投稿タイプ生成
 function post_type_template ($postTypeName, $label, $menuPosition, $main_type) {
-	$postTypeSupports = [  // supports のパラメータを設定する配列（初期値だと title と editor のみ投稿画面で使える）
-		'title',  // 記事タイトル
-		'editor',  // 記事本文
-		'thumbnail',  // アイキャッチ画像
-		'revisions'  // リビジョン
-	];
-	register_post_type(
-		$postTypeName,
-		[
-			'label' => $label,
-			'public' => true,
-			'has_archive' => true,
-			'show_in_rest' => true,
-			'menu_position' => $menuPosition,
-			'supports' => $postTypeSupports
-		]
-	);
-
 	if ($main_type == true) {
+		register_post_type(
+			$postTypeName,
+			[
+				'label' => $label,
+				'public' => true,
+				'has_archive' => true,
+				'show_in_rest' => true,
+				'menu_position' => $menuPosition,
+				'supports' =>  [  // 初期値 title と editor のみ
+					'title',  // 記事タイトル
+					'editor',  // 記事本文
+					'thumbnail',  // アイキャッチ画像
+					'revisions'  // リビジョン
+				]
+			]
+		);
 
 		register_taxonomy(
 			"{$postTypeName}-tag",
@@ -97,16 +92,60 @@ function post_type_template ($postTypeName, $label, $menuPosition, $main_type) {
 				'hierarchical' => false,
 				'public' => true,
 				'show_ui' => true,
+				'show_in_rest' => true
+			]
+		);
+	} else {
+		register_post_type(
+			$postTypeName,
+			[
+				'label' => $label,
+				'public' => true,
+				'has_archive' => true,
 				'show_in_rest' => true,
-				// 'update_count_callback' => '_update_post_term_count',
+				'menu_position' => $menuPosition,
+				'supports' =>  [  // 初期値 title と editor のみ
+					'title',  // 記事タイトル
+					'editor',  // 記事本文
+					'revisions'  // リビジョン
+				]
 			]
 		);
 	}
+}
 
-	register_taxonomy(
-		"{$postTypeName}-bind",
-		$postTypeName,
-		[
+//複数のカスタム投稿タイプに同じタクソノミーを付与
+function add_custom_taxonomy() {
+	//カテゴリ
+	$args = array(
+			'labels' => 'カテゴリー',
+			'hierarchical' => true, // このタクソノミーが階層化される（カテゴリーのように）かどうか
+			'public' => true,
+			'show_ui' => true,
+			'show_admin_column' => true,
+			'show_in_rest' => true,
+			'query_var' => true,
+	);
+	register_taxonomy('category', array('game', 'music' , 'entertainment', 'animation'), $args);
+
+	//表示位置
+	$args = array(
+			'label' => '表示位置',
+			'labels' => array(
+				'name' => _x('表示位置', 'taxonomy general name'),
+				'singular_name' => _x('Location', 'taxonomy singular name')
+			),
+			'hierarchical' => true, // このタクソノミーが階層化される（カテゴリーのように）かどうか
+			'public' => true,
+			'show_ui' => true,
+			'show_admin_column' => true,
+			'show_in_rest' => true,
+			'query_var' => true,
+	);
+	register_taxonomy('post_locate', array('game', 'music' , 'entertainment', 'animation'), $args);
+
+	//紐づけタグ
+	$args = array(
 			'label' => '紐づけタグ',
 			'labels' => array(
 				'all_items' => '紐づけタグ一覧',
@@ -114,43 +153,13 @@ function post_type_template ($postTypeName, $label, $menuPosition, $main_type) {
 				'name' => '紐づけタグ',
 				'singular_name' => '紐づけタグ',
 			),
-			'hierarchical' => false,
+			'hierarchical' => false, // このタクソノミーが階層化される（カテゴリーのように）かどうか
 			'public' => true,
 			'show_ui' => true,
 			'show_in_rest' => true,
-			// 'update_count_callback' => '_update_post_term_count',
-		]
+			'query_var' => true,
 	);
-}
-
-//複数のカスタム投稿タイプに同じタクソノミーを付与
-function add_custom_taxonomy() {
-
-    $args = array(
-        'labels' => 'カテゴリー',
-        'hierarchical' => true, // このタクソノミーが階層化される（カテゴリーのように）かどうか
-        'public' => true,
-        'show_ui' => true,
-        'show_admin_column' => true,
-				'show_in_rest' => true,
-        'query_var' => true,
-    );
-	register_taxonomy('category', array('game', 'music' , 'entertainment', 'animation'), $args);
-
-    $labels = array(
-        'name' => _x('表示位置指定', 'taxonomy general name'),
-        'singular_name' => _x('Location', 'taxonomy singular name')
-    );
-    $args = array(
-        'labels' => $labels,
-        'hierarchical' => true, // このタクソノミーが階層化される（カテゴリーのように）かどうか
-        'public' => true,
-        'show_ui' => true,
-        'show_admin_column' => true,
-				'show_in_rest' => true,
-        'query_var' => true,
-    );
-    register_taxonomy('post_locate', array('game', 'music' , 'entertainment', 'animation'), $args);
+	register_taxonomy('meta-bind', array('game', 'music' , 'entertainment', 'animation', 'meta-info'), $args);
 }
 // init アクションフックを使用して、カスタムタクソノミーを初期化
 add_action('init', 'add_custom_taxonomy');

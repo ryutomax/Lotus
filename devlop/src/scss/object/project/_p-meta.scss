@@ -9,11 +9,8 @@
 .p-meta-info-content {
 
   .wp-block-group__inner-container {
-    padding: 8px;
+    padding: 16px 8px;
   }
-}
-
-.p-meta-info-content {
 
   >.wp-block-group {
 
@@ -48,6 +45,15 @@
   .wp-block-details {
     border: 1px solid $black;
     padding: 8px;
+
+    &:not(:first-child) {
+      margin-top: 24px;
+    }
+  }
+  .wp-block-button__link {
+    color: $white;
+    background-color: #32373c;
+    border-radius: 0;
   }
 
   summary {
@@ -73,16 +79,56 @@
     }
   }
 
-  h2.wp-block-heading {
-    font-size: rem(18);
-    margin-bottom: 8px;
-    padding-left: 8px;
+  .is-toggle-open {
+    &::after {
+      background-image: url(../images/meta_info/icon_toggle_minus.svg);
+    }
   }
-  
+
+  h2 {
+    font-size: rem(18);
+    margin-bottom: 16px;
+    padding: 5px 0 5px 7px;
+  }
+  h3 {
+    font-size: rem(18);
+    text-align: center;
+    margin-bottom: 24px;
+  }
+  p {
+    line-height: 1.5;
+    margin-bottom: 24px;
+  }
+  figcaption {
+    text-align: center;
+  }
 }
 
 .p-single-music {
-  h2.wp-block-heading {
-    border-left: 2px solid $music-blue;
+  .p-meta-info {
+    h2 {
+      border-left: 4px solid $music-blue;
+    }
+  }
+}
+.p-single-anime {
+  .p-meta-info {
+    h2 {
+      border-left: 4px solid $anime-pink;
+    }
+  }
+}
+.p-single-game {
+  .p-meta-info {
+    h2 {
+      border-left: 4px solid $game-purple;
+    }
+  }
+}
+.p-single-entertainment {
+  .p-meta-info {
+    h2 {
+      border-left: 4px solid $enter-orange;
+    }
   }
 }

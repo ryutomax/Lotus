@@ -22,6 +22,12 @@
     &:last-child {
       width: calc(100% * 30 / 100);
     }
+
+    &:hover {
+      border-bottom: 6px solid $news-red;
+      background-color: rgba(0, 0, 0, 0.05);
+    }
+
     span {
       color: $news-red;
     }
@@ -34,7 +40,6 @@
     background-color: $news-red;
   }
 }
-
 .p-music,
 .p-anime,
 .p-game,
@@ -58,11 +63,20 @@
     &:last-child {
       width: calc(100% * 56 / 300);
     }
+  }
+}
+
+.p-music {
+  .p-article-tab {
     span {
       color: $music-blue;
     }
-  }
 
+    &:hover {
+      border-bottom: 6px solid $music-blue;
+      background-color: rgba(0, 0, 0, 0.05);
+    }
+  }
   .is-tabActive {
     border-bottom: 6px solid $music-blue;
   }
@@ -76,6 +90,10 @@
   .p-article-tab {
     span {
       color: $anime-pink;
+    }
+    &:hover {
+      border-bottom: 6px solid $anime-pink;
+      background-color: rgba(0, 0, 0, 0.05);
     }
   }
 
@@ -93,6 +111,11 @@
     span {
       color: $game-purple;
     }
+
+    &:hover {
+      border-bottom: 6px solid $game-purple;
+      background-color: rgba(0, 0, 0, 0.05);
+    }
   }
 
   .is-tabActive {
@@ -109,6 +132,11 @@
     span {
       color: $enter-orange;
     }
+
+    &:hover {
+      border-bottom: 6px solid $enter-orange;
+      background-color: rgba(0, 0, 0, 0.05);
+    }
   }
 
   .is-tabActive {
@@ -123,9 +151,11 @@
 .p-article-tab {
   background-color: $white;
   border-bottom: 6px solid $black;
-  letter-spacing: -0.03em;
   text-align: start;
   font-size: rem(18);
+  font-family: $ff-aptly;
+  letter-spacing: 0.05em;
+  transition: 0.3s all;
 }
 
 $mr: 32px;
@@ -152,14 +182,15 @@ $mr: 32px;
 }
 
 .p-articles-title {
+  display: flex;
   margin-bottom: 16px;
   font-size: rem(24);
   line-height: 48px;
   .p-articles-title-eng {
     display: inline-block;
+    font-family: $ff-aptly;
     color: $white;
     background-color: $black;
-    letter-spacing: -0.05em;
     font-weight: 300;
     padding: 0 16px;
   }

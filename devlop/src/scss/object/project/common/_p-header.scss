@@ -72,42 +72,43 @@
   align-items: center;
   justify-content: center;
   height: 50px;
+  margin: 0 -24px;
 }
 
 .p-header-nav-link {
+  $mrl: 20px;
   color: $white;
   text-transform: uppercase;
   font-size: rem(23);
-  margin: 0 24px;
+  margin: 0 $mrl;
+  color: #e5f43f00;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+
 
   &:first-child {
-    span {
-      color: #e5f43f;
-    }
+    width: calc((100% - $mrl * 12) *  2.5/10);
+    background-image: url(../images/header/text_about_us_link.png);
   }
   &:nth-child(2) {
-    span {
-      color: #e3340e;
-    }
+    width: calc((100% - $mrl * 12) *  1.1/10);
+    background-image: url(../images/header/text_news_link.png);
   }
   &:nth-child(3) {
-    span {
-      color: #59d5e0;
-    }
+    width: calc((100% - $mrl * 12) *  1.4/10);
+    background-image: url(../images/header/text_music_link.png);
   }
   &:nth-child(4) {
-    span {
-      color: #f4538a;
-    }
+    width: calc((100% - $mrl * 12) *  1.4/10);
+    background-image: url(../images/header/text_anime_link.png);
   }
   &:nth-child(5) {
-    span {
-      color: #9195f6;
-    }
+    width: calc((100% - $mrl * 12) *  1.20/10);
+    background-image: url(../images/header/text_game_link.png);
   }
   &:nth-child(6) {
-    span {
-      color: #f09d00;
-    }
+    width: calc((100% - $mrl * 12) *  3.6/10);
+    background-image: url(../images/header/text_entertainment_link.png);
   }
 }

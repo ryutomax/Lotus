@@ -1,6 +1,6 @@
 <?php
   get_template_part('template-parts/head');
-  get_template_part('template-parts/module_func');
+  require_once(locate_template('template-parts/module_func.php', true, true));
   get_template_part('template-parts/header');
 ?>
     <main class="l-main p-top">
@@ -88,14 +88,15 @@
                   ?>
                   <img class="p-pickUp-article-thumbnail" src="<?php print $thumbnail; ?>" alt="<?php the_title(); ?>">
                   <time class="p-pickUp-article-time" datetime="<?= get_the_date('Y.m.d'); ?>"><?= get_the_date('Y.m.d'); ?></time>
-                  <?php
+                  <h2 class="p-pickUp-article-text"><?php the_title(); ?></h2>
+                  <!-- <?php
                     $content = get_the_content();
                     $content = strip_tags($content);
                     if (mb_strlen($content) > 40) {
                         $content = mb_substr($content, 0, 40) . '...'; // 40文字を超える場合は「...」を追加
                     }
                   ?>
-                  <p class="p-pickUp-article-text"><?php echo $content; ?></p>
+                  <p class="p-pickUp-article-text"><?php echo $content; ?></p> -->
                 </a>
               </article>
               <?php

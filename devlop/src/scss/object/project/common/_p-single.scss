@@ -27,7 +27,7 @@
   display: inline-block;
   color: $white;
   margin-bottom: 12px;
-  padding: 4px;
+  padding: 2px 4px 4px 4px;
   text-shadow: 1px 1px 3px #00000029;
 }
 
@@ -48,6 +48,7 @@
 .p-single-gallery {
   display: block;
   text-align: center;
+  margin-bottom: 32px;
 }
 
 .p-single-gallery-link {
@@ -68,5 +69,76 @@
     background-size: contain;
     width: 30px;
     height: 30px;
+  }
+}
+
+.p-single-cont {
+  h1, h2 ,h3, h4, h5, h5, h6,
+  p, figure {
+    display: block;
+    margin-bottom: 32px;
+  }
+
+  h1, h2 {
+    font-size: rem(18);
+    padding: 5px 0 5px 7px;
+  }
+
+  h3, h4, h5, h5, h6, p {
+    font-size: rem(15);
+    font-weight: 400;
+  }
+
+  figure {
+    text-align: center;
+    margin-bottom: 40px;
+  }
+
+  h3 {
+    &::before {
+      content: "―――";
+    }
+  }
+}
+
+.p-single-music {
+  .p-single-cont {
+    h1, h2 {
+      border-left: 4px solid $music-blue;
+    }
+
+    h3 {
+      color: $music-blue;
+    }
+  }
+}
+.p-single-game {
+  .p-single-cont {
+    h1, h2 {
+      border-left: 4px solid $game-purple;
+    }
+    h3 {
+      color: $game-purple;
+    }
+  }
+}
+.p-single-anime {
+  .p-single-cont {
+    h1, h2 {
+      border-left: 4px solid $anime-pink;
+    }
+    h3 {
+      color: $anime-pink;
+    }
+  }
+}
+.p-single-entertainment {
+  .p-single-cont {
+    h1, h2 {
+      border-left: 4px solid $enter-orange;
+    }
+    h3 {
+      color: $enter-orange;
+    }
   }
 }

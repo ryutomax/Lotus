@@ -4,8 +4,9 @@
 .p-aboutUs {
   background-image: url(../images/about_us/aboutUs_bg.jpg);
   background-size: cover;
+  background-position: center;
   margin: 0 -20px;
-  padding: 20px 0 0 0;
+  padding: 48px 0 0 0;
 }
 
 .p-aboutUs-top {
@@ -14,10 +15,14 @@
 }
 
 .p-aboutUs-top-title {
-  color: $white;
+  color: rgba(255, 255, 255, 0);
   font-size: rem(64);
+  background-image: url(../images/about_us/text_About_Us.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+  width: 300px;
+  margin: 0 auto;
   margin-bottom: 32px;
-  font-weight: 300;
 }
 
 .p-aboutUs-top-copy {
@@ -97,8 +102,15 @@
     margin-bottom: 80px;
   }
 
-  &:first-child {
+  &:first-child { //music
     color: $music-blue;
+
+    .p-aboutUs-sec-title-main {
+      background-image: url(../images/about_us/text_music.png);
+      width: 66%;
+      height: 75px;
+    }
+
     a {
       color: $music-blue;
       border: 2px solid $music-blue;
@@ -108,8 +120,13 @@
     }
   }
 
-  &:nth-child(2) {
+  &:nth-child(2) { //anime
     color: $anime-pink;
+    .p-aboutUs-sec-title-main {
+      background-image: url(../images/about_us/text_anime.png);
+      width: 42%;
+      height: 75px;
+    }
     a {
       color: $anime-pink;
       border: 2px solid $anime-pink;
@@ -119,8 +136,13 @@
     }
   }
 
-  &:nth-child(3) {
+  &:nth-child(3) { //game
     color: $game-purple;
+    .p-aboutUs-sec-title-main {
+      background-image: url(../images/about_us/text_game.png);
+      width: 36%;
+      height: 75px;
+    }
     a {
       color: $game-purple;
       border: 2px solid $game-purple;
@@ -130,8 +152,13 @@
     }
   }
 
-  &:nth-child(4) {
+  &:nth-child(4) { //entertainment
     color: $enter-orange;
+    .p-aboutUs-sec-title-main {
+      background-image: url(../images/about_us/text_entertainment.png);
+      width: 80%;
+      height: 60px;
+    }
     a {
       color: $enter-orange;
       border: 2px solid $enter-orange;
@@ -143,16 +170,22 @@
 }
 
 .p-aboutUs-sec-title {
-  font-size: rem(64);
-  letter-spacing: -0.05em;
-  font-weight: 300;
-  font-style: italic;
+  display: flex;
+  align-items: flex-end;
   margin-bottom: 48px;
-  span {
-    font-size: rem(16);
-    margin-left: 20px;
-    letter-spacing: 0em;
-  }
+}
+
+.p-aboutUs-sec-title-main {
+  display: inline-block;
+  background-size: contain;
+  background-repeat: no-repeat;
+  color: #00000000;
+}
+
+.p-aboutUs-sec-title-sub {
+  font-size: rem(16);
+  margin-left: 20px;
+  letter-spacing: 0em;
 }
 
 .p-aboutUs-sec-text {
@@ -170,7 +203,12 @@
 
 .p-aboutUs-bottom-title {
   font-size: rem(48);
+  color: #00000000;
   margin-bottom: 24px;
+  background-image: url(../images/contact/text_artist_creator.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
 }
 
 .p-aboutUs-bottom-intro {

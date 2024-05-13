@@ -11,16 +11,21 @@ document.addEventListener("DOMContentLoaded", () => {
         if (el.getAttribute("open") != null) {
           // アコーディオンを閉じるときの処理
           const closingAnim = answer.animate(closingAnimation(answer), animTiming);
-
           closingAnim.onfinish = () => {
             // アニメーションの完了後にopen属性を取り除く
             el.removeAttribute("open");
           };
+          if(summary.classList.contains("is-toggle-open")) {
+            summary.classList.remove("is-toggle-open");
+          }
         } else {
           // open属性を付与
           el.setAttribute("open", "true");
           // アコーディオンを開くときの処理
           answer.animate(openingAnimation(answer), animTiming);
+          if(!summary.classList.contains("is-toggle-open")) {
+            summary.classList.add("is-toggle-open");
+          }
         }
       });
     }
