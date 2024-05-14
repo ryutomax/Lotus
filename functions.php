@@ -125,6 +125,7 @@ function add_custom_taxonomy() {
 			'show_admin_column' => true,
 			'show_in_rest' => true,
 			'query_var' => true,
+			'show_in_menu' => false
 	);
 	register_taxonomy('category', array('game', 'music' , 'entertainment', 'animation'), $args);
 
@@ -141,6 +142,7 @@ function add_custom_taxonomy() {
 			'show_admin_column' => true,
 			'show_in_rest' => true,
 			'query_var' => true,
+			'show_in_menu' => false
 	);
 	register_taxonomy('post_locate', array('game', 'music' , 'entertainment', 'animation'), $args);
 

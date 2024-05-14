@@ -46,7 +46,9 @@
                   $thumbnail = esc_url(get_template_directory_uri() . '/'). 'assets/images/common/thumbnail-none.jpg';
                 }
               ?>
-              <img src="<?php print $thumbnail; ?>" alt="<?php the_title(); ?>" class="p-article-thumbnail">
+              <figure  class="p-article-frame">
+                <img src="<?php print $thumbnail; ?>" alt="<?php the_title(); ?>" class="p-article-thumbnail">
+              </figure>
               <!-- カスタム投稿タイプ出力 -->
               <h2 class="p-article-title"><?php the_title(); ?></h2>
               <?php
