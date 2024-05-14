@@ -25,15 +25,7 @@
         'breadcrumb_arr' => [$post_type_jp, $title, '画像ギャラリー']
     ];
 
-    $tag_name = "{$post_type}-tag";
-
-    $tag_terms = get_the_terms($single_post_id, $tag_name);
-	$tag_terms_name = [];
-	if (!empty($tag_terms) && !is_wp_error($tag_terms)) {
-		foreach ($tag_terms as $tag_term) {
-			$tag_terms_name[] = $tag_term -> name;
-		}
-	}
+	$tag_terms_name[] = term_names_by_term(get_the_terms($single_post_id, "{$post_type}-tag"));
 ?>
 <div class="l-main">
     <section class="p-top-googleAd">

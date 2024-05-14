@@ -179,4 +179,18 @@
         echo $pagination;
     }
 
+    // ========================================
+    // タームからタームネームの配列取得
+    // ========================================
+    function term_names_by_term($tag_terms) {
+        $tag_terms_name = [];
+
+        if (!empty($tag_terms) && !is_wp_error($tag_terms)) {
+            foreach ($tag_terms as $tag_term) {
+                $tag_terms_name[] = $tag_term -> name;
+            }
+        }
+        return $tag_terms_name;
+    }
+
 ?>
