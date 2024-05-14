@@ -60,11 +60,17 @@
   margin-bottom: 48px;
 }
 
+.mw_wp_form .error {
+  position: absolute;
+  top: 40px;
+}
+
 .p-input-wrap {
   background-color: $white;
   margin-bottom: 8px;
   display: flex;
   padding: 20px;
+  position: relative;
 }
 
 .p-input-label {

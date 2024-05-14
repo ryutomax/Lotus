@@ -25,7 +25,8 @@
         'breadcrumb_arr' => [$post_type_jp, $title, '画像ギャラリー']
     ];
 
-	$tag_terms_name[] = term_names_by_term(get_the_terms($single_post_id, "{$post_type}-tag"));
+    $tag_name = "{$post_type}-tag";
+	$tag_terms_name = term_names_by_term(get_the_terms($single_post_id, $tag_name));
 ?>
 <div class="l-main">
     <section class="p-top-googleAd">
@@ -85,7 +86,7 @@
 						'post_status' => 'publish',
 						'tax_query' => [
 							[
-								'taxonomy' => 'game-tag',   // カスタムタクソノミーを指定
+								'taxonomy' => $tag_name,   // カスタムタクソノミーを指定
 								'field'    => 'slug',       // タームの"slug"または"id"を指定
 								'terms'    => $tag_terms_name, // 絞り込みたいタームを指定
 							]
@@ -133,8 +134,8 @@
 				<?php else: ?>
 					<p>該当する記事がありません。</p>
 				<?php
-						endif;
-						wp_reset_postdata();
+                    endif;
+                    wp_reset_postdata();
 				?>
 			</div>
             <!-- /.p-articles -->
