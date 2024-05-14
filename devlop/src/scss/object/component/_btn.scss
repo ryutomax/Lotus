@@ -10,18 +10,15 @@
 }
 
 .c-toUpBtn {
-  position: absolute;
-  bottom: 40px;
-  right: 10px;
-  background-color: #f28705;
-  color: $white;
-  width: 70px;
-  height: 70px;
-  font-size: 65px;
-  padding: 10px;
-  text-align: center;
-
-  @include mq (o-sp) {
-    bottom: 54px;
-  }
+  display: block;
+  opacity: 0;
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  width: 40px;
+  height: 40px;
+  padding: 8px 10px 0;
+  background: #000;
+  color: #fff;
+  z-index: 1000;
 }

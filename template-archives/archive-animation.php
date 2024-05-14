@@ -7,6 +7,12 @@
 			<section class="p-top-googleAd">
 					<div class="p-googleAd-inner"></div>
 			</section>
+			<section class="p-fv">
+				<h1 class="p-fv-title">ANIME</h1>
+			</section>
+			<section class="p-mid-googleAd">
+				<div class="p-googleAd-inner"></div>
+			</section>
 			<?php
 					$post_type = get_post_type();
 
@@ -73,8 +79,9 @@
 									$thumbnail = esc_url(get_template_directory_uri() . '/'). 'assets/images/common/thumbnail-none.jpg';
 								}
 							?>
-							<img src="<?php print $thumbnail; ?>" alt="<?php the_title(); ?>" class="p-article-thumbnail">
-							<!-- カスタム投稿タイプ出力 -->
+							<figure  class="p-article-frame">
+								<img src="<?php print $thumbnail; ?>" alt="<?php the_title(); ?>" class="p-article-thumbnail">
+							</figure>
 							<h2 class="p-article-title"><?php the_title(); ?></h2>
 							<div class="p-article-type">
 							<?php

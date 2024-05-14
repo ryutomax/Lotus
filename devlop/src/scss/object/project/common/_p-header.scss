@@ -1,6 +1,8 @@
 @use "global" as *;
 
 .p-header {
+  position: fixed;
+  top: 0;
 }
 
 .p-header-inner {

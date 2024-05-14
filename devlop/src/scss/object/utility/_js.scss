@@ -86,7 +86,7 @@
 
 // スクロールトップ
 .is-btn-show {
-  opacity: 1;
+  opacity: 0.8;
 }
 
 //お問い合わせフォーム送信ボタン
@@ -101,4 +101,10 @@
 
 .is-scroll-mask {
   background-color: rgba(138, 138, 138, 0.302);
+}
+
+//headerアニメーション
+.is-header-hide {
+  opacity: 0.8;
+  transform: translateY(-70px);
 }

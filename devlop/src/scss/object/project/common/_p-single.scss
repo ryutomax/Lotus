@@ -2,25 +2,6 @@
 
 .p-single {
   margin-bottom: 80px;
-
-  .wp-block-buttons {
-    justify-content: center;
-    margin-top: 40px;
-  }
-
-  .wp-element-button {
-    position: relative;
-    border-radius: 0;
-    &::before {
-      content: "次のページ";
-      position: absolute;
-      top: -40%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      color: $black;
-      width: 100px;
-    }
-  }
 }
 
 .p-single-type {
@@ -73,6 +54,8 @@
 }
 
 .p-single-cont {
+  margin-bottom: 64px;
+
   h1, h2 ,h3, h4, h5, h5, h6,
   p, figure {
     display: block;
@@ -98,7 +81,26 @@
     &::before {
       content: "―――";
     }
+  }.wp-block-buttons {
+    justify-content: center;
+    margin-top: 40px;
   }
+
+  .wp-element-button {
+    position: relative;
+    border-radius: 0;
+    &::before {
+      content: "次のページ";
+      position: absolute;
+      top: -40%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      color: $black;
+      width: 100px;
+    }
+  }
+
+
 }
 
 .p-single-music {

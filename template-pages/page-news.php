@@ -12,6 +12,12 @@ Template Name: News一覧
     <section class="p-top-googleAd">
         <div class="p-googleAd-inner"></div>
     </section>
+    <section class="p-fv">
+			<h1 class="p-fv-title">NEWS</h1>
+		</section>
+		<section class="p-mid-googleAd">
+			<div class="p-googleAd-inner"></div>
+		</section>
     <?php
         $args = [
             'breadcrumb_slug_arr' => [],
@@ -73,7 +79,9 @@ Template Name: News一覧
                                 $thumbnail = esc_url(get_template_directory_uri() . '/'). 'assets/images/common/thumbnail-none.jpg';
                             }
                         ?>
-                        <img src="<?php print $thumbnail; ?>" alt="<?php the_title(); ?>" class="p-article-thumbnail">
+                        <figure  class="p-article-frame">
+                            <img src="<?php print $thumbnail; ?>" alt="<?php the_title(); ?>" class="p-article-thumbnail">
+                        </figure>
                         <!-- カスタム投稿タイプ出力 -->
                         <h2 class="p-article-title"><?php the_title(); ?></h2>
                         <?php $post_type = get_post_type(); ?>

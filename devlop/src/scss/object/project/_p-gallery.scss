@@ -1,6 +1,7 @@
 @use "global" as *;
 
 .p-gallery {
+  margin-bottom: 40px;
   .wp-block-image {
     box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
     margin-bottom: 24px;
@@ -43,6 +44,9 @@
 // ========================================
 
 .p-slider-visual {
+  border-top: 10px solid gray;
+  border-bottom: 10px solid gray;
+
   .slick-list {
     img {
       height: 200px;

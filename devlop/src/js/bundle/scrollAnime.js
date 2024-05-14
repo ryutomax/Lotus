@@ -41,5 +41,20 @@ export default class scrollAnime {
       });
     });
 
+
+    let startPos = 0;
+    let winScrollTop = 0;
+    const Header = $('#header');
+    $(window).on('scroll',function(){
+      $(Header).css('transition','.5s');
+      winScrollTop = $(this).scrollTop();
+      if (winScrollTop >= startPos && winScrollTop > 120) { // >120・・・ios対応
+        $(Header).addClass('is-header-hide');
+      } else {
+        $(Header).removeClass('is-header-hide');
+      }
+      startPos = winScrollTop;
+    });
+
   }
 }
