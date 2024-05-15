@@ -3,16 +3,16 @@
 	require_once(locate_template('template-parts/module_func.php', true, true));
 	get_template_part('template-parts/header');
 ?>
-	<main class="l-main p-music">
-		<section class="p-top-googleAd">
-				<div class="p-googleAd-inner"></div>
-		</section>
-		<section class="p-fv">
-			<h1 class="p-fv-title">MUSIC</h1>
-		</section>
-		<section class="p-mid-googleAd">
+<main class="l-main p-music">
+	<section class="p-top-googleAd">
 			<div class="p-googleAd-inner"></div>
-		</section>
+	</section>
+	<section class="p-fv">
+		<h1 class="p-fv-title">MUSIC</h1>
+	</section>
+	<section class="p-mid-googleAd">
+		<div class="p-googleAd-inner"></div>
+	</section>
 		<?php
 				$post_type = get_post_type();
 
@@ -51,7 +51,7 @@
 					}
 					$args = array(
 						'post_type' => 'music',
-						'posts_per_page' => 15,
+						'posts_per_page' => 3,
 						'post_status' => 'publish',
 						'paged' => $paged,
 						'tax_query' => [
@@ -62,8 +62,6 @@
 							]
 						]
 					);
-
-
 					$wp_query = new WP_Query( $args );
 					if ( $wp_query->have_posts() ):
 					while ( $wp_query->have_posts() ):
@@ -88,13 +86,13 @@
 							$post_id = get_the_ID(); // 現在の投稿IDを取得
 							$terms = wp_get_post_terms($post_id, 'category', array('fields' => 'names'));
 
-							if (!is_wp_error($terms) && !empty($terms)) {
-								foreach ($terms as $term_name) {
+							if (!is_wp_error($terms) && !empty($terms)) :
+								foreach ($terms as $term_name) :
 						?>
 						<span class="p-article-type-item" style="background-color: black;"><?= convert_jp($term_name); ?></span>
 						<?php
-								}
-							}
+								endforeach;
+							endif;
 						?>
 						</div>
 						<ul class="p-article-tags">
@@ -109,17 +107,7 @@
 						endif;
 						wp_reset_postdata();
 				?>
-				<div class="p-pagination">
-					<?php echo paginate_links(
-						array (
-							'type' => 'plain',
-							'prev_text' => '＜',
-							'next_text' => '＞',
-							'end_size'  => 1, // 両端のページ数
-							'mid_size'  => 2,
-						));
-					?>
-				</div>
+				<?php get_template_part('template-parts/pagination'); ?><!-- ページネーション -->
 			</div>
 		</section>
 		<section class="p-side">
@@ -131,6 +119,6 @@
 			<div class="p-side06"></div>
 		</section>
 	</div>
-			<!-- ./p-mainContent -->
-	</main>
-	<?php get_template_part('template-parts/footer') ?>
+	<!-- ./p-mainContent -->
+</main>
+<?php get_template_part('template-parts/footer') ?>

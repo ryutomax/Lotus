@@ -87,11 +87,13 @@
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
+  @include flashAnime;
 
 
   &:first-child {
     width: calc((100% - $mrl * 12) *  2.5/10);
     background-image: url(../images/header/text_about_us_link.png);
+    min-width: 104px;
   }
   &:nth-child(2) {
     width: calc((100% - $mrl * 12) *  1.1/10);

@@ -100,17 +100,7 @@ Template Name: News一覧
                     endif;
                     wp_reset_postdata();
                 ?>
-                <div class="p-pagination">
-                    <?php echo paginate_links(
-                        array (
-                            'type' => 'plain',
-                            'prev_text' => '＜',
-                            'next_text' => '＞',
-                            'end_size'  => 1, // 両端のページ数
-                            'mid_size'  => 2,
-                        ));
-                    ?>
-                </div>
+                <?php get_template_part('template-parts/pagination'); ?><!-- ページネーション -->
             </div>
             <!-- /.p-articles -->
         </section>

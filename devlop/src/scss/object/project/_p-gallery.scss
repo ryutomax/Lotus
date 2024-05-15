@@ -74,3 +74,9 @@
     }
   }
 }
+
+.p-slider-visual-link {
+  position: relative;
+  filter: brightness(.6);
+  transition: filter 1s;
+}

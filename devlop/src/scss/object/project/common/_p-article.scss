@@ -267,6 +267,7 @@ $mr: 32px;
   display: block;
   position: relative;
   &:hover {
+    animation: none;
     img {
       scale: 1.05;
     }
@@ -329,8 +330,12 @@ $mr: 32px;
   display: inline-block;
   background-color: $black;
   color: $white;
-  width: 200px;
-  height: 60px;
+  width: 180px;
+  height: 50px;
+  margin-bottom: 40px;
+  font-weight: 700;
+
+  @include flashAnime;
 }
 .p-article-blind {
   display: none;

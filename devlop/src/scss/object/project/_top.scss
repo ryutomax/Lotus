@@ -19,8 +19,39 @@
   margin: 0 auto;
 }
 
+//slider
+
 .p-top-slider {
   margin: 0 -20px;
+
+  .slick-next {
+    height: 300px;
+    width: 40px;
+    right: 0px;
+    &::before {
+      content: "＞";
+      font-size: rem(40);
+    }
+  }
+
+  .slick-prev {
+    height: 300px;
+    width: 40px;
+    left: 0px;
+    z-index: 1;
+    &::before {
+      content: "＜";
+      font-size: rem(40);
+    }
+  }
+
+  .slick-dots li button:before {
+    font-size: rem(10);
+  }
+}
+
+.p-top-slider.slick-dotted {
+  margin-bottom: 40px;
 }
 
 .p-top-slider-item {

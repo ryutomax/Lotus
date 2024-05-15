@@ -6,10 +6,10 @@ html {
 
 html,
 body {
-  font-family: $ff-gothic;
+  font-family: $ff-biz;
   color: $black;
   box-sizing: border-box;
-  letter-spacing: 1.25px;
+  letter-spacing: 0.1em;
   font-feature-settings: "palt";
   -webkit-font-smoothing: antialiased;
   // scroll-behavior: smooth;

@@ -50,7 +50,8 @@
       margin-top: 24px;
     }
   }
-  .wp-block-button__link {
+  .wp-block-button >
+  a.wp-block-button__link {
     color: $white;
     background-color: #32373c;
     border-radius: 0;
@@ -91,16 +92,38 @@
     padding: 5px 0 5px 7px;
   }
   h3 {
-    font-size: rem(18);
-    text-align: center;
-    margin-bottom: 24px;
+    font-size: rem(16);
   }
   p {
     line-height: 1.5;
-    margin-bottom: 24px;
   }
   figcaption {
     text-align: center;
+  }
+
+  ul, h3, p {
+    margin-bottom: 24px;
+  }
+
+  li {
+    position: relative;
+    margin-left: 20px;
+
+    &::before {
+      content: "";
+      position: absolute;
+      top: 50%;
+      left: -10px;
+      transform: translate(-50%, -50%);
+      $size: 8px;
+      width: $size;
+      height: $size;
+      border-radius: 50%;
+    }
+
+    & + li {
+      margin-top: 8px;
+    }
   }
 }
 
@@ -109,12 +132,28 @@
     h2 {
       border-left: 4px solid $music-blue;
     }
+    a {
+      color: $music-blue;
+    }
+    li {
+      &::before {
+        background-color: $music-blue;
+      }
+    }
   }
 }
 .p-single-anime {
   .p-meta-info {
     h2 {
       border-left: 4px solid $anime-pink;
+    }
+    a {
+      color: $anime-pink;
+    }
+    li {
+      &::before {
+        background-color: $anime-pink;
+      }
     }
   }
 }
@@ -123,12 +162,28 @@
     h2 {
       border-left: 4px solid $game-purple;
     }
+    a {
+      color: $game-purple;
+    }
+    li {
+      &::before {
+        background-color: $game-purple;
+      }
+    }
   }
 }
 .p-single-entertainment {
   .p-meta-info {
     h2 {
       border-left: 4px solid $enter-orange;
+    }
+    a {
+      color: $enter-orange;
+    }
+    li {
+      &::before {
+        background-color: $enter-orange;
+      }
     }
   }
 }

@@ -54,3 +54,18 @@ a {
     opacity: 0.85;
   }
 }
+
+@mixin flashAnime() {
+  &:hover {
+    animation: flash 1s;
+  }
+}
+
+@keyframes flash {
+  0% {
+    opacity: .5;
+  }
+  100% {
+    opacity: 1;
+  }
+}

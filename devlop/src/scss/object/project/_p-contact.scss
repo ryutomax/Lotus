@@ -62,7 +62,7 @@
 
 .mw_wp_form .error {
   position: absolute;
-  top: 40px;
+  top: 48px;
 }
 
 .p-input-wrap {
@@ -75,6 +75,7 @@
 
 .p-input-label {
   width: 210px;
+  letter-spacing: 0.01em;
   span {
     color: red;
   }
@@ -200,4 +201,17 @@ input[type=checkbox]:checked::after {
 
 .p-input-back {
   margin-left: 16px;
+}
+
+//detepicker
+tr > .ui-datepicker-today > .ui-state-highlight {
+  border: 2px solid $enter-orange;
+}
+
+span[title="土曜日"] {
+  color: blue;
+}
+
+span[title="日曜日"] {
+  color: red;
 }

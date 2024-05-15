@@ -3,7 +3,7 @@
 	require_once(locate_template('template-parts/module_func.php', true, true));
 	get_template_part('template-parts/header');
 ?>
-	<main class="l-main p-game">
+<main class="l-main p-game">
 		<section class="p-top-googleAd">
 				<div class="p-googleAd-inner"></div>
 		</section>
@@ -109,17 +109,7 @@
                     endif;
 					wp_reset_postdata();
 				?>
-				<div class="p-pagination">
-					<?php echo paginate_links(
-						array (
-							'type' => 'plain',
-							'prev_text' => '＜',
-							'next_text' => '＞',
-							'end_size'  => 1, // 両端のページ数
-							'mid_size'  => 2,
-						));
-					?>
-				</div>
+				<?php get_template_part('template-parts/pagination'); ?><!-- ページネーション -->
 			</div>
 		</section>
 		<section class="p-side">
@@ -131,6 +121,6 @@
 			<div class="p-side06"></div>
 		</section>
 	</div>
-			<!-- ./p-mainContent -->
-	</main>
-	<?php get_template_part('template-parts/footer') ?>
+	<!-- ./p-mainContent -->
+</main>
+<?php get_template_part('template-parts/footer') ?>
