@@ -8,7 +8,7 @@
         クリエイターの言葉を伝えるエンタメ総合メディア
       </h1>
       <div class="p-header-search">
-          <?php get_search_form(); ?>
+        <?php get_search_form(); ?>
       </div>
     </div>
     <div class="p-header-btm">

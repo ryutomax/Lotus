@@ -1,0 +1,80 @@
+@use "global" as *;
+
+.p-info {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 40px 0 80px 0;
+  font-family: $ff-gothic;
+
+  details {
+    border-bottom: 2px solid black;
+    padding: 24px 8px;
+  }
+  summary {
+    font-size: rem(18);
+    padding: 24px 0;
+  }
+
+  .wp-block-table {
+    overflow: hidden;
+    max-width: 700px;
+    margin: 0 auto;
+  }
+
+  h1, h2 ,h3, h4, h5, h5, h6,
+  ul, ol, figure {
+    display: block;
+  }
+
+  h1, h2, h3 {
+    font-size: rem(20);
+    padding: 24px 0px;
+  }
+
+  h4, h5, h5, h6, p, li {
+    font-size: rem(15);
+    font-weight: 400;
+    line-height: 1.7;
+    margin-bottom: 16px;
+  }
+
+  figure {
+    text-align: center;
+    margin-bottom: 40px;
+  }
+
+  .wp-block-group__inner-container {
+    padding: 40px 8px 0 8px;
+  }
+
+  td {
+    text-align: start;
+    line-height: 1.7;
+
+    &:first-child {
+      width: 90px;
+      background-color: #e2e3e4;
+    }
+  }
+
+  ul, ol {
+    margin-bottom: 32px;
+  }
+
+  ol {
+    counter-reset: list-counter; /* カウンターをリセット */
+    li {
+      counter-increment: list-counter; /* カウンターを1増やす */
+      list-style-type: none; /* 既定のリストスタイルを削除 */
+      position: relative;
+      padding-left: 24px;
+
+      &::before {
+        content: counter(list-counter) ". "; /* カウンター値を表示 */
+        position: absolute;
+        left: 0;
+        top: 0;
+      }
+    }
+  }
+}

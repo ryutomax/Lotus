@@ -17,7 +17,7 @@ function enqueue_scripts()
 	if (is_home() || is_front_page()) {
 		wp_enqueue_script('top', get_theme_file_uri('/assets/js/parts/top-min.js'), [], $version, true);
 	}
-	if (is_single()) {
+	if (is_single()||is_page('information')) {
 		wp_enqueue_script('single', get_theme_file_uri('/assets/js/parts/single-min.js'), [], $version, true);
 	}
 	if (is_page('contact')) {
@@ -208,7 +208,11 @@ add_action( 'admin_menu', 'change_menu_label' );
 // キーワード検索 検索結果調整
 function search_exclude_custom_post_type( $query ) {
 	if ( $query->is_search() && $query->is_main_query() && ! is_admin() ) {
-		$query->set( 'post_type', array( 'music', 'game', 'animation', 'entertainment') ); //検索対象を追加
+		$query->set( 'post_type', array( 'music', 'game', 'animation', 'entertainment') );//検索対象を追加
+		$query->set( 'posts_per_page', 15 );
+
+		$paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
+		$query->set( 'paged', $paged );
 	}
 }
 add_filter( 'pre_get_posts', 'search_exclude_custom_post_type' );

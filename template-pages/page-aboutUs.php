@@ -26,7 +26,7 @@ Template Name: About Us
       <span>「Lotus」は日本語に直訳すると、植物の「蓮」。「蓮」は池の泥水を吸いながらも美しい花を<br>咲かせることができる唯一無二の花で、花言葉は「清らかな心」。</span>
       <span>蓮の花のようなアーティストやクリエイター達の躍動を、情熱を、ありのままの想いと向き合い<br>言葉の力で人々の心に残るコンテンツを国内、そして世界へ発信していきます。<br>それは時にマジカルでエモーショナルな体験となることでしょう。<br>新しいマルチメディアサイトにご期待ください。</span>
     </p>
-    <a href="<?php esc_url(home_url('/')); ?>contact" class="p-aboutUs-top-btn">掲載依頼・お問合せ</a>
+    <a href="<?= esc_url(home_url('/')); ?>contact" class="p-aboutUs-top-btn">掲載依頼・お問合せ</a>
   </section>
   <section class="p-aboutUs-cont">
     <div class="p-aboutUs-sec">
@@ -37,7 +37,7 @@ Template Name: About Us
           当サイトオリジナルのグッズ販売<br>
           ファンミーティングもあります。
         </p>
-        <a href="<?php esc_url(home_url('/')); ?>music" class="p-aboutUs-sec-btn">ミュージックのページへ</a>
+        <a href="<?= esc_url(home_url('/')); ?>music" class="p-aboutUs-sec-btn">ミュージックのページへ</a>
       </div>
       <img src="<?= esc_url(get_template_directory_uri() . '/'). 'assets/images/about_us/about_us_music.png'; ?>" alt="ミュージック" class="p-aboutUs-sec-img">
     </div>
@@ -48,7 +48,7 @@ Template Name: About Us
           次なるトレンドは彼らが描く。若手やアマチュアクリエイターたちのキャッチ―なインタビューがあなたの心を魅了します。<br>
           クリエイターの他、声優、Vtuber他、アニメに携わる様々なアーティストの今の声をお届けします。
         </p>
-        <a href="<?php esc_url(home_url('/')); ?>animation" class="p-aboutUs-sec-btn">アニメのページへ</a>
+        <a href="<?= esc_url(home_url('/')); ?>animation" class="p-aboutUs-sec-btn">アニメのページへ</a>
       </div>
       <img src="<?= esc_url(get_template_directory_uri() . '/'). 'assets/images/about_us/about_us_anime.png'; ?>" alt="アニメ" class="p-aboutUs-sec-img">
     </div>
@@ -59,7 +59,7 @@ Template Name: About Us
           今や世界ゲームコンテンツ市場の規模は実に26兆8005億円。<br>
           益々広がりを見せるゲームの世界で生きるCGクリエイターやゲームプランナー、ゲームプレイヤーなどのインタビューやコラムをワールドワイドな視点でお届けします。
         </p>
-        <a href="<?php esc_url(home_url('/')); ?>game" class="p-aboutUs-sec-btn">ゲームのページへ</a>
+        <a href="<?= esc_url(home_url('/')); ?>game" class="p-aboutUs-sec-btn">ゲームのページへ</a>
       </div>
       <img src="<?= esc_url(get_template_directory_uri() . '/'). 'assets/images/about_us/about_us_game.png'; ?>" alt="ゲーム" class="p-aboutUs-sec-img">
     </div>
@@ -71,7 +71,7 @@ Template Name: About Us
           アンダーグラウンドな魂がここに。<br>
           ジャンルを超えたアーティスト、パフォーマー達の情熱と夢を、動画や記事で生き生きと伝えます。
         </p>
-        <a href="<?php esc_url(home_url('/')); ?>entertainment" class="p-aboutUs-sec-btn">エンタメのページへ</a>
+        <a href="<?= esc_url(home_url('/')); ?>entertainment" class="p-aboutUs-sec-btn">エンタメのページへ</a>
       </div>
       <img src="<?= esc_url(get_template_directory_uri() . '/'). 'assets/images/about_us/about_us_entertainment.png'; ?>" alt="エンタメ" class="p-aboutUs-sec-img">
     </div>
@@ -83,7 +83,7 @@ Template Name: About Us
       >当サイトを通じて、各種イベントやプロモーション活動のお手伝いをいたします。<br>
       皆様からのコンタクトをお待ちしております。
     </p>
-    <a href="<?php esc_url(home_url('/')); ?>contact" class="p-aboutUs-bottom-btn">掲載依頼・お問合せ</a>
+    <a href="<?= esc_url(home_url('/')); ?>contact" class="p-aboutUs-bottom-btn">掲載依頼・お問合せ</a>
   </section>
 </div>
 </main>

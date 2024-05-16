@@ -5,6 +5,10 @@
 .p-top-googleAd {
   height: 90px;
   margin: 24px 0;
+
+  & + .c-breadcrumb {
+    margin-top: 48px;
+  }
 }
 
 .p-mid-googleAd {
@@ -79,8 +83,11 @@
 
 .p-top-slider-tag {
   color: $white;
-  background-color: rgb(255, 217, 0);
   font-size: rem(12);
+  padding: 3px;
+  margin-bottom: 8px;
+  display: inline-block;
+  font-weight: 700;
 }
 
 .p-top-slider-title {

@@ -100,6 +100,11 @@ Template Name: 取材申込フォーム
         if(targetBtm) {
           targetBtm.classList.add('is-display-block');
         }
+
+        const btmLink = document.getElementById('bottom-link');
+        if(btmLink) {
+          btmLink.href = "<?= esc_url(home_url('/')) ?>information";
+        }
       <?php endif; ?>
       const buttons = document.querySelectorAll('.p-input-submit');
       const checkBox = document.getElementById('checkBox-1');

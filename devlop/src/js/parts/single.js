@@ -1,7 +1,9 @@
 document.addEventListener("DOMContentLoaded", () => {
   document.querySelectorAll("details").forEach( (el) => {
     const summary = el.querySelector("summary");
-    const answer = el.querySelector("summary + .wp-block-group");
+    const answer = summary.nextElementSibling;
+
+    
 
     if(summary && answer) {
       summary.addEventListener("click", (event) => {

@@ -34,7 +34,7 @@
         echo '</div>';
     }
 
-  } elseif (is_archive() || is_page('news')) {
+  } elseif (is_archive() || is_page('news') || is_search()) {
 
     echo '<div class="p-pagination">';
     echo paginate_links(

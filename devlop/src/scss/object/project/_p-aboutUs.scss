@@ -6,7 +6,8 @@
   background-size: cover;
   background-position: center;
   margin: 0 -20px;
-  padding: 48px 0 0 0;
+  padding: 48px 8px 0 8px;
+  font-family: $ff-gothic;
 }
 
 .p-aboutUs-top {
@@ -15,13 +16,17 @@
 }
 
 .p-aboutUs-top-title {
-  color: rgba(255, 255, 255, 0);
-  font-size: rem(64);
-  background-image: url(../images/about_us/text_About_Us.png);
-  background-size: contain;
-  background-repeat: no-repeat;
-  width: 300px;
-  margin: 0 auto;
+  // color: rgba(255, 255, 255, 0);
+  color: $white;
+  font-family: $ff-aptly;
+  font-weight: 300;
+  font-style: italic;
+  font-size: rem(80);
+  // background-image: url(../images/about_us/text_About_Us.png);
+  // background-size: contain;
+  // background-repeat: no-repeat;
+  // width: 300px;
+  // margin: 0 auto;
   margin-bottom: 32px;
 }
 
@@ -106,9 +111,11 @@
     color: $music-blue;
 
     .p-aboutUs-sec-title-main {
-      background-image: url(../images/about_us/text_music.png);
-      width: 66%;
+      // background-image: url(../images/about_us/text_music.png);
+      // width: 66%;
       height: 75px;
+      font-size: rem(80);
+      color: $music-blue;
     }
 
     a {
@@ -123,9 +130,11 @@
   &:nth-child(2) { //anime
     color: $anime-pink;
     .p-aboutUs-sec-title-main {
-      background-image: url(../images/about_us/text_anime.png);
-      width: 42%;
+      // background-image: url(../images/about_us/text_anime.png);
+      // width: 42%;
       height: 75px;
+      font-size: rem(80);
+      color: $anime-pink;
     }
     a {
       color: $anime-pink;
@@ -139,9 +148,11 @@
   &:nth-child(3) { //game
     color: $game-purple;
     .p-aboutUs-sec-title-main {
-      background-image: url(../images/about_us/text_game.png);
-      width: 36%;
+      // background-image: url(../images/about_us/text_game.png);
+      // width: 36%;
       height: 75px;
+      font-size: rem(80);
+      color: $game-purple;
     }
     a {
       color: $game-purple;
@@ -155,9 +166,11 @@
   &:nth-child(4) { //entertainment
     color: $enter-orange;
     .p-aboutUs-sec-title-main {
-      background-image: url(../images/about_us/text_entertainment.png);
-      width: 80%;
+      // background-image: url(../images/about_us/text_entertainment.png);
+      // width: 80%;
       height: 60px;
+      font-size: rem(60);
+      color: $enter-orange;
     }
     a {
       color: $enter-orange;
@@ -177,9 +190,11 @@
 
 .p-aboutUs-sec-title-main {
   display: inline-block;
-  background-size: contain;
-  background-repeat: no-repeat;
-  color: #00000000;
+  // background-size: contain;
+  // background-repeat: no-repeat;
+  font-family: $ff-aptly;
+  font-weight: 300;
+  font-style: italic;
 }
 
 .p-aboutUs-sec-title-sub {
@@ -203,12 +218,14 @@
 
 .p-aboutUs-bottom-title {
   font-size: rem(48);
-  color: #00000000;
   margin-bottom: 24px;
-  background-image: url(../images/contact/text_artist_creator.png);
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: center;
+  font-family: $ff-aptly;
+  font-weight: 400;
+  font-style: italic;
+  // background-image: url(../images/contact/text_artist_creator.png);
+  // background-size: contain;
+  // background-repeat: no-repeat;
+  // background-position: center;
 }
 
 .p-aboutUs-bottom-intro {

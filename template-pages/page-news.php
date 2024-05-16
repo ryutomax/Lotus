@@ -13,11 +13,11 @@ Template Name: News一覧
         <div class="p-googleAd-inner"></div>
     </section>
     <section class="p-fv">
-			<h1 class="p-fv-title">NEWS</h1>
-		</section>
-		<section class="p-mid-googleAd">
-			<div class="p-googleAd-inner"></div>
-		</section>
+        <h1 class="p-fv-title">NEWS</h1>
+    </section>
+    <section class="p-mid-googleAd">
+        <div class="p-googleAd-inner"></div>
+    </section>
     <?php
         $args = [
             'breadcrumb_slug_arr' => [],
@@ -64,7 +64,6 @@ Template Name: News一覧
                             )
                         ]
                     );
-
                     $wp_query = new WP_Query( $args );
                     if ( $wp_query->have_posts() ):
                     while ( $wp_query->have_posts() ):
@@ -104,14 +103,7 @@ Template Name: News一覧
             </div>
             <!-- /.p-articles -->
         </section>
-        <section class="p-side">
-            <div class="p-side01"></div>
-            <div class="p-side02"></div>
-            <div class="p-side03"></div>
-            <div class="p-side04"></div>
-            <div class="p-side05"></div>
-            <div class="p-side06"></div>
-        </section>
+        <?php get_template_part('template-parts/side'); ?><!-- サイド -->
     </div>
 </main>
 <?php get_template_part('template-parts/footer') ?>

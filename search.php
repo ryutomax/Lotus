@@ -13,26 +13,12 @@
             'breadcrumb_slug_arr' => [],
             'breadcrumb_arr' => [$br_text]
         ];
-
         get_template_part('template-parts/breadcrumb', null, $args);
-
     ?>
     <div class="p-mainContent">
       <section class="p-content">
         <div class="p-search-result">
-        <?php
-          $i = 0;
-          if (have_posts()) {
-            while(have_posts()) {
-              the_post();
-              $i++;
-            }
-          } else {
-
-          }
-          wp_reset_postdata();
-        ?>
-          <p><?php echo '検索結果：' .$i. ' 件';?></p>
+          <p><?php echo '検索結果：' .$wp_query -> found_posts. ' 件';?></p>
         </div>
         <div class="p-articles">
         <?php if (have_posts()): ?>
@@ -69,6 +55,7 @@
           endif;
           wp_reset_postdata();
         ?>
+        <?php get_template_part('template-parts/pagination'); ?><!-- ページネーション -->
         </div>
       </section>
       <section class="p-side">

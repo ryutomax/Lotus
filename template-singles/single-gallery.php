@@ -26,7 +26,7 @@
     ];
 
     $tag_name = "{$post_type}-tag";
-	$tag_terms_name = term_names_by_term(get_the_terms($single_post_id, $tag_name));
+	$tag_terms_name = term_names_by_term($single_post_id, $tag_name, true);
 ?>
 <div class="l-main">
     <section class="p-top-googleAd">
@@ -128,14 +128,7 @@
 			</div>
             <!-- /.p-articles -->
         </section>
-        <section class="p-side">
-			<div class="p-side01"></div>
-			<div class="p-side02"></div>
-			<div class="p-side03"></div>
-			<div class="p-side04"></div>
-			<div class="p-side05"></div>
-			<div class="p-side06"></div>
-		</section>
+        <?php get_template_part('template-parts/side'); ?><!-- サイド -->
     </div>
 </div>
 

@@ -10,10 +10,8 @@
           </a>
         </h1>
         <nav class="p-footer-nav">
-          <a href="<?= esc_url(home_url('/')) ?>company" class="p-footer-nav-link">運営会社</a>
+          <a href="<?= esc_url(home_url('/')) ?>information" class="p-footer-nav-link">運営会社/利用規約/プライバシーポリシー</a>
           <a href="<?= esc_url(home_url('/')) ?>contact" class="p-footer-nav-link">掲載依頼・お問い合わせ</a>
-          <a href="<?= esc_url(home_url('/')) ?>termsOfUse" class="p-footer-nav-link">利用規約</a>
-          <a href="<?= esc_url(home_url('/')) ?>privacy" class="p-footer-nav-link">プライバシーポリシー</a>
         </nav>
       </div>
       <!-- /.l-footer__inner -->

@@ -3,28 +3,39 @@
 
   <?php if (is_home() || is_front_page()) :?>
     <?php $title = "TOP｜Lotus｜株式会社ディッジ"; ?>
-    <?php $description = ""; ?>
+    <?php $description = '「Lotus」は株式会社ディッジ（D.H Inc.）が運営する"クリエイターの言葉を伝える”エンタメ総合メディアです。
+    SNSが生活の一部である現代において「言葉」が人を世界を繋げていることは言うまでもありません。言葉は広がり、時に魔法をかけるが如く人々の心に響きます。'; ?>
   <?php elseif((is_archive() && ('music' == get_query_var('post_type'))) || (is_single() && ('music' == get_post_type()))):?>
     <?php $title = "ミュージック｜Lotus｜株式会社ディッジ"; ?>
-    <?php $description = ""; ?>
+    <?php $description = "邦楽、洋楽などのミュージックにまつわるニュース、インタビュー、コラムなどをお届け"; ?>
   <?php elseif(is_archive() && ('animation' == get_query_var('post_type')) || (is_single() && ('animation' == get_post_type()))):?>
     <?php $title = "アニメ｜Lotus｜株式会社ディッジ"; ?>
-    <?php $description = ""; ?>
+    <?php $description = "話題のアニメやVTuberなどにまつわるニュース、インタビュー、コラムなどをお届け"; ?>
   <?php elseif(is_archive() && ('game' == get_query_var('post_type')) || (is_single() && ('game' == get_post_type()))):?>
     <?php $title = "ゲーム｜Lotus｜株式会社ディッジ"; ?>
-    <?php $description = ""; ?>
+    <?php $description = "話題のゲームやクリエイターにまつわるニュース、インタビュー、コラムなどをお届け"; ?>
   <?php elseif(is_archive() && ('entertainment' == get_query_var('post_type')) || (is_single() && ('entertainment' == get_post_type()))):?>
     <?php $title = "エンタメ｜Lotus｜株式会社ディッジ"; ?>
-    <?php $description = ""; ?>
+    <?php $description = "ドラマ、映画、俳優、女優、書籍などにまつわるニュース、インタビュー、コラムなどをお届け"; ?>
   <?php elseif(is_page('newslist')) :?>
     <?php $title = "ニュース｜Lotus｜株式会社ディッジ"; ?>
-    <?php $description = ""; ?>
+    <?php $description = "ミュージック、アニメ、ゲーム、エンタメ等の新着ニュースをお届け"; ?>
   <?php elseif(is_single() && ('gallery' == get_post_type())) :?>
     <?php $title = "画像ギャラリー｜Lotus｜株式会社ディッジ"; ?>
-    <?php $description = ""; ?>
+    <?php $description = '「Lotus」は株式会社ディッジ（D.H Inc.）が運営する"クリエイターの言葉を伝える”エンタメ総合メディアです。
+    SNSが生活の一部である現代において「言葉」が人を世界を繋げていることは言うまでもありません。言葉は広がり、時に魔法をかけるが如く人々の心に響きます。'; ?>
   <?php elseif(is_page('contact')) :?>
     <?php $title = "お問い合わせ（資料請求）｜Lotus｜株式会社ディッジ"; ?>
-    <?php $description = ""; ?>
+    <?php $description = '「Lotus」は株式会社ディッジ（D.H Inc.）が運営する"クリエイターの言葉を伝える”エンタメ総合メディアです。
+    SNSが生活の一部である現代において「言葉」が人を世界を繋げていることは言うまでもありません。言葉は広がり、時に魔法をかけるが如く人々の心に響きます。'; ?>
+  <?php elseif(is_page('information')) :?>
+    <?php $title = "運営会社/利用規約/プライバシーポリシー｜Lotus｜株式会社ディッジ"; ?>
+    <?php $description = '「Lotus」は株式会社ディッジ（D.H Inc.）が運営する"クリエイターの言葉を伝える”エンタメ総合メディアです。
+    SNSが生活の一部である現代において「言葉」が人を世界を繋げていることは言うまでもありません。言葉は広がり、時に魔法をかけるが如く人々の心に響きます。'; ?>
+  <?php else:?>
+    <?php $title = "Lotus｜株式会社ディッジ"; ?>
+    <?php $description = '「Lotus」は株式会社ディッジ（D.H Inc.）が運営する"クリエイターの言葉を伝える”エンタメ総合メディアです。
+    SNSが生活の一部である現代において「言葉」が人を世界を繋げていることは言うまでもありません。言葉は広がり、時に魔法をかけるが如く人々の心に響きます。'; ?>
   <?php endif; ?>
   <head>
     <meta charset="UTF-8" />

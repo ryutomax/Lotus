@@ -3,15 +3,16 @@
 .p-contact {
   background-color: #D8E1E24D;
   margin: 0 -20px;
-  padding: 0 20px 40px 20px;
-
+  padding: 0 20px 80px 20px;
   position: relative;
+  font-family: $ff-gothic;
 
   &::before {
     content: "";
     background-image: url(../images/contact/contact_top_bg.jpg);
     position: absolute;
     background-size: cover;
+    background-position: center;
     width: 100px;
     height: 300px;
     width: 100vw;
@@ -33,12 +34,14 @@
 
 .p-contact-head-title {
   font-size: rem(48);
-  color: rgba(0, 0, 0, 0);
   margin-bottom: 24px;
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: center;
-  background-image: url(../images/contact/text_artist_creator.png);
+  font-family: $ff-aptly;
+  font-weight: 400;
+  font-style: italic;
+  // background-size: contain;
+  // background-repeat: no-repeat;
+  // background-position: center;
+  // background-image: url(../images/contact/text_artist_creator.png);
 }
 
 .p-contact-head-intro {

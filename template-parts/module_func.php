@@ -142,7 +142,6 @@
         }
         return $single_slug;
     }
-
     // ========================================
     // 投稿から画像データ取得 HTMLタグとして出力
     // ========================================
@@ -158,37 +157,23 @@
         return $image_urls;
     }
     // ========================================
-    // 画像ギャラリーページネーション
+    // 投稿ID＋タクソノミーからタームネームの取得
     // ========================================
-    function custom_wp_link_pages($article_link) {
-        // ページネーションの設定
-        $args = array(
-            'before'           => '<div class="p-gallery-page">',
-            'after'            => '</div>',
-            'next_or_number'   => 'next',
-            'nextpagelink'     => __('NEXT'),
-            'previouspagelink' => __('PREV'),
-        );
+    function term_names_by_term($post_id, $taxonomy, $is_array) {
+        $terms = get_the_terms($post_id, $taxonomy);
 
-        $pagination = wp_link_pages($args);
-
-        // 前のページリンクと次のページリンクの間にカスタムリンクを挿入記事へ戻る
-        $custom_link = '<a href="' . esc_url($article_link) .'?>" class="p-gallery-return">記事へ戻る</a>';
-        $pagination = str_replace('</div><div>', '</div>' . $custom_link . '<div>', $pagination);
-    
-        echo $pagination;
-    }
-
-    // ========================================
-    // タームからタームネームの配列取得
-    // ========================================
-    function term_names_by_term($tag_terms) {
-        if (!empty($tag_terms) && !is_wp_error($tag_terms)) {
-            foreach ($tag_terms as $tag_term) {
-                $tag_terms_name[] = $tag_term -> name;
+        if (!empty($terms) && !is_wp_error($terms)) {
+            if ($is_array) {
+                foreach ($terms as $term) { //配列
+                    $terms_name[] = $term -> name;
+                }
+            } else {
+                foreach ($terms as $term) { //配列
+                    $terms_name = $term -> name;
+                }
             }
         }
-        return $tag_terms_name;
+        return $terms_name;
     }
 
 ?>

@@ -7,27 +7,16 @@
 	$post_type = get_post_type();
 	$page_url = get_permalink();
 	$post_id = get_the_ID();
-	$terms = get_the_terms($post_id, 'meta-bind');
-	$terms_name = "";
-	if (!empty($terms) && !is_wp_error($terms)) {
-		foreach ($terms as $term) {
-			$terms_name = $term->name;
-		}
-	}
-	$tag_terms = get_the_terms($post_id, 'entertainment-tag');
-	$tag_terms_name = [];
-	if (!empty($tag_terms) && !is_wp_error($tag_terms)) {
-		foreach ($tag_terms as $tag_term) {
-			$tag_terms_name[] = $tag_term -> name;
-		}
-	}
 
-    $home_url = esc_url(home_url('/'));
+	$terms_name = term_names_by_term($post_id, 'meta-bind', false);
+	$tag_terms_name = term_names_by_term($post_id, 'entertainment-tag', true);
 
-    $args = [
-        'breadcrumb_slug_arr' => [$post_type],
-        'breadcrumb_arr' => ['エンタメ', $title]
-    ];
+	$home_url = esc_url(home_url('/'));
+
+	$args = [
+			'breadcrumb_slug_arr' => [$post_type],
+			'breadcrumb_arr' => ['エンタメ', $title]
+	];
 ?>
 <div class="l-main">
 	<section class="p-top-googleAd">
@@ -143,14 +132,7 @@
 				?>
 			</div>
 		</section>
-		<section class="p-side">
-			<div class="p-side01"></div>
-			<div class="p-side02"></div>
-			<div class="p-side03"></div>
-			<div class="p-side04"></div>
-			<div class="p-side05"></div>
-			<div class="p-side06"></div>
-		</section>
+		<?php get_template_part('template-parts/side'); ?><!-- サイド -->
 	</div>
 	<!-- ./p-mainContent -->
 </div>

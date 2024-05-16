@@ -242,7 +242,7 @@ $mr: 32px;
 
 .p-articles-title {
   display: flex;
-  margin-bottom: 16px;
+  margin-bottom: 40px;
   font-size: rem(24);
   line-height: 48px;
   .p-articles-title-eng {
@@ -257,7 +257,8 @@ $mr: 32px;
     display: inline-block;
     color: $black;
     padding: 0 16px;
-    font-size: 80%;
+    font-size: 65%;
+    font-family: $ff-gothic;
   }
 }
 
@@ -309,7 +310,8 @@ $mr: 32px;
 .p-article-type-item {
   display: block;
   color: $white;
-  padding: 2px;
+  padding: 3px 4px;
+  font-weight: 700;
 
   &:not(:last-child) {
     margin-right: 4px;

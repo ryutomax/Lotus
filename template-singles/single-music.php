@@ -8,21 +8,8 @@
 	$page_url = get_permalink();
 	$post_id = get_the_ID();
 
-	$terms = get_the_terms($post_id, 'meta-bind');
-	$terms_name = "";
-	if (!empty($terms) && !is_wp_error($terms)) {
-		foreach ($terms as $term) {
-			$terms_name = $term->name;
-		}
-	}
-
-	$tag_terms = get_the_terms($post_id, 'music-tag');
-	$tag_terms_name = [];
-	if (!empty($tag_terms) && !is_wp_error($tag_terms)) {
-		foreach ($tag_terms as $tag_term) {
-			$tag_terms_name[] = $tag_term -> name;
-		}
-	}
+	$terms_name = term_names_by_term($post_id, 'meta-bind', false);
+	$tag_terms_name = term_names_by_term($post_id, 'music-tag', true);
 
 	$home_url = esc_url(home_url('/'));
 
@@ -47,21 +34,21 @@
 			?>
 			<div class="p-single">
 				<span class="p-single-type" style="background-color: #59d5e0;">
-					<?php
-						$terms = wp_get_post_terms($post_id, 'category', array('fields' => 'names'));
-						if (!is_wp_error($terms) && !empty($terms)) {
-							echo convert_jp($terms[0]);
-						}
-					?>
+						<?php
+							$terms = wp_get_post_terms($post_id, 'category', array('fields' => 'names'));
+							if (!is_wp_error($terms) && !empty($terms)) {
+								echo convert_jp($terms[0]);
+							}
+						?>
 				</span>
 				<h1 class="p-single-title"><?php the_title(); ?></h1>
 				<time class="p-single-date" datetime="<?= get_the_date('Y.m.d'); ?>"><?= get_the_date('Y.m.d'); ?></time>
-				<?php
-					$post_thumbnail = get_the_post_thumbnail_url($post_id);
-					if (!$post_thumbnail) {
-						$post_thumbnail = esc_url(get_template_directory_uri() . '/'). 'assets/images/common/thumbnail-none.jpg';
-					}
-				?>
+						<?php
+							$post_thumbnail = get_the_post_thumbnail_url($post_id);
+							if (!$post_thumbnail) {
+								$post_thumbnail = esc_url(get_template_directory_uri() . '/'). 'assets/images/common/thumbnail-none.jpg';
+							}
+						?>
 				<img src="<?= esc_url($post_thumbnail); ?>" alt="<?php the_title(); ?>" class="p-single-thumbnail">
 				<?php $gallery_link = generate_gallery_link(); ?>
 				<?php if(isset($gallery_link)): ?>
@@ -74,11 +61,7 @@
 					<?php get_template_part('template-parts/pagination'); ?><!-- ページネーション -->
 					<?php include get_template_directory() . '/template-parts/sns_share.php'; ?>
 				</div>
-				<?php
-					endwhile;
-					wp_reset_postdata();
-					endif;
-				?>
+				<?php endwhile; wp_reset_postdata(); endif; ?>
 				<!-- 作品情報 -->
 				<?php include get_template_directory() . '/template-parts/meta_info.php'; ?>
 			</div>
@@ -145,14 +128,7 @@
 				?>
 			</div>
 		</section>
-		<section class="p-side">
-			<div class="p-side01"></div>
-			<div class="p-side02"></div>
-			<div class="p-side03"></div>
-			<div class="p-side04"></div>
-			<div class="p-side05"></div>
-			<div class="p-side06"></div>
-		</section>
+		<?php get_template_part('template-parts/side'); ?><!-- サイド -->
 	</div>
 	<!-- ./p-mainContent -->
 </div>
