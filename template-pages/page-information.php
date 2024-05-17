@@ -19,6 +19,7 @@ Template Name: 運営会社/利用規約/プライバシーポリシー
 	<?php get_template_part('template-parts/breadcrumb', null, $args); ?>
   <?php if(have_posts()): while(have_posts()): the_post(); ?>
   <section class="p-info">
+    <h3 class="p-info-title">Site Policy</h3>
     <?php the_content(); ?>
   </section>
   <?php endwhile; wp_reset_postdata(); endif; ?>
