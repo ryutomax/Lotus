@@ -94,6 +94,7 @@
   max-width: 520px;
   width: calc(100% - 210px);
   padding: 8px;
+  font-family: $ff-gothic;
 }
 
 .p-input-text {
@@ -194,6 +195,7 @@ input[type=checkbox]:checked::after {
 
 .p-input-submit,
 .p-input-back {
+  display: inline-block;
   width: 250px;
   color: $white;
   background-color: $black;
@@ -216,5 +218,17 @@ span[title="土曜日"] {
 }
 
 span[title="日曜日"] {
+  color: red;
+}
+
+.p-contact-text {
+  line-height: 1.7;
+  margin-bottom: 24px;
+}
+
+.mw_wp_form_send_error {
+  text-align: center;
+  margin-bottom: 24px;
+  font-weight: 700;
   color: red;
 }
