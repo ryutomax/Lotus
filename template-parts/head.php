@@ -24,8 +24,8 @@
     <?php $title = "画像ギャラリー｜Lotus｜株式会社ディッジ"; ?>
     <?php $description = '「Lotus」は株式会社ディッジ（D.H Inc.）が運営する"クリエイターの言葉を伝える”エンタメ総合メディアです。
     SNSが生活の一部である現代において「言葉」が人を世界を繋げていることは言うまでもありません。言葉は広がり、時に魔法をかけるが如く人々の心に響きます。'; ?>
-  <?php elseif(is_page('contact')) :?>
-    <?php $title = "お問い合わせ（資料請求）｜Lotus｜株式会社ディッジ"; ?>
+  <?php elseif(is_page('contact') || is_page('confirm') || is_page('complete')):?>
+    <?php $title = "取材申込フォーム｜Lotus｜株式会社ディッジ"; ?>
     <?php $description = '「Lotus」は株式会社ディッジ（D.H Inc.）が運営する"クリエイターの言葉を伝える”エンタメ総合メディアです。
     SNSが生活の一部である現代において「言葉」が人を世界を繋げていることは言うまでもありません。言葉は広がり、時に魔法をかけるが如く人々の心に響きます。'; ?>
   <?php elseif(is_page('information')) :?>

@@ -69,3 +69,23 @@ a {
     opacity: 1;
   }
 }
+
+@mixin menuTextAnime($delay) {
+  animation-name: menu-text;
+  animation-duration: 1s;
+  animation-delay: $delay;
+  animation-fill-mode: forwards;
+}
+
+
+@keyframes menu-text {
+  0% {
+    opacity: 0;
+    transform: translateY(-2px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0px);
+  }
+}

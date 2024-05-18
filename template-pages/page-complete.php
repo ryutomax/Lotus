@@ -33,7 +33,7 @@ Template Name: 申込完了
         // ここにページの他のコンテンツやテンプレートコードを追加
       ?>
       <p class="p-contact-text">取材申込ありがとうございます。<br>内容確認後、担当者よりご回答させて頂きます。</p>
-      <a href="<?= esc_url(home_url('/')) ?>" class="p-input-back">TOPへ戻る</a>
+      <a href="<?= esc_url(home_url('/')) ?>" class="p-input-topBack">TOPへ戻る</a>
     </div>
   </div>
 </main>

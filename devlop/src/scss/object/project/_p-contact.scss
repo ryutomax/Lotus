@@ -224,6 +224,20 @@ span[title="日曜日"] {
 .p-contact-text {
   line-height: 1.7;
   margin-bottom: 24px;
+  padding-top: 40px;
+  text-align: center;
+}
+
+.p-input-topBack {
+  display: block;
+  width: 250px;
+  color: #fff;
+  background-color: #000;
+  font-size: 1.125rem;
+  border: none;
+  line-height: 50px;
+  text-align: center;
+  margin: 0 auto;
 }
 
 .mw_wp_form_send_error {

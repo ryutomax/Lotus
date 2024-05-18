@@ -7,5 +7,5 @@ import Loading from './bundle/loading'
 // new About();
 // new Form();
 new scrollAnime();
-// new Menu();
+new Menu();
 new Loading();

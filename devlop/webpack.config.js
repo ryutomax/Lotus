@@ -21,7 +21,7 @@ module.exports = {
         extractComments: false,
         terserOptions: {
           compress: {
-            drop_console: true, //console.logの出力を防ぐ
+            drop_console: false, //console.logの出力を防ぐ
           },
         },
       }),
