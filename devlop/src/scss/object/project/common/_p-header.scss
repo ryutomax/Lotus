@@ -23,6 +23,7 @@
 
   @include mq (o-tb) {
     padding: 10px 16px;
+    box-shadow: 1px 1px 5px #00000045;
   }
 }
 
@@ -34,13 +35,15 @@
   @include mq (o-tb) {
     flex-direction: column-reverse;
     align-items: flex-start;
+    span {
+      font-size: rem(12);
+      margin-bottom: 10px;
+    }
   }
 
   &-link {
     max-width: 160px;
     margin-right: 20px;
-  }
-  &-img {
   }
 }
 
@@ -101,7 +104,7 @@
   @include mq (o-tb) {
     display: none;
     position: absolute;
-    top: 79px;
+    top: 90px;
     left: 0;
     width: 100vw;
     flex-direction: column;
@@ -205,12 +208,14 @@
 
 .p-header-menuBtn {
   display: none;
+
   @include mq(o-tb) {
     display: block;
     width: 50px;
     height: 50px;
     background-color: $white;
     right: 8px;
+    padding-top: 16px;
   }
 }
 

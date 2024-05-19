@@ -5,7 +5,7 @@
         <a class="p-header-logo-link" href="<?= esc_url(home_url('/')) ?>">
           <img src="<?php echo esc_url(get_template_directory_uri() . '/'); ?>assets/images/header/header-logo.png" alt="Lotus クリエイターの言葉を伝えるエンタメ総合メディア" class="p-header-logo-img">
         </a>
-        クリエイターの言葉を伝えるエンタメ総合メディア
+        <span>クリエイターの言葉を伝えるエンタメ総合メディア</span>
       </h1>
       <div class="p-header-search u-tb-none">
         <?php get_search_form(); ?>
