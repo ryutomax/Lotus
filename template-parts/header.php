@@ -21,12 +21,12 @@
         <?php get_search_form(); ?>
       </div>
       <nav class="p-header-nav">
-        <a href="<?= esc_url(home_url('/')) ?>aboutus" class="p-header-nav-link js-menu-text01"><span class="p-header-nav-i">A</span>bout Us<span class="p-header-nav-sub u-tb-show">ロータスについて</span></a>
-        <a href="<?= esc_url(home_url('/')) ?>newslist" class="p-header-nav-link js-menu-text02"><span class="p-header-nav-i">N</span>ews<span class="p-header-nav-sub u-tb-show">ニュース</span></a>
-        <a href="<?= esc_url(home_url('/')) ?>music" class="p-header-nav-link js-menu-text03"><span class="p-header-nav-i">M</span>usic<span class="p-header-nav-sub u-tb-show">ミュージック</span></a>
-        <a href="<?= esc_url(home_url('/')) ?>animation" class="p-header-nav-link js-menu-text04"><span class="p-header-nav-i">A</span>nime<span class="p-header-nav-sub u-tb-show">アニメ</span></a>
-        <a href="<?= esc_url(home_url('/')) ?>game" class="p-header-nav-link js-menu-text05"><span class="p-header-nav-i">G</span>ame<span class="p-header-nav-sub u-tb-show">ゲーム</span></a>
-        <a href="<?= esc_url(home_url('/')) ?>entertainment" class="p-header-nav-link js-menu-text06"><span class="p-header-nav-i">E</span>ntertainment<span class="p-header-nav-sub u-tb-show">エンタメ</span></a>
+        <div class="p-header-nav-item js-menu-text01"><a href="<?= esc_url(home_url('/')) ?>aboutus" class="p-header-nav-link"><span class="p-header-nav-i">A</span>bout Us<span class="p-header-nav-sub u-tb-show">ロータスについて</span></a></div>
+        <div class="p-header-nav-item js-menu-text02"><a href="<?= esc_url(home_url('/')) ?>newslist" class="p-header-nav-link"><span class="p-header-nav-i">N</span>ews<span class="p-header-nav-sub u-tb-show">ニュース</span></a></div>
+        <div class="p-header-nav-item js-menu-text03"><a href="<?= esc_url(home_url('/')) ?>music" class="p-header-nav-link"><span class="p-header-nav-i">M</span>usic<span class="p-header-nav-sub u-tb-show">ミュージック</span></a></div>
+        <div class="p-header-nav-item js-menu-text04"><a href="<?= esc_url(home_url('/')) ?>animation" class="p-header-nav-link"><span class="p-header-nav-i">A</span>nime<span class="p-header-nav-sub u-tb-show">アニメ</span></a></div>
+        <div class="p-header-nav-item js-menu-text05"><a href="<?= esc_url(home_url('/')) ?>game" class="p-header-nav-link"><span class="p-header-nav-i">G</span>ame<span class="p-header-nav-sub u-tb-show">ゲーム</span></a></div>
+        <div class="p-header-nav-item js-menu-text06"><a href="<?= esc_url(home_url('/')) ?>entertainment" class="p-header-nav-link"><span class="p-header-nav-i">E</span>ntertainment<span class="p-header-nav-sub u-tb-show">エンタメ</span></a></div>
       </nav>
       <!-- /.p-header-nav -->
     </div>

@@ -38,6 +38,14 @@
   }
 }
 
+.u-tb-show-flex {
+  display: none;
+
+  @include mq (o-tb) {
+    display: flex;
+  }
+}
+
 .u-tb-none {
   //タブレット以下で表示
   display: block;

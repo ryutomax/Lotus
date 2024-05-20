@@ -39,24 +39,27 @@
   }
 }
 
-.is-menu-show-text01 {
-  @include menuTextAnime(0.5s)
+@include mq (o-tb) {
+  .is-menu-show-text01 {
+    @include menuTextAnime(0.5s)
+  }
+  .is-menu-show-text02 {
+    @include menuTextAnime(0.6s)
+  }
+  .is-menu-show-text03 {
+    @include menuTextAnime(0.7s)
+  }
+  .is-menu-show-text04 {
+    @include menuTextAnime(0.8s)
+  }
+  .is-menu-show-text05 {
+    @include menuTextAnime(0.9s)
+  }
+  .is-menu-show-text06 {
+    @include menuTextAnime(1.0s)
+  }
 }
-.is-menu-show-text02 {
-  @include menuTextAnime(0.6s)
-}
-.is-menu-show-text03 {
-  @include menuTextAnime(0.7s)
-}
-.is-menu-show-text04 {
-  @include menuTextAnime(0.8s)
-}
-.is-menu-show-text05 {
-  @include menuTextAnime(0.9s)
-}
-.is-menu-show-text06 {
-  @include menuTextAnime(1.0s)
-}
+
 
 .is-menu-show-icons {
   animation-name: menu-text;
