@@ -7,6 +7,10 @@
   position: relative;
   font-family: $ff-gothic;
 
+  @include mq (o-sp) {
+    background-color: $white;
+  }
+
   &::before {
     content: "";
     background-image: url(../images/contact/contact_top_bg.jpg);
@@ -19,6 +23,9 @@
     height: 180px;
     top: 0;
     left: 0;
+    @include mq (o-sp) {
+      background-image: url(../images/contact/contact_top_bg_sp.jpg);
+    }
   }
 }
 
@@ -52,6 +59,10 @@
 .p-contact-form {
   max-width: 740px;
   margin: 0 auto;
+
+  @include mq (o-sp) {
+    max-width: 600px;
+  }
 }
 
 .p-contact-form-title {
@@ -61,6 +72,10 @@
 
 .p-contact-form-caption {
   margin-bottom: 48px;
+
+  @include mq (o-sp) {
+    margin-bottom: 24px;
+  }
 }
 
 .mw_wp_form .error {
@@ -74,11 +89,21 @@
   display: flex;
   padding: 20px;
   position: relative;
+
+  @include mq (o-sp) {
+    flex-direction: column;
+    padding: 20px 0 0 0;
+  }
 }
 
 .p-input-label {
   width: 210px;
   letter-spacing: 0.01em;
+
+  @include mq (o-sp) {
+    margin-bottom: 10px;
+    font-weight: 700;
+  }
   span {
     color: red;
   }
@@ -95,10 +120,18 @@
   width: calc(100% - 210px);
   padding: 8px;
   font-family: $ff-gothic;
+
+  @include mq (o-sp) {
+    width: 100%;
+    max-width: none;
+  }
 }
 
 .p-input-text {
   height: 30px;
+  @include mq (o-sp) {
+    height: 40px;
+  }
 }
 
 .p-input-textarea {
