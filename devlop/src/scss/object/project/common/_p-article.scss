@@ -3,6 +3,10 @@
 .p-article-header {
   display: flex;
   margin-bottom: 80px;
+
+  @include mq (o-sp) {
+    flex-wrap: wrap;
+  }
 }
 
 .p-fv {
@@ -71,6 +75,7 @@
 .p-anime,
 .p-game,
 .p-entertainment {
+
   .p-article-tab {
     &:first-child {
       width: calc(100% * 30 / 300);
@@ -89,6 +94,30 @@
     }
     &:last-child {
       width: calc(100% * 56 / 300);
+    }
+
+    @include mq (o-sp) {
+      &:first-child {
+        width: calc(100% * 60 / 300);
+        margin-bottom: 24px;
+      }
+      &:nth-child(2) {
+        width: calc(100% * 80 / 300);
+        margin-bottom: 24px;
+      }
+      &:nth-child(3) {
+        width: calc(100% * 124 / 300);
+        margin-bottom: 24px;
+      }
+      &:nth-child(4) {
+        width: calc(100% * 100 / 300);
+      }
+      &:nth-child(5) {
+        width: calc(100% * 100 / 300);
+      }
+      &:last-child {
+        width: calc(100% * 100 / 300);
+      }
     }
   }
 }

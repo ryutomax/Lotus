@@ -3,6 +3,13 @@
 .p-side {
   width: 300px;
 
+  @include mq (o-tb) {
+    width: 100%;
+    max-width: 500px;
+    margin: 0 auto;
+    margin-top: 80px;
+  }
+
   div {
     display: block;
     border: 1px solid $black;

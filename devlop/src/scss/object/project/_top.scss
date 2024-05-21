@@ -99,11 +99,20 @@
   display: flex;
   max-width: 1200px;
   margin: 0 auto;
+
+  @include mq (o-tb) {
+    flex-direction: column;
+  }
 }
 
 .p-content {
   width: calc(100% - 300px);
   margin-right: 85px;
+
+  @include mq (o-tb) {
+    margin-right: 0;
+    width: 100%;
+  }
 }
 
 .p-pickUp {
