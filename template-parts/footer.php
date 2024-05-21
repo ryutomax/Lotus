@@ -1,4 +1,4 @@
-    <a href="#" class="c-toUpBtn js-toUpBtn">
+    <a href="#" class="c-toUpBtn js-toUpBtn u-zindex_100">
       <img src="<?php echo esc_url(get_template_directory_uri() . '/'); ?>assets/images/common/top_arrow.svg" alt="ページ上部へ">
     </a>
     <footer class="l-footer p-footer">

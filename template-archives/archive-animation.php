@@ -79,24 +79,26 @@
 						<figure  class="p-article-frame">
 							<img src="<?php print $thumbnail; ?>" alt="<?php the_title(); ?>" class="p-article-thumbnail">
 						</figure>
-						<h2 class="p-article-title"><?php the_title(); ?></h2>
-						<div class="p-article-type">
-						<?php
-							$post_id = get_the_ID(); // 現在の投稿IDを取得
-							$terms = wp_get_post_terms($post_id, 'category', array('fields' => 'names'));
+						<div class="p-article-info">
+							<h2 class="p-article-title"><?php the_title(); ?></h2>
+							<div class="p-article-type">
+							<?php
+								$post_id = get_the_ID(); // 現在の投稿IDを取得
+								$terms = wp_get_post_terms($post_id, 'category', array('fields' => 'names'));
 
-							if (!is_wp_error($terms) && !empty($terms)) {
-								foreach ($terms as $term_name) {
-						?>
-						<span class="p-article-type-item" style="background-color: black;"><?= convert_jp($term_name); ?></span>
-						<?php
+								if (!is_wp_error($terms) && !empty($terms)) {
+									foreach ($terms as $term_name) {
+							?>
+							<span class="p-article-type-item" style="background-color: black;"><?= convert_jp($term_name); ?></span>
+							<?php
+									}
 								}
-							}
-						?>
+							?>
+							</div>
+							<ul class="p-article-tags">
+								<li class="p-article-tag"></li>
+							</ul>
 						</div>
-						<ul class="p-article-tags">
-							<li class="p-article-tag"></li>
-						</ul>
 					</a>
 				</article>
 				<?php endwhile; ?>

@@ -35,17 +35,18 @@
               <figure  class="p-article-frame">
                 <img src="<?php print $thumbnail; ?>" alt="<?php the_title(); ?>" class="p-article-thumbnail">
               </figure>
-              <!-- カスタム投稿タイプ出力 -->
-              <h2 class="p-article-title"><?php the_title(); ?></h2>
-              <?php
-                $post_type = get_post_type();
-              ?>
-              <div class="p-article-type">
-                <span class="p-article-type-item" style="<?= get_post_type_info($post_type)['color']; ?>"><?= get_post_type_info($post_type)['name']; ?></span>
+              <div class="p-article-info">
+                <h2 class="p-article-title"><?php the_title(); ?></h2>
+                <?php
+                  $post_type = get_post_type();
+                ?>
+                <div class="p-article-type">
+                  <span class="p-article-type-item" style="<?= get_post_type_info($post_type)['color']; ?>"><?= get_post_type_info($post_type)['name']; ?></span>
+                </div>
+                <ul class="p-article-tags">
+                  <li class="p-article-tag"></li>
+                </ul>
               </div>
-              <ul class="p-article-tags">
-                <li class="p-article-tag"></li>
-              </ul>
             </a>
           </article>
           <?php endwhile; ?>

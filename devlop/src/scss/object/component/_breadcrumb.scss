@@ -11,6 +11,28 @@
 
 .c-breadcrumb-item {
   margin-right: 24px;
+  position: relative;
+  font-family: $ff-gothic;
+  a {
+    font-family: $ff-gothic;
+    @include flashAnime;
+  }
+
+  &:first-child {
+    padding-left: 20px;
+    &::after {
+      content: "";
+      position: absolute;
+      top: 50%;
+      left: 16%;
+      transform: translate(-50%, -50%);
+      background-image: url(../images/common/home_icon.png);
+      background-repeat: no-repeat;
+      background-size: cover;
+      width: 18px;
+      height: 18px;
+    }
+  }
 }
 
 .c-breadcrumb-item:has(>a) {

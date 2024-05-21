@@ -1,4 +1,4 @@
-<header id="header" class="l-header p-header u-zindex_100">
+<header id="header" class="l-header p-header u-zindex_1000">
   <div class="p-header-inner">
     <div class="p-header-top">
       <h1 class="p-header-logo c-logo">

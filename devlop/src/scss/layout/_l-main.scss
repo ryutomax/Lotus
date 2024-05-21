@@ -3,4 +3,8 @@
 .l-main {
   padding: 0 20px;
   padding-top: 142px;
+
+  @include mq (o-tb) {
+    padding-top: 90px;
+  }
 }
