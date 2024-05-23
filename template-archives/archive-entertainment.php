@@ -28,10 +28,10 @@
 		?>
 	<div class="p-articles-head">
 		<h2 class="p-articles-title"><span class="p-articles-title-eng">ENTERTAINMENT</span><span class="p-articles-title-kana">エンタメ</span></h2>
-		<p class="p-articles-lead">ドラマ、映画、俳優、女優、書籍などにまつわるニュース、インタビュー、コラムなどをお届け</p>
+		<p class="p-articles-lead">ドラマ、映画、俳優、女優、書籍などにまつわる<br class="u-sp-show">ニュース、インタビュー、コラムなどをお届け</p>
 	</div>
 	<div class="p-mainContent">
-		<section class="p-content">
+		<section class="c-content">
 			<form action="<?= esc_url( home_url('/') );?>entertainment" method="post" class="p-article-header">
 				<button class="p-article-tab<?php $tabActive = $buttonValue == 'all' ?  ' is-tabActive' : ''; echo $tabActive; ?>" type="submit" name="button" value="all"><span>A</span>LL</button>
 				<button class="p-article-tab<?php $tabActive = $buttonValue == 'news' ?  ' is-tabActive' : ''; echo $tabActive; ?>" class="p-article-tab" type="submit" name="button" value="news"><span>N</span>EWS</button>

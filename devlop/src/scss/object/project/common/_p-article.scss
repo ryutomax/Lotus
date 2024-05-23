@@ -227,6 +227,10 @@
     background-image: url(../images/category/fv_entertainment.jpeg);
     background-position: center 35%;
   }
+
+  .p-fv-title {
+    font-size: min(15vw, 100px);
+  }
   .p-article-tab {
     span {
       color: $enter-orange;
@@ -270,6 +274,10 @@ $mr: 32px;
   flex-wrap: wrap;
   margin-right: -$mr;
   padding-bottom: 40px;
+
+  @include mq (o-sp) {
+    margin-right: 0;
+  }
 }
 
 .p-articles-related {
@@ -295,6 +303,9 @@ $mr: 32px;
   @include mq (o-sp) {
     width: 100%;
     margin-right: 0;
+    margin-bottom: 44px;
+    padding-bottom: 16px;
+    border-bottom: 2px solid $black;
   }
 }
 
@@ -334,8 +345,10 @@ $mr: 32px;
 
 .p-articles-lead {
   font-family: $ff-gothic;
+  line-height: 1.7;
 
   @include mq (o-sp) {
+    font-size: min(4vw, 18px);
     text-align: center;
   }
 }
@@ -364,7 +377,15 @@ $mr: 32px;
   font-weight: 700;
 
   @include mq (o-sp) {
+    font-size: rem(18);
+    top: -26px;
     transform: rotate(0);
+    font-family: $ff-gothic;
+    font-weight: 900;
+  }
+  @include mq (o-sp-m) {
+    font-size: rem(16);
+    top: -24px;
   }
 }
 
@@ -373,12 +394,21 @@ $mr: 32px;
   box-shadow: 1px 1px 4px #00000030;
   margin-bottom: 8px;
   overflow: hidden;
+
+  @include mq (o-sp) {
+    width: 50%;
+    margin-bottom: 0;
+    margin-right: 16px;
+  }
 }
 
 .p-article-thumbnail {
   height: 160px;
   object-fit: cover;
   transition: 0.3s scale;
+  @include mq (o-sp) {
+    height: 30vw;
+  }
 }
 
 .p-article-info {
@@ -386,6 +416,8 @@ $mr: 32px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    padding-top: 16px;
+    width: calc(50% - 16px);
   }
 }
 

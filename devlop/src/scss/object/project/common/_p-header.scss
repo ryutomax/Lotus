@@ -37,6 +37,7 @@
     align-items: flex-start;
     span {
       font-size: rem(12);
+      margin-right: -30px;
       margin-bottom: 10px;
     }
   }
@@ -223,7 +224,7 @@
     display: block;
     width: 50px;
     height: 50px;
-    background-color: $white;
+    background-color: #fff0;
     right: 8px;
     padding-top: 16px;
   }

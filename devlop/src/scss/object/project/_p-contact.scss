@@ -49,11 +49,18 @@
   // background-repeat: no-repeat;
   // background-position: center;
   // background-image: url(../images/contact/text_artist_creator.png);
+  @include mq (o-sp) {
+    font-size: rem(42);
+  }
 }
 
 .p-contact-head-intro {
   line-height: 1.7;
   font-size: rem(18);
+
+  @include mq (o-sp) {
+    font-size: rem(16);
+  }
 }
 
 .p-contact-form {
@@ -235,10 +242,12 @@ input[type=checkbox]:checked::after {
   font-size: rem(18);
   border: none;
   line-height: 50px;
+  @include flashAnime;
 }
 
 .p-input-back {
   margin-left: 16px;
+  @include flashAnime;
 }
 
 //detepicker

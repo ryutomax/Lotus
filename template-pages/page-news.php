@@ -34,10 +34,10 @@ Template Name: News一覧
     ?>
     <div class="p-articles-head">
         <h2 class="p-articles-title"><span class="p-articles-title-eng">NEWS</span><span class="p-articles-title-kana">ニュース</span></h2>
-        <p class="p-articles-lead">ミュージック、アニメ、ゲーム、エンタメ等の新着ニュースをお届け</p>
+        <p class="p-articles-lead">ミュージック、アニメ、ゲーム、エンタメ等の<br class="u-sp-m-show">新着ニュースをお届け</p>
     </div>
     <div class="p-mainContent">
-        <section class="p-content">
+        <section class="c-content">
             <form action="<?= esc_url( home_url('/') );?>newslist" method="post" class="p-article-header">
                 <button class="p-article-tab<?php $tabActive = $buttonValue == 'all' ?  ' is-tabActive' : ''; echo $tabActive; ?>" type="submit" name="button" value="all"><span>A</span>LL</button>
                 <button class="p-article-tab<?php $tabActive = $buttonValue == 'music' ?  ' is-tabActive' : ''; echo $tabActive; ?>" type="submit" name="button" value="music"><span>M</span>USIC</button>

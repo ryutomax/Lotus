@@ -28,13 +28,13 @@
     $tag_name = "{$post_type}-tag";
 	$tag_terms_name = term_names_by_term($single_post_id, $tag_name, true);
 ?>
-<div class="l-main">
+<main class="l-main">
     <section class="p-top-googleAd">
 		<div class="p-googleAd-inner"></div>
 	</section>
     <?php get_template_part('template-parts/breadcrumb', null, $breadcrumb_args); ?>
     <div class="p-mainContent">
-        <section class="p-content">
+        <section class="c-content">
             <div class="p-gallery">
                 <?php if(have_posts()): while(have_posts()): the_post();?>
                     <span class="p-single-type" style="<?= get_post_type_info($post_type)['color']; ?>"><?= get_post_type_info($post_type)['name']; ?></span>

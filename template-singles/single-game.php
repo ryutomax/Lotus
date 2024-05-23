@@ -18,13 +18,13 @@
 			'breadcrumb_arr' => ['ゲーム', $title]
 	];
 ?>
-<div class="l-main">
+<main class="l-main">
 	<section class="p-top-googleAd">
 		<div class="p-googleAd-inner"></div>
 	</section>
 	<?php get_template_part('template-parts/breadcrumb', null, $args); ?>
 	<div class="p-mainContent">
-		<section class="p-content p-single-game">
+		<section class="c-content p-single-game">
 			<?php
 				if(have_posts()):
 					while(have_posts()):
@@ -135,5 +135,5 @@
 		<?php get_template_part('template-parts/side'); ?><!-- サイド -->
 	</div>
 	<!-- ./p-mainContent -->
-</div>
+</main>
 <?php get_template_part('template-parts/footer') ?>

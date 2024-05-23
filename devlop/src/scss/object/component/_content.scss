@@ -1,0 +1,16 @@
+@use "global" as *;
+
+
+.c-content {
+  width: calc(100% - 300px);
+  margin-right: 85px;
+
+  @include mq (o-pc) {
+    margin-right: 24px;
+  }
+
+  @include mq (o-tb) {
+    margin-right: 0;
+    width: 100%;
+  }
+}

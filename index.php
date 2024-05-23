@@ -8,24 +8,24 @@
         <div class="p-googleAd-inner"></div>
       </section>
       <section class="p-top-slider">
-      <?php
-        $args = array(
-            'posts_per_page' => 6,
-            'post_status' => 'publish',
-            'tax_query' => [
-                array(
-                    'taxonomy' => 'post_locate',   // カスタムタクソノミーを指定
-                    'field'    => 'slug',       // タームの"slug"または"id"を指定
-                    'terms'    => 'carousel', // 絞り込みたいタームを指定
-                )
-            ]
-        );
+        <?php
+          $args = array(
+              'posts_per_page' => 6,
+              'post_status' => 'publish',
+              'tax_query' => [
+                  array(
+                      'taxonomy' => 'post_locate',   // カスタムタクソノミーを指定
+                      'field'    => 'slug',       // タームの"slug"または"id"を指定
+                      'terms'    => 'carousel', // 絞り込みたいタームを指定
+                  )
+              ]
+          );
 
-        $carousel_query = new WP_Query( $args );
-          if ( $carousel_query->have_posts() ):
-          while ( $carousel_query->have_posts() ):
-              $carousel_query->the_post();
-        ?>
+          $carousel_query = new WP_Query( $args );
+            if ( $carousel_query->have_posts() ):
+            while ( $carousel_query->have_posts() ):
+                $carousel_query->the_post();
+          ?>
 
         <div class="p-top-slider-item">
           <a href="<?php echo get_the_permalink(); ?>" class="p-top-slider-link">
@@ -55,7 +55,7 @@
         <div class="p-googleAd-inner"></div>
       </section>
       <div class="p-mainContent">
-        <section class="p-content">
+        <section class="c-content">
           <!-- ピックアップニュース -->
           <div class="p-pickUp">
             <h2 class="p-pickUp-title">Pick Up News</h2>
@@ -203,14 +203,7 @@
             </div>
             <?php endif; ?>
         </section>
-        <section class="p-side">
-          <div class="p-side01"></div>
-          <div class="p-side02"></div>
-          <div class="p-side03"></div>
-          <div class="p-side04"></div>
-          <div class="p-side05"></div>
-          <div class="p-side06"></div>
-        </section>
+        <?php get_template_part('template-parts/side'); ?><!-- サイド -->
       </div>
     </main>
     <?php get_template_part('template-parts/footer') ?>
@@ -218,10 +211,32 @@
       $('.p-top-slider').slick({
         dots: true,
         slidesToShow: 2.325,
+        responsive: [
+          {
+            breakpoint: 768, // OOpx以下のサイズに適用
+            settings: {
+            slidesToShow: 1,
+            }
+          }
+        ]
       });
       $('.p-pickUp-list').slick({
         dots: true,
         slidesToShow: 3.68,
+        responsive: [
+          {
+            breakpoint: 768, // OOpx以下のサイズに適用
+            settings: {
+            slidesToShow: 2.68,
+            }
+          },
+          {
+            breakpoint: 520, // OOpx以下のサイズに適用
+            settings: {
+            slidesToShow: 1.68,
+            }
+          }
+        ]
       });
       $('#add-more').click(function() {
         $('#blind-area').addClass('is-more-show');

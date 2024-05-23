@@ -13,6 +13,10 @@
 .p-aboutUs-top {
   text-align: center;
   margin-bottom: 3vw;
+
+  @include mq (o-sp) {
+    margin-bottom: 40vw;
+  }
 }
 
 .p-aboutUs-top-title {
@@ -32,9 +36,10 @@
 
 .p-aboutUs-top-copy {
   color: $white;
-  font-size: rem(24);
+  font-size: min(5vw, rem(24));
   line-height: 2;
   margin-bottom: 48px;
+  font-weight: 400;
 }
 
 .p-aboutUs-top-text {
@@ -44,7 +49,17 @@
   margin-bottom: 64px;
   span {
     display: block;
-    margin-bottom: 32px;
+    margin-bottom: 30px;
+  }
+
+  @include mq (o-sp) {
+    width: 100%;
+    max-width: 500px;
+    margin: 0 auto;
+    text-align: start;
+    span {
+      margin-bottom: 48px;
+    }
   }
 }
 
@@ -53,7 +68,13 @@
   color: $white;
   border: 2px solid $white;
   text-align: center;
-  padding: 16px 100px;
+  padding: 16px 0;
+  width: 350px;
+  @include flashAnime;
+
+  @include mq (o-sp) {
+    padding: 24px 0;
+  }
 }
 
 .p-aboutUs-cont {
@@ -70,39 +91,65 @@
   align-items: center;
   max-width: 1000px;
 
-  a {
+  @include mq (o-sp) {
     position: relative;
-      display: inline-block;
-      padding: 18px 0 18px 20px;
-      width: 280px;
-      background-color: white;
+  }
 
-      &::after {
+  @include mq (o-sp) {
+    .p-aboutUs-sec-title {
+      color: $white;
+    }
+
+    .p-aboutUs-sec-title-main {
+      position: relative;
+      color: $white;
+      font-size: rem(76);
+      letter-spacing: 0.05em;
+
+      &::before {
         content: "";
         position: absolute;
-        background-repeat: no-repeat;
-        background-size: contain;
-        width: 15px;
-        height: 9px;
-        position: absolute;
-        top: 50%;
-        left: 90%;
+        top: 55%;
+        left: 50%;
         transform: translate(-50%, -50%);
+        width: 250px;
+        height: 250px;
+        border-radius: 50%;
+        opacity: 0.7;
+        z-index: -1;
       }
+    }
   }
 
   &:nth-child(odd) {
+
+    @include mq (o-sp) {
+      flex-direction: column-reverse;
+    }
+
     .p-aboutUs-sec-info {
       margin-right: 40px;
+
+      @include mq (o-sp) {
+        margin-right: 0;
+      }
     }
   }
   &:nth-child(even) {
     flex-direction: row-reverse;
+
+    @include mq (o-sp) {
+      flex-direction: column-reverse;
+    }
+
     .p-aboutUs-sec-info {
       margin-left: 40px;
+
+      @include mq (o-sp) {
+        margin-left: 0;
+      }
     }
   }
-
   &:not(:last-child) {
     margin-bottom: 80px;
   }
@@ -113,14 +160,26 @@
     .p-aboutUs-sec-title-main {
       // background-image: url(../images/about_us/text_music.png);
       // width: 66%;
-      height: 75px;
-      font-size: rem(80);
       color: $music-blue;
     }
 
-    a {
+    @include mq (o-sp) {
+      .p-aboutUs-sec-title {
+        color: $white;
+      }
+
+      .p-aboutUs-sec-title-main {
+        color: $white;
+
+        &::before {
+          background-color: #0396ae;
+        }
+      }
+    }
+
+    .p-aboutUs-sec-btn {
       color: $music-blue;
-      border: 2px solid $music-blue;
+      border: 3px solid $music-blue;
       &::after {
         background-image: url(../images/about_us/arrow-blue.png);
       }
@@ -132,13 +191,27 @@
     .p-aboutUs-sec-title-main {
       // background-image: url(../images/about_us/text_anime.png);
       // width: 42%;
-      height: 75px;
-      font-size: rem(80);
       color: $anime-pink;
     }
-    a {
+
+    @include mq (o-sp) {
+      .p-aboutUs-sec-title {
+        color: $white;
+        top: 28%;
+      }
+
+      .p-aboutUs-sec-title-main {
+        color: $white;
+
+        &::before {
+          background-color: #e9164c;
+        }
+      }
+    }
+
+    .p-aboutUs-sec-btn {
       color: $anime-pink;
-      border: 2px solid $anime-pink;
+      border: 3px solid $anime-pink;
       &::after {
         background-image: url(../images/about_us/arrow-pink.png);
       }
@@ -150,13 +223,27 @@
     .p-aboutUs-sec-title-main {
       // background-image: url(../images/about_us/text_game.png);
       // width: 36%;
-      height: 75px;
-      font-size: rem(80);
       color: $game-purple;
     }
-    a {
+
+    @include mq (o-sp) {
+      .p-aboutUs-sec-title {
+        color: $white;
+        top: 28%;
+      }
+
+      .p-aboutUs-sec-title-main {
+        color: $white;
+
+        &::before {
+          background-color: #9a92db;
+        }
+      }
+    }
+
+    .p-aboutUs-sec-btn {
       color: $game-purple;
-      border: 2px solid $game-purple;
+      border: 3px solid $game-purple;
       &::after {
         background-image: url(../images/about_us/arrow-purple.png);
       }
@@ -172,9 +259,33 @@
       font-size: rem(60);
       color: $enter-orange;
     }
-    a {
+
+    @include mq (o-tb) {
+      .p-aboutUs-sec-title-main {
+        font-size: rem(54);
+        height: 54px;
+      }
+    }
+
+    @include mq (o-sp) {
+      .p-aboutUs-sec-title {
+        color: $white;
+        top: 31%;
+      }
+
+      .p-aboutUs-sec-title-main {
+        font-size: rem(54);
+        color: $white;
+
+        &::before {
+          background-color: #e3ac2f;
+        }
+      }
+    }
+
+    .p-aboutUs-sec-btn {
       color: $enter-orange;
-      border: 2px solid $enter-orange;
+      border: 3px solid $enter-orange;
       &::after {
         background-image: url(../images/about_us/arrow-orange.png);
       }
@@ -182,10 +293,27 @@
   }
 }
 
+.p-aboutUs-sec-info {
+  padding-top: 40px;
+
+  @include mq (o-sp) {
+    text-align: center;
+  }
+}
+
 .p-aboutUs-sec-title {
   display: flex;
   align-items: flex-end;
   margin-bottom: 48px;
+
+  @include mq (o-sp) {
+    flex-direction: column;
+    align-items: center;
+    position: absolute;
+    top: 32%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
 }
 
 .p-aboutUs-sec-title-main {
@@ -195,12 +323,21 @@
   font-family: $ff-aptly;
   font-weight: 300;
   font-style: italic;
+  height: 75px;
+  font-size: rem(80);
 }
 
 .p-aboutUs-sec-title-sub {
   font-size: rem(16);
   margin-left: 20px;
   letter-spacing: 0em;
+
+  @include mq (o-sp) {
+    font-size: rem(20);
+    margin-top: 10px;
+    margin-left: 0;
+    font-weight: 400;
+  }
 }
 
 .p-aboutUs-sec-text {
@@ -210,7 +347,41 @@
 
 .p-aboutUs-sec-img {
   width: 425px;
+
+  @include mq (o-tb) {
+    width: 40%;
+  }
+  @include mq (o-sp) {
+    width: 380px;
+  }
 }
+
+.p-aboutUs-sec-btn {
+  @include flashAnime();
+  position: relative;
+  display: inline-block;
+  padding: 18px 0 18px 20px;
+  width: 280px;
+  background-color: white;
+
+  &::after {
+    content: "";
+    position: absolute;
+    background-repeat: no-repeat;
+    background-size: contain;
+    width: 15px;
+    height: 9px;
+    position: absolute;
+    top: 50%;
+    left: 90%;
+    transform: translate(-50%, -50%);
+  }
+
+  @include mq (o-sp) {
+    text-align: left;
+  }
+}
+
 .p-aboutUs-bottom {
   text-align: center;
   padding-bottom: 100px;
@@ -226,12 +397,19 @@
   // background-size: contain;
   // background-repeat: no-repeat;
   // background-position: center;
+  @include mq (o-sp) {
+    font-size: rem(42);
+  }
 }
 
 .p-aboutUs-bottom-intro {
   line-height: 1.7;
   font-size: rem(18);
   margin-bottom: 24px;
+
+  @include mq (o-sp) {
+    font-size: rem(16);
+  }
 }
 
 .p-aboutUs-bottom-btn {
@@ -241,4 +419,11 @@
   width: 250px;
   line-height: 50px;
   margin: 0 auto;
+  @include flashAnime();
+
+  @include mq (o-sp) {
+    width: 100%;
+    max-width: 350px;
+    line-height: 60px;
+  }
 }

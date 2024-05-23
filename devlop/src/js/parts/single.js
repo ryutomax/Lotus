@@ -3,8 +3,6 @@ document.addEventListener("DOMContentLoaded", () => {
     const summary = el.querySelector("summary");
     const answer = summary.nextElementSibling;
 
-    
-
     if(summary && answer) {
       summary.addEventListener("click", (event) => {
         // デフォルトの挙動を無効化
@@ -63,3 +61,25 @@ const openingAnimation = (answer) => [
     opacity: 1,
   },
 ];
+
+// パスワード保護公開時 コンテンツ非表示
+const postPassword = document.querySelector(".post-password-form");
+
+if(postPassword) {
+    const mainTag = document.getElementsByTagName('main')[0];
+
+    if (mainTag) {
+        // <main>タグ内の全要素を取得します。
+        const allElements = mainTag.querySelectorAll('*');
+
+        // 取得した全要素に対してループ処理を行います。
+        allElements.forEach(element => {
+            // 要素がpostPasswordの子孫でない場合
+            if (!postPassword.contains(element)) {
+                element.remove();
+            }
+        });
+    }
+    // postPasswordをmainTagの直下に挿入
+    mainTag.appendChild(postPassword);
+}

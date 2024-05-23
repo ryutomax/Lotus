@@ -77,10 +77,14 @@
       font-size: rem(40);
     }
   }
+
+  .slick-current {
+    filter: brightness(.9);
+  }
 }
 
 .p-slider-visual-link {
   position: relative;
-  filter: brightness(.6);
+  filter: brightness(.4);
   transition: filter 1s;
 }

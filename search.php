@@ -16,7 +16,7 @@
         get_template_part('template-parts/breadcrumb', null, $args);
     ?>
     <div class="p-mainContent">
-      <section class="p-content">
+      <section class="c-content">
         <div class="p-search-result">
           <p><?php echo '検索結果：' .$wp_query -> found_posts. ' 件';?></p>
         </div>

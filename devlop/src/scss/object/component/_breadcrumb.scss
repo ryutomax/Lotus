@@ -2,11 +2,13 @@
 
 .c-breadcrumb-list {
   display: flex;
+  flex-wrap: wrap;
   padding: 0 0px 4px 0px;
   border-bottom: 1px solid;
   margin: 0 auto;
   margin-bottom: 24px;
   max-width: 1200px;
+  line-height: 1.7;
 }
 
 .c-breadcrumb-item {

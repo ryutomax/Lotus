@@ -139,6 +139,13 @@
 
   .p-footer-nav-link {
     line-height: 1.7;
+
+    @include mq (o-sp-m) {
+      &:first-child {
+        padding: 0;
+      }
+    }
+
     &:last-child {
       border-left: 1px solid $white;
     }

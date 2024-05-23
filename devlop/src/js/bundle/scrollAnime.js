@@ -56,5 +56,7 @@ export default class scrollAnime {
       startPos = winScrollTop;
     });
 
+    
+
   }
 }

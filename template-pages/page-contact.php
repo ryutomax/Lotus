@@ -22,7 +22,10 @@ Template Name: 取材申込フォーム
             <div class="p-contact">
               <div class="p-contact-head">
                 <h3 class="p-contact-head-title">For Artist/Creator</h3>
-                <p class="p-contact-head-intro">Lotusでは、様々なアーティストの皆様の声を募っています。<br>当サイトを通じて、各種イベントやプロモーション活動のお手伝いをいたします。<br>皆様からのコンタクトをお待ちしております。</p>
+                <p class="p-contact-head-intro">Lotusでは、様々なアーティストの<br class="u-sp-show">皆様の声を募っています。<br
+                  >当サイトを通じて、各種イベントや<br class="u-sp-show">プロモーション活動のお手伝いをいたします。<br>
+                  皆様からのコンタクトをお待ちしております。
+                </p>
               </div>
               <div class="p-contact-form">
                 <h2 class="p-contact-form-title">取材申込フォーム</h2>

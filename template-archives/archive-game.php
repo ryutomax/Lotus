@@ -30,10 +30,10 @@
 		?>
 	<div class="p-articles-head">
 		<h2 class="p-articles-title"><span class="p-articles-title-eng">GAME</span><span class="p-articles-title-kana">ゲーム</span></h2>
-		<p class="p-articles-lead">話題のゲームやクリエイターにまつわるニュース、インタビュー、コラムなどをお届け</p>
+		<p class="p-articles-lead">話題のゲームやクリエイターにまつわる<br class="u-sp-show">ニュース、インタビュー、コラムなどをお届け</p>
 	</div>
 	<div class="p-mainContent">
-		<section class="p-content">
+		<section class="c-content">
 			<form action="<?= esc_url( home_url('/') );?>game" method="post" class="p-article-header">
 				<button class="p-article-tab<?php $tabActive = $buttonValue == 'all' ?  ' is-tabActive' : ''; echo $tabActive; ?>" type="submit" name="button" value="all"><span>A</span>LL</button>
 				<button class="p-article-tab<?php $tabActive = $buttonValue == 'news' ?  ' is-tabActive' : ''; echo $tabActive; ?>" class="p-article-tab" type="submit" name="button" value="news"><span>N</span>EWS</button>
