@@ -34,7 +34,7 @@
 	</div>
 	<div class="p-mainContent">
 		<section class="c-content">
-			<form action="<?= esc_url( home_url('/') );?>music" method="post" class="p-article-header">
+			<form action="<?= esc_url( home_url('/') );?>animation" method="post" class="p-article-header">
 				<button class="p-article-tab<?php $tabActive = $buttonValue == 'all' ?  ' is-tabActive' : ''; echo $tabActive; ?>" type="submit" name="button" value="all"><span>A</span>LL</button>
 				<button class="p-article-tab<?php $tabActive = $buttonValue == 'news' ?  ' is-tabActive' : ''; echo $tabActive; ?>" class="p-article-tab" type="submit" name="button" value="news"><span>N</span>EWS</button>
 				<button class="p-article-tab<?php $tabActive = $buttonValue == 'interview' ?  ' is-tabActive' : ''; echo $tabActive; ?>" type="submit" name="button" value="interview"><span>I</span>NTERVIEW</button>

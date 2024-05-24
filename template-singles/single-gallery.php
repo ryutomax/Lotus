@@ -144,6 +144,14 @@
     $('.p-slider-visual').slick({
         initialSlide: lastNumber, //スライド初期表示 クリックした画像リンクを保存して
         slidesToShow: 2.325,
+        responsive: [
+            {
+                breakpoint: 768, // OOpx以下のサイズに適用
+                settings: {
+                slidesToShow: 1.325,
+                }
+            }
+        ]
     });
 
     document.addEventListener('DOMContentLoaded', () => {
