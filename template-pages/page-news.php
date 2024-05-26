@@ -9,14 +9,8 @@ Template Name: News一覧
     get_template_part('template-parts/header');
 ?>
 <main class="l-main p-news">
-    <section class="p-top-googleAd">
-        <div class="p-googleAd-inner"></div>
-    </section>
     <section class="p-fv">
         <h1 class="p-fv-title">NEWS</h1>
-    </section>
-    <section class="p-mid-googleAd">
-        <div class="p-googleAd-inner"></div>
     </section>
     <?php
         $args = [

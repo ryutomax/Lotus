@@ -1,17 +1,41 @@
 @use "global" as *;
 
-.c-breadcrumb-list {
-  display: flex;
-  flex-wrap: wrap;
-  padding: 0 0px 4px 0px;
-  border-bottom: 1px solid;
-  margin: 0 auto;
-  margin-bottom: 24px;
+.c-breadcrumb {
+  overflow-y: hidden;
   max-width: 1200px;
+  margin: 0 auto;
+  border-bottom: 1px solid;
+  margin-bottom: 24px;
+  padding-top: 24px;
+  &::-webkit-scrollbar {// レール
+    background: hsla(0, 0%, 0%, 0.1);
+    height: 3px;
+  }
+
+  &::-webkit-scrollbar-thumb { //可動バー
+    background-color: #0003;
+  }
+
+  &::-webkit-scrollbar-thumb:hover {
+    background-color: rgb(0 0 0);
+  }
+}
+
+.c-breadcrumb-list {
+  display: inline-block;
+  padding: 0 0px 4px 0px;
   line-height: 1.7;
+  overflow-x: auto;
+  overflow-y: hidden;
+  white-space: nowrap;
+}
+
+.is-br-shadow {
+  box-shadow: inset -10px 0 5px -8px rgb(0 0 0 / 8%);
 }
 
 .c-breadcrumb-item {
+  display: inline;
   margin-right: 24px;
   position: relative;
   font-family: $ff-gothic;

@@ -4,7 +4,7 @@
 .p-aboutUs {
   background-image: url(../images/about_us/aboutUs_bg.jpg);
   background-size: cover;
-  background-position: center;
+  background-position: center 0;
   margin: 0 -20px;
   padding: 48px 8px 0 8px;
   font-family: $ff-gothic;
@@ -52,10 +52,15 @@
     margin-bottom: 30px;
   }
 
+  @include mq (o-tb) {
+    margin-bottom: 40px;
+  }
+
   @include mq (o-sp) {
     width: 100%;
     max-width: 500px;
     margin: 0 auto;
+    margin-bottom: 64px;
     text-align: start;
     span {
       margin-bottom: 48px;

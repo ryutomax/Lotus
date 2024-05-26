@@ -10,15 +10,17 @@ const sassGlob = require("gulp-sass-glob-use-forward");
 const sass = require('gulp-sass')(require('sass'));
 const postcss = require('gulp-postcss');
 const autoprefixer = require('autoprefixer');
-const purgecss = require("gulp-purgecss");
+// const purgecss = require("gulp-purgecss");
 const cleancss = require("gulp-clean-css");
 
-const browserSync = require("browser-sync").create();  //変更を即座にブラウザへ反映
+// const browserSync = require("browser-sync").create();  //変更を即座にブラウザへ反映
 const uglify = require("gulp-uglifyes");               //jsファイル圧縮用 ES6でも可
 
 const webpackStream = require("webpack-stream");
 const webpack = require("webpack");
 const webpackConfig = require("./webpack.config");     // webpackの設定ファイルの読み込み
+// webpackの設定をdevelopmentモードで読み込む
+const webpackDevConfig = webpackConfig({ production: false });
 
 const plumber = require("gulp-plumber");
 const notify = require("gulp-notify");                 //デスクトップ通知
@@ -46,6 +48,7 @@ const distPath = {
 // ========================================
 const webpackTask = () => {
   return webpackStream(webpackConfig, webpack)
+    .pipe(webpackStream(webpackDevConfig, webpack))
     .pipe(dest("../assets/js/"));
 }
 

@@ -61,6 +61,9 @@
   @include mq (o-sp) {
     font-size: rem(16);
   }
+  @include mq (o-sp-m) {
+    font-size: rem(14);
+  }
 }
 
 .p-contact-form {
@@ -152,8 +155,6 @@
   padding: 40px 0 0 0 ;
 }
 
-
-
 input[type=checkbox]:checked::before {
   background-color: #006bb3;
 }
@@ -200,7 +201,7 @@ input[type=checkbox]::after {
   -ms-transform: rotate(-45deg);
   transform: rotate(-45deg);
   top: -9px;
-  left: 10px;
+  left: 9px;
 }
 
 input[type=checkbox]:checked::after {
@@ -224,6 +225,11 @@ input[type=checkbox]:checked::after {
   margin-bottom: 48px;
   a {
     text-decoration: underline;
+    @include flashAnime;
+  }
+
+  @include mq (o-sp) {
+    text-align: left;
   }
 }
 
@@ -287,4 +293,8 @@ span[title="日曜日"] {
   margin-bottom: 24px;
   font-weight: 700;
   color: red;
+}
+
+.mwform-checkbox-field-text {
+  line-height: 1.7;
 }

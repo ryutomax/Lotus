@@ -19,18 +19,13 @@
 	];
 ?>
 <main class="l-main">
-	<section class="p-top-googleAd">
-		<div class="p-googleAd-inner"></div>
-	</section>
+	
 	<?php get_template_part('template-parts/breadcrumb', null, $args); ?>
 	<div class="p-mainContent">
 		<section class="c-content p-single-music">
 			<?php
-				if(have_posts()):
-					while(have_posts()):
-						the_post();
-
-				$post_id = get_the_ID();
+				if(have_posts()): while(have_posts()): the_post();
+					$post_id = get_the_ID();
 			?>
 			<div class="p-single">
 				<span class="p-single-type" style="background-color: #59d5e0;">
@@ -50,10 +45,7 @@
 							}
 						?>
 				<img src="<?= esc_url($post_thumbnail); ?>" alt="<?php the_title(); ?>" class="p-single-thumbnail">
-				<?php $gallery_link = generate_gallery_link(); ?>
-				<?php if(isset($gallery_link)): ?>
-					<?php echo $gallery_link; ?>
-				<?php endif; ?>
+				<?= generate_gallery_link($title); ?>
 				<?php include get_template_directory() . '/template-parts/sns_share.php'; ?>
 
 				<div class="p-single-cont">
@@ -99,24 +91,26 @@
 						<figure  class="p-article-frame">
 							<img src="<?php print $thumbnail; ?>" alt="<?php the_title(); ?>" class="p-article-thumbnail">
 						</figure>
-						<h2 class="p-article-title"><?php the_title(); ?></h2>
-						<div class="p-article-type">
-						<?php
-							$post_id = get_the_ID(); // 現在の投稿IDを取得
-							$terms = wp_get_post_terms($post_id, 'category', array('fields' => 'names'));
+						<div class="p-article-info">
+							<h2 class="p-article-title"><?php the_title(); ?></h2>
+							<div class="p-article-type">
+							<?php
+								$post_id = get_the_ID(); // 現在の投稿IDを取得
+								$terms = wp_get_post_terms($post_id, 'category', array('fields' => 'names'));
 
-							if (!is_wp_error($terms) && !empty($terms)) :
-								foreach ($terms as $term_name) :
-						?>
-							<span class="p-article-type-item" style="background-color: black;"><?= convert_jp($term_name); ?></span>
-						<?php
-								endforeach;
-							endif;
-						?>
+								if (!is_wp_error($terms) && !empty($terms)) :
+									foreach ($terms as $term_name) :
+							?>
+								<span class="p-article-type-item" style="background-color: black;"><?= convert_jp($term_name); ?></span>
+							<?php
+									endforeach;
+								endif;
+							?>
+							</div>
+							<ul class="p-article-tags">
+								<li class="p-article-tag"></li>
+							</ul>
 						</div>
-						<ul class="p-article-tags">
-							<li class="p-article-tag"></li>
-						</ul>
 					</a>
 				</article>
 				<?php endwhile; ?>

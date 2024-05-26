@@ -15,7 +15,7 @@
   background-repeat: no-repeat;
   height: 360px;
   margin: 0 -20px;
-  margin-bottom: 40px;
+  margin-bottom: 24px;
 }
 
 .p-fv-title {
@@ -397,6 +397,7 @@ $mr: 32px;
 
   @include mq (o-sp) {
     width: 50%;
+    height: 100%;
     margin-bottom: 0;
     margin-right: 16px;
   }
@@ -416,13 +417,23 @@ $mr: 32px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    padding-top: 16px;
     width: calc(50% - 16px);
   }
 }
 
 .p-article-title {
+  font-size: rem(14);
   margin-bottom: 8px;
+  line-height: 1.2;
+
+  @include mq (o-sp) {
+    font-size: rem(16);
+    padding-top: 10px;
+  }
+  @include mq (o-sp-m) {
+    font-size: rem(14);
+    padding-top: 0px;
+  }
 }
 
 .p-article-type {

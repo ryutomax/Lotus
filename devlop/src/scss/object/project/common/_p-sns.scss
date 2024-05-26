@@ -1,5 +1,31 @@
 @use "global" as *;
 
 .p-sns {
-  margin: 32px 0;
+  margin: 64px 0 32px 0;
+  display: flex;
+  justify-content: center;
+  .a2a_button_twitter {
+    position: relative;
+    &::after {
+      content: "";
+      position: absolute;
+      top: 37%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background-image: url(../images/common/sns_x_icon.png);
+      background-repeat: no-repeat;
+      background-size: cover;
+      width: 40px;
+      height: 40px;
+      border-radius: 6px;
+    }
+    span,
+    svg {
+      opacity: 0 !important;
+    }
+  }
+}
+
+.p-sns-link {
+  width: 50px;
 }

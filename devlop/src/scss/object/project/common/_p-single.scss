@@ -16,11 +16,16 @@
 .p-single-title {
   font-size: rem(24);
   margin-bottom: 36px;
+  line-height: 1.2;
 }
 
 .p-single-date {
   display: inline-block;
   margin-bottom: 4px;
+
+  @include mq (o-sp) {
+    font-weight: bold;
+  }
 }
 .p-single-thumbnail {
   margin-bottom: 24px;
@@ -36,9 +41,11 @@
 .p-single-gallery-link {
   display: inline-block;
   position: relative;
-  background-color: #d9d9d9;
+  background-color: $white;
+  border: 1px solid $black;
   font-size: rem(20);
   padding: 16px 40px 16px 70px;
+  font-weight: bold;
   @include flashAnime;
 
   &::before {

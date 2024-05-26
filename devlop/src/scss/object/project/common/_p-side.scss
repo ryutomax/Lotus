@@ -1,6 +1,7 @@
 @use "global" as *;
 
 .p-side {
+  position: relative;
   width: 300px;
 
   @include mq (o-tb) {
@@ -12,43 +13,47 @@
 
   div {
     display: block;
-    border: 1px solid $black;
     margin-bottom: 54px;
   }
 }
 
-.p-side01 {
-  height: 300px;
+.p-side-inner {
+  position: sticky;
+  top: 80px;
+
+  @include mq (o-tb) {
+    position: relative;
+    top: 0;
+  }
+}
+
+.p-side01 {//Xタイムライン
+  h3 {
+    display: inline-block;
+    font-size: rem(15);
+    color: #fff;
+    background-color: #000;
+    padding: 8px 8px;
+    font-weight: bold;
+    margin-bottom: 16px;
+  }
+
+  .r-14lw9ot {
+    max-height: 400px;
+  }
 }
 
 .p-side02 {
   height: 240px;
+  border: 1px solid $black;
 }
 
 .p-side03 {
-  height: 500px;
+  height: 300px;
+  border: 1px solid $black;
 }
 
 .p-side04 {
   height: 240px;
-}
-
-.p-side05 {
-  height: 240px;
-}
-
-.p-side06 {
-  height: 240px;
-}
-
-.p-side06 {
-  height: 240px;
-}
-
-.p-side07 {
-  height: 240px;
-}
-
-.p-side08 {
-  height: 240px;
+  border: 1px solid $black;
 }

@@ -4,14 +4,8 @@
 	get_template_part('template-parts/header');
 ?>
 <main class="l-main p-game">
-		<section class="p-top-googleAd">
-				<div class="p-googleAd-inner"></div>
-		</section>
 		<section class="p-fv">
 			<h1 class="p-fv-title">GAME</h1>
-		</section>
-		<section class="p-mid-googleAd">
-			<div class="p-googleAd-inner"></div>
 		</section>
 		<?php
 				$post_type = get_post_type();

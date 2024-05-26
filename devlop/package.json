@@ -10,15 +10,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://gitlab.com/gravytrain/happpy_elements.git"
+    "url": "git+https://github.com/ryutomax/Lotus.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://gitlab.com/gravytrain/happpy_elements.git/issues"
+    "url": "https://github.com/ryutomax/Lotus.git/issues"
   },
-  "homepage": "https://gitlab.com/gravytrain/happpy_elements.git#readme",
+  "homepage": "https://github.com/ryutomax/Lotus.git#readme",
   "devDependencies": {
     "@babel/core": "^7.7.7",
     "@babel/preset-env": "^7.7.7",

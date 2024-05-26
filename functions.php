@@ -1,4 +1,5 @@
 <?php
+// CSSファイル読み込み
 function enqueue_styles() {
 	$version = date('Ymd-His'); // バージョン番号を設定
 
@@ -10,8 +11,8 @@ function enqueue_styles() {
 	wp_enqueue_style('style',  get_template_directory_uri() .'/assets/css/app-min.css', [], $version, 'all');
 }
 add_action('wp_enqueue_scripts', 'enqueue_styles');
-function enqueue_scripts()
-{
+//JSファイル読み込み
+function enqueue_scripts() {
 	$version = date('Ymd-Hi'); // バージョン番号を設定
 
 	if (is_home() || is_front_page()) {
@@ -22,6 +23,7 @@ function enqueue_scripts()
 	}
 	if (is_page('contact')) {
 		wp_enqueue_script('datepicker', 'https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js', [], $version, true);
+		wp_enqueue_script('contact', get_theme_file_uri('/assets/js/parts/contact-min.js'), [], $version, true);
 	}
 	wp_enqueue_script('jQuery', get_template_directory_uri() . '/assets/vender/jquery-3.7.1.min.js', [], $version, true);
 	wp_enqueue_script('slick-min', get_template_directory_uri() . '/assets/vender/slick-1.8.1/slick/slick.min.js', [], $version, true);
@@ -31,7 +33,7 @@ function enqueue_scripts()
 add_action('wp_enqueue_scripts', 'enqueue_scripts');
 
 // ========================================
-// お問い合わせ バリデーション
+// お問い合わせ バリデーションメッセージ変更
 // ========================================
 function my_exam_validation_rule( $Validation, $data, $Data ) {
 
@@ -50,10 +52,10 @@ function my_exam_validation_rule( $Validation, $data, $Data ) {
 
 	return $Validation;
 }
-// mwform_validation_mw-wp-form-OOO
+// キー指定）mwform_validation_mw-wp-form-OOO
 add_filter( 'mwform_validation_mw-wp-form-130', 'my_exam_validation_rule', 10, 3 );
 
-//投稿タイプ生成　呼び出し
+//カスタム投稿タイプ生成　呼び出し
 function create_post_type() {
 
 	post_type_template('music', 'Music', 7, true);
@@ -124,7 +126,7 @@ function post_type_template ($postTypeName, $label, $menuPosition, $main_type) {
 	}
 }
 
-//複数のカスタム投稿タイプに同じタクソノミーを付与
+//複数のカスタム投稿タイプへ共通のカスタムタクソノミーを付与
 function add_custom_taxonomy() {
 	//カテゴリ
 	$args = array(
@@ -186,6 +188,7 @@ function my_admin_style() {
 }
 add_action('admin_print_styles', 'my_admin_style');
 
+// 管理画面メニュー情報変更
 function change_menu_label() {
 	global $menu, $submenu;
 	unset($menu[2]); //ダッシュボード
@@ -300,4 +303,3 @@ function display_custom_post_list() {
 
 	echo '</div>';
 }
-

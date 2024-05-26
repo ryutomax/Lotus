@@ -4,9 +4,6 @@
   get_template_part('template-parts/header');
 ?>
     <main class="l-main p-top">
-      <section class="p-top-googleAd">
-        <div class="p-googleAd-inner"></div>
-      </section>
       <section class="p-top-slider">
         <?php
           $args = array(
@@ -51,9 +48,7 @@
           wp_reset_postdata();
         ?>
       </section>
-      <section class="p-mid-googleAd">
-        <div class="p-googleAd-inner"></div>
-      </section>
+      
       <div class="p-mainContent">
         <section class="c-content">
           <!-- ピックアップニュース -->

@@ -24,19 +24,24 @@
 
     &:first-child { //作品情報
       .wp-block-group {
-        background-color: #eeeeee;
+        // background-color: #eeeeee;
+        background-color: #f8f8f8;
+        box-shadow: 1px 1px 6px #e8e8e8;
       }
     }
 
     &:nth-child(2) { //イベント情報
       .wp-block-group {
-        background-color: #eeeeee;
+        // background-color: #eeeeee;
+        background-color: #f8f8f8;
+        box-shadow: 1px 1px 6px #e8e8e8;
       }
     }
 
     &:last-child { //プロフィール
       .wp-block-group {
         background-color: $white;
+        box-shadow: 1px 1px 6px #e8e8e8;
         border: 1px solid $black;
       }
     }

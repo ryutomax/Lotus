@@ -4,9 +4,6 @@
   get_template_part('template-parts/header');
 ?>
 <main class="l-main">
-  <section class="p-top-googleAd">
-    <div class="p-googleAd-inner"></div>
-  </section>
   <?php
     $args = [
       'breadcrumb_slug_arr' => [],

@@ -8,6 +8,7 @@
 
   & + .c-breadcrumb {
     margin-top: 48px;
+    margin-bottom: 24px;
   }
 }
 
@@ -86,8 +87,8 @@ $slider-h-sp: 70vw;
 
 .p-top-slider-info {
   position: absolute;
-  left: 16px;
-  bottom: 24px;
+  left: 8px;
+  bottom: 10px;
 }
 
 .p-top-slider-tag {
@@ -102,6 +103,7 @@ $slider-h-sp: 70vw;
 .p-top-slider-title {
   color: $white;
   font-size: rem(16);
+  line-height: 1.2;
 }
 
 .p-mainContent {
@@ -118,6 +120,7 @@ $slider-h-sp: 70vw;
   position: relative;
   border: 2px solid $black;
   width: calc(100% - 23px);
+  margin-top: 32px;
   margin-bottom: 80px;
   margin-left: auto;
   padding: 24px;
@@ -152,6 +155,15 @@ $slider-h-sp: 70vw;
       color: #000;
     }
   }
+
+  .slick-dots {
+    bottom: -40px;
+  }
+  .slick-dots li button {
+    &::before {
+      font-size: rem(12);
+    }
+  }
 }
 
 .p-pickUp-title {
@@ -160,6 +172,7 @@ $slider-h-sp: 70vw;
 
 .p-pickUp-list {
   display: flex;
+  box-shadow: inset -10px 0 5px -8px rgba(0, 0, 0, 0.08), inset 10px 0 5px -8px rgba(0, 0, 0, 0.08);
 }
 .p-pickUp-article {
   width: 25%;
@@ -183,7 +196,7 @@ $slider-h-sp: 70vw;
   display: inline-block;
   font-size: rem(14);
   font-weight: 600;
-  margin-bottom: 8px;
+  margin-bottom: 16px;
 
   @include mq (o-sp) {
     margin-bottom: 16px;

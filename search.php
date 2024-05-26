@@ -4,9 +4,6 @@
   get_template_part('template-parts/header');
 ?>
   <main class="l-main">
-    <section class="p-top-googleAd">
-      <div class="p-googleAd-inner"></div>
-    </section>
     <?php
         $br_text = '「'.get_search_query().'」の検索結果';
         $args = [
@@ -59,16 +56,8 @@
         <?php get_template_part('template-parts/pagination'); ?><!-- ページネーション -->
         </div>
       </section>
-      <section class="p-side">
-        <div class="p-side01"></div>
-        <div class="p-side02"></div>
-        <div class="p-side03"></div>
-        <div class="p-side04"></div>
-        <div class="p-side05"></div>
-        <div class="p-side06"></div>
-      </section>
+      <?php get_template_part('template-parts/side'); ?><!-- サイド -->
     </div>
-    
     </div>
   </main>
 <?php get_template_part('template-parts/footer') ?>

@@ -29,9 +29,7 @@
 	$tag_terms_name = term_names_by_term($single_post_id, $tag_name, true);
 ?>
 <main class="l-main">
-    <section class="p-top-googleAd">
-		<div class="p-googleAd-inner"></div>
-	</section>
+    
     <?php get_template_part('template-parts/breadcrumb', null, $breadcrumb_args); ?>
     <div class="p-mainContent">
         <section class="c-content">
@@ -45,92 +43,93 @@
                     <?php get_template_part('template-parts/pagination'); ?>
                 <?php endwhile; wp_reset_postdata(); endif; ?>
                 <?php
-                    $image_urls = get_images_from_post($post_id);
-
+                    $post_content = get_post_field('post_content', $post_id); // 投稿の内容を取得
+                    $media_urls = get_media_urls_from_post($post_content); // 関数を呼び出し
                     $gallery_per_page_link = $home_url . 'gallery/' . $post_slug;
+                ?>
 
-                    $post_num = 0;
-                    foreach ($image_urls as $url) {
-                        $post_num++;
-                    }
-                    echo '<p class="p-gallery-num">この記事の画像・動画（' .$post_num. '点）</p>';
+                <p class="p-gallery-num">この記事の画像・動画（ <?= count($media_urls); ?> 点）</p>
 
+                <?php
                     echo '<div class="p-slider-visual">';
                     // 画像URLの配列をループして表示
                     $post_num = 0;
-                    foreach ($image_urls as $url) {
+                    foreach ($media_urls as $url) {
                         $post_num++;
-                        echo '<a class="p-slider-visual-link" href="'. $gallery_per_page_link . '/' . $post_num .'"><img src="' . $url . '" alt="Post Image"></a>';
+                        if (preg_match('/\.(mp4|mov)$/i', $url)) {// 動画ファイル
+                            echo '<a class="p-slider-visual-link" href="'. $gallery_per_page_link . '/' . $post_num .'"><video><source src="' . $url . '" type="video/mp4">Your browser does not support the video tag.</video><span>▲<span></a>';
+                        } elseif (preg_match('/(?:www\.youtube\.com\/embed\/|youtu\.be\/)/', $url)) {// YouTube動画
+                            echo '<a class="p-slider-visual-link" href="'. $gallery_per_page_link . '/' . $post_num .'"><iframe src="' . $url . '" ></iframe></a>';
+                        } else {// 画像ファイル
+                            echo '<a class="p-slider-visual-link" href="'. $gallery_per_page_link . '/' . $post_num .'"><img src="' . $url . '" alt="Post Image"></a>';
+                        }
                     }
                     echo '</div>';
                 ?>
             </div>
+            <!-- 関連記事 -->
             <div class="p-articles">
 				<div class="p-articles-related"><h2>関連記事</h2></div>
-				<?php
-					$args = array(
-						'post_type' => $post_type,
-						'posts_per_page' => 6,
-						'post_status' => 'publish',
-						'tax_query' => [
-							[
-								'taxonomy' => $tag_name,   // カスタムタクソノミーを指定
-								'field'    => 'slug',       // タームの"slug"または"id"を指定
-								'terms'    => $tag_terms_name, // 絞り込みたいタームを指定
-							]
-						]
-					);
-					$wp_query = new WP_Query( $args );
-					if ( $wp_query->have_posts() ):
-					while ( $wp_query->have_posts() ):
-						$wp_query->the_post();
-				?>
+                    <?php
+                        $args = array(
+                            'post_type' => $post_type,
+                            'posts_per_page' => 6,
+                            'post_status' => 'publish',
+                            'tax_query' => [
+                                [
+                                    'taxonomy' => $tag_name,   // カスタムタクソノミーを指定
+                                    'field'    => 'slug',       // タームの"slug"または"id"を指定
+                                    'terms'    => $tag_terms_name, // 絞り込みたいタームを指定
+                                ]
+                            ]
+                        );
+                        $wp_query = new WP_Query( $args );
+                        if ( $wp_query->have_posts() ): while ( $wp_query->have_posts() ): $wp_query->the_post();
+                    ?>
+                    <article class="p-article">
+                        <a class="p-article-link" href="<?php echo get_the_permalink(); ?>">
+                            <time class="p-article-time" datetime="<?= get_the_date('Y.m.d'); ?>"><?= get_the_date('Y.m.d'); ?></time>
+                            <?php
+                                $thumbnail = get_the_post_thumbnail_url();
+                                if (!$thumbnail) {
+                                    $thumbnail = esc_url(get_template_directory_uri() . '/'). 'assets/images/common/thumbnail-none.jpg';
+                                }
+                            ?>
+                            <figure  class="p-article-frame">
+                                <img src="<?php print $thumbnail; ?>" alt="<?php the_title(); ?>" class="p-article-thumbnail">
+                            </figure>
+                            <div class="p-article-info">
+                                <h2 class="p-article-title"><?php the_title(); ?></h2>
+                                <div class="p-article-type">
+                                <?php
+                                    $post_id = get_the_ID(); // 現在の投稿IDを取得
+                                    $terms = wp_get_post_terms($post_id, 'category', array('fields' => 'names'));
 
-				<article class="p-article">
-					<a class="p-article-link" href="<?php echo get_the_permalink(); ?>">
-						<time class="p-article-time" datetime="<?= get_the_date('Y.m.d'); ?>"><?= get_the_date('Y.m.d'); ?></time>
-						<?php
-							$thumbnail = get_the_post_thumbnail_url();
-							if (!$thumbnail) {
-								$thumbnail = esc_url(get_template_directory_uri() . '/'). 'assets/images/common/thumbnail-none.jpg';
-							}
-						?>
-						<figure  class="p-article-frame">
-							<img src="<?php print $thumbnail; ?>" alt="<?php the_title(); ?>" class="p-article-thumbnail">
-						</figure>
-						<h2 class="p-article-title"><?php the_title(); ?></h2>
-						<div class="p-article-type">
-						<?php
-							$post_id = get_the_ID(); // 現在の投稿IDを取得
-							$terms = wp_get_post_terms($post_id, 'category', array('fields' => 'names'));
-
-							if (!is_wp_error($terms) && !empty($terms)) :
-								foreach ($terms as $term_name) :
-						?>
-							<span class="p-article-type-item" style="background-color: black;"><?= convert_jp($term_name); ?></span>
-						<?php
-								endforeach;
-							endif;
-						?>
-						</div>
-						<ul class="p-article-tags">
-							<li class="p-article-tag"></li>
-						</ul>
-					</a>
-				</article>
+                                    if (!is_wp_error($terms) && !empty($terms)) :
+                                        foreach ($terms as $term_name) :
+                                ?>
+                                    <span class="p-article-type-item" style="background-color: black;"><?= convert_jp($term_name); ?></span>
+                                <?php
+                                        endforeach;
+                                    endif;
+                                ?>
+                                </div>
+                                <ul class="p-article-tags">
+                                    <li class="p-article-tag"></li>
+                                </ul>
+                            </div>
+                        </a>
+                    </article>
 				<?php endwhile; ?>
 				<?php else: ?>
 					<p>該当する記事がありません。</p>
-				<?php
-                    endif;
-                    wp_reset_postdata();
-				?>
+				<?php endif; wp_reset_postdata(); ?>
 			</div>
             <!-- /.p-articles -->
         </section>
         <?php get_template_part('template-parts/side'); ?><!-- サイド -->
     </div>
-</div>
+</main>
 
 <?php get_template_part('template-parts/footer') ?>
 <script>
@@ -148,7 +147,13 @@
             {
                 breakpoint: 768, // OOpx以下のサイズに適用
                 settings: {
-                slidesToShow: 1.325,
+                    slidesToShow: 1.655,
+                }
+            },
+            {
+                breakpoint: 480, // OOpx以下のサイズに適用
+                settings: {
+                    slidesToShow: 1.655,
                 }
             }
         ]
@@ -206,5 +211,4 @@
             }
         }
     });
-
 </script>

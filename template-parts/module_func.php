@@ -1,28 +1,25 @@
 <?php
     // ========================================
-    // 記事タイトルから同じタイトルの画像ギャラリーを取得
+    // カテゴリ詳細ページにて
+    // 記事タイトルから同じタイトルの画像ギャラリーリンクを生成
     // ========================================
-    function generate_gallery_link() {
+    function generate_gallery_link($title) {
         $gallery_link = "";
-        $title = get_the_title();
-        $args = array(
+        $args = [ //検索条件
             'post_type' => 'gallery',
             'title' => $title,
-            'post_status' => 'publish', // 公開状態の投稿のみ
+            'post_status' => 'publish', // 公開状態
             'numberposts' => 1
-        );
+        ];
 
         $posts = get_posts($args);
 
         // 該当する投稿があればリンクを生成
         if (!empty($posts)) {
-            $image_urls = get_images_from_post($posts[0]->ID);
-            $post_num = 0;
-            foreach ($image_urls as $url) {
-                $post_num++;
-            }
+            $post_content = get_post_field('post_content', $posts[0]->ID);
+            $media_urls = get_media_urls_from_post($post_content);
             $link = get_permalink($posts[0]->ID);
-            $gallery_link = '<div class="p-single-gallery"><a class="p-single-gallery-link" href="' . esc_url($link) . '">すべての画像・動画を見る(全'. $post_num .'点)</a></div>';
+            $gallery_link = '<div class="p-single-gallery"><a class="p-single-gallery-link" href="' . esc_url($link) . '">すべての画像・動画(全'. count($media_urls) .'点)</a></div>';
         }
 
         return $gallery_link;
@@ -143,7 +140,7 @@
         return $single_slug;
     }
     // ========================================
-    // 投稿から画像データ取得 HTMLタグとして出力
+    // 投稿から画像データURL配列を取得
     // ========================================
     function get_images_from_post($post_id) {
         $post = get_post($post_id);
@@ -157,9 +154,43 @@
         return $image_urls;
     }
     // ========================================
+    // 投稿から画像URL、動画URL、YouTubeのURL配列を取得
+    // ========================================
+    function get_media_urls_from_post($post_content) {
+        $media_urls = []; // メディアURLを格納する配列を初期化
+
+        $pattern = '/<img.+?src="([^"]+)".*?>|<video.+?src="([^"]+)".*?>|https?:\/\/youtu\.be\/[\w\-_]+(\?[\w=&]+)?|https?:\/\/\S+\.(mp4|mov)/i';
+
+        // 正規表現による検索
+        preg_match_all($pattern, $post_content, $matches, PREG_SET_ORDER);
+        foreach ($matches as $match) {
+
+            if (!empty($match[1])) { // imgタグまたはvideoタグの場合
+                $media_urls[] = $match[1];
+            } elseif (!empty($match[2])) { // videoタグの場合（この条件分岐は冗長かもしれませんが、明示的に分けています）
+                $media_urls[] = $match[2];
+            } elseif (!empty($match[0])) { // YouTubeのURLまたはビデオファイルの直接URLの場合
+                if (!empty($match[0]) && preg_match('/https?:\/\/youtu\.be\/[\w\-_]+/', $match[0])) { // YouTubeの短縮URL
+                    // YouTubeの短縮URLをYouTubeの埋め込みURLに変換
+                    $video_id = preg_replace('/https?:\/\/youtu\.be\/([\w\-_]+)/', '$1', $match[0]);
+                    $embed_url = 'https://www.youtube.com/embed/' . $video_id;
+                    $media_urls[] = $embed_url;
+                } else if (!empty($match[0]) && preg_match('/https?:\/\/(?:www\.)?youtube\.com\/watch\?v=([\w\-_]+)/', $match[0])){ // YouTubeの通常のURL
+                    $video_id = preg_replace('/https?:\/\/(?:www\.)?youtube\.com\/watch\?v=([\w\-_]+)/', '$1', $match[0]);
+                    $embed_url = 'https://www.youtube.com/embed/' . $video_id;
+                    $media_urls[] = $embed_url;
+                } else { //動画URL
+                    $media_urls[] = $match[0];
+                }
+            }
+        }
+        return array_unique($media_urls); //重複を除去
+    }
+    // ========================================
     // 投稿ID＋タクソノミーからタームネームの取得
     // ========================================
     function term_names_by_term($post_id, $taxonomy, $is_array) {
+        $terms_name = [];
         $terms = get_the_terms($post_id, $taxonomy);
 
         if (!empty($terms) && !is_wp_error($terms)) {
@@ -175,5 +206,3 @@
         }
         return $terms_name;
     }
-
-?>

@@ -9,6 +9,10 @@
   details {
     border-bottom: 2px solid black;
     padding: 24px 8px;
+
+    @include mq (o-sp-m) {
+      padding: 24px 0px;
+    }
   }
   summary {
     font-size: rem(18);
@@ -29,6 +33,10 @@
   h1, h2, h3 {
     font-size: rem(20);
     padding: 24px 0px;
+
+    @include mq (o-sp-m) {
+      font-size: rem(18);
+    }
   }
 
   h4, h5, h5, h6, p, li {
