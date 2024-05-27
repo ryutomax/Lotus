@@ -10,19 +10,50 @@
               'posts_per_page' => 6,
               'post_status' => 'publish',
               'tax_query' => [
-                  array(
-                      'taxonomy' => 'post_locate',   // カスタムタクソノミーを指定
-                      'field'    => 'slug',       // タームの"slug"または"id"を指定
-                      'terms'    => 'carousel', // 絞り込みたいタームを指定
-                  )
+                [
+                    'taxonomy' => 'top_carousel',   // カスタムタクソノミーを指定
+                    'field'    => 'slug',       // タームの"slug"または"id"を指定
+                    'terms'    => ['1', '2', '3', '4', '5', '6'], // 絞り込みたいタームを指定
+                ]
               ]
           );
 
           $carousel_query = new WP_Query( $args );
-            if ( $carousel_query->have_posts() ):
-            while ( $carousel_query->have_posts() ):
-                $carousel_query->the_post();
-          ?>
+
+          if ($carousel_query->have_posts()):
+            foreach ($carousel_query->posts as $post) {
+                // タームを取得
+                $terms = get_the_terms($post->ID, 'top_carousel');
+                if ($terms && !is_wp_error($terms)) {
+                    // タームの名前、または必要なプロパティを追加
+                    $post->top_carousel = $terms;
+                } else {
+                    // タームがない場合は、空の配列やデフォルト値を設定
+                    $post->top_carousel = '';
+                }
+            }
+        endif;
+        wp_reset_postdata();
+
+        usort($carousel_query->posts, function($a, $b) {
+          $terms_a = get_the_terms($a->ID, 'top_carousel');
+          $terms_b = get_the_terms($b->ID, 'top_carousel');
+          
+          if (!$terms_a || is_wp_error($terms_a)) {
+              return -1;
+          }
+          if (!$terms_b || is_wp_error($terms_b)) {
+              return 1;
+          }
+          $term_name_a = $terms_a[0]->name;
+          $term_name_b = $terms_b[0]->name;
+          
+          return strcmp($term_name_a, $term_name_b);
+        });
+        // 並び替えた投稿を表示
+        foreach ($carousel_query->posts as $post):
+            setup_postdata($post);
+        ?>
 
         <div class="p-top-slider-item">
           <a href="<?php echo get_the_permalink(); ?>" class="p-top-slider-link">
@@ -32,7 +63,7 @@
                 $thumbnail = esc_url(get_template_directory_uri() . '/'). 'assets/images/common/thumbnail-none.jpg';
               }
             ?>
-            <img class="p-top-slider-img" src="<?php print $thumbnail; ?>" alt="<?php the_title(); ?>">
+            <img class="p-top-slider-img" src="<?php print $thumbnail; ?>" alt="<?php the_title(); ?>" loading="lazy">
             <div class="p-top-slider-info">
               <?php
                 $post_type = get_post_type();
@@ -43,8 +74,9 @@
           </a>
         </div>
 
-        <?php endwhile;
-          endif;
+        <?php 
+        // endwhile; endif;
+            endforeach;
           wp_reset_postdata();
         ?>
       </section>
@@ -61,9 +93,9 @@
                     'post_status' => 'publish',
                     'tax_query' => [
                         array(
-                            'taxonomy' => 'post_locate',   // カスタムタクソノミーを指定
+                            'taxonomy' => 'pick_up_news',   // カスタムタクソノミーを指定
                             'field'    => 'slug',       // タームの"slug"または"id"を指定
-                            'terms'    => 'pick-up-news', // 絞り込みたいタームを指定
+                            'terms'    => 'is_display', // 絞り込みたいタームを指定
                         )
                     ]
                 );
@@ -73,27 +105,22 @@
                   while ( $carousel_query->have_posts() ):
                       $carousel_query->the_post();
               ?>
-              <article class="p-pickUp-article">
-                <a class="p-pickUp-article-link" href="<?php echo get_the_permalink(); ?>">
-                  <?php
-                    $thumbnail = get_the_post_thumbnail_url();
-                    if (!$thumbnail) {
-                      $thumbnail = esc_url(get_template_directory_uri() . '/'). 'assets/images/common/thumbnail-none.jpg';
-                    }
-                  ?>
-                  <img class="p-pickUp-article-thumbnail" src="<?php print $thumbnail; ?>" alt="<?php the_title(); ?>">
-                  <time class="p-pickUp-article-time" datetime="<?= get_the_date('Y.m.d'); ?>"><?= get_the_date('Y.m.d'); ?></time>
-                  <h2 class="p-pickUp-article-text"><?php the_title(); ?></h2>
-                  <!-- <?php
-                    $content = get_the_content();
-                    $content = strip_tags($content);
-                    if (mb_strlen($content) > 40) {
-                        $content = mb_substr($content, 0, 40) . '...'; // 40文字を超える場合は「...」を追加
-                    }
-                  ?>
-                  <p class="p-pickUp-article-text"><?php echo $content; ?></p> -->
-                </a>
-              </article>
+                <article class="p-pickUp-article">
+                  <a class="p-pickUp-article-link" href="<?php echo get_the_permalink(); ?>">
+                    <?php
+                      $thumbnail = get_the_post_thumbnail_url();
+                      if (!$thumbnail) {
+                        $thumbnail = esc_url(get_template_directory_uri() . '/'). 'assets/images/common/thumbnail-none.jpg';
+                      }
+                    ?>
+                    <img class="p-pickUp-article-thumbnail" src="<?php print $thumbnail; ?>" alt="<?php the_title(); ?>" loading="lazy">
+                    <time class="p-pickUp-article-time" datetime="<?= get_the_date('Y.m.d'); ?>"><?= get_the_date('Y.m.d'); ?></time>
+                    <div class="p-article-type">
+                      <span class="p-article-type-item" style="<?= get_post_type_info(get_post_type())['color']; ?>"><?= get_post_type_info(get_post_type())['name']; ?></span>
+                    </div>
+                    <h2 class="p-pickUp-article-text"><?php the_title(); ?></h2>
+                  </a>
+                </article>
               <?php
                 endwhile;
                 endif;
@@ -130,7 +157,7 @@
                       }
                     ?>
                     <figure  class="p-article-frame">
-                      <img src="<?php print $thumbnail; ?>" alt="<?php the_title(); ?>" class="p-article-thumbnail">
+                      <img src="<?php print $thumbnail; ?>" alt="<?php the_title(); ?>" class="p-article-thumbnail" loading="lazy">
                     </figure>
                     <div class="p-article-info">
                       <h2 class="p-article-title"><?php the_title(); ?></h2>
@@ -161,7 +188,7 @@
                         }
                       ?>
                       <figure  class="p-article-frame">
-                        <img src="<?php print $thumbnail; ?>" alt="<?php the_title(); ?>" class="p-article-thumbnail">
+                        <img src="<?php print $thumbnail; ?>" alt="<?php the_title(); ?>" class="p-article-thumbnail" loading="lazy">
                       </figure>
                       <div class="p-article-info">
                         <h2 class="p-article-title"><?php the_title(); ?></h2>

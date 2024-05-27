@@ -30,7 +30,7 @@
                 }
               ?>
               <figure  class="p-article-frame">
-                <img src="<?php print $thumbnail; ?>" alt="<?php the_title(); ?>" class="p-article-thumbnail">
+                <img src="<?php print $thumbnail; ?>" alt="<?php the_title(); ?>" class="p-article-thumbnail" loading="lazy">
               </figure>
               <div class="p-article-info">
                 <h2 class="p-article-title"><?php the_title(); ?></h2>

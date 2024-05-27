@@ -206,3 +206,26 @@
         }
         return $terms_name;
     }
+    // ========================================
+    // アーカイブページ tabフォームのセッション管理
+    // ========================================
+    function tab_form_value($page_slug) {
+        $buttonValue = "all";
+        if ($_SERVER["REQUEST_METHOD"] == "POST") {
+            $buttonValue = $_POST['button'];
+            $_SESSION['buttonValue'] = $_POST['button'];
+        } else {
+            // 遷移元URLを取得
+            $referer = isset($_SERVER['HTTP_REFERER']) ? $_SERVER['HTTP_REFERER'] : '';
+            $homeUrl = home_url('/');
+            $pattern = "/^" . preg_quote($homeUrl, '/') . $page_slug. "(\/page\/[0-9]+)?\/?$/";
+
+            if (preg_match($pattern, $referer)) {
+                    $buttonValue = isset($_SESSION['buttonValue']) ? $_SESSION['buttonValue'] : '';
+            } else {
+                    $buttonValue = "all";
+                    $_SESSION['buttonValue'] = "all";
+            }
+        }
+        return $buttonValue;
+    }

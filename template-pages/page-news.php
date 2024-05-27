@@ -4,9 +4,11 @@ Template Name: News一覧
 */
 ?>
 <?php
+    session_start();
     require_once(locate_template('template-parts/module_func.php', true, true));
     get_template_part('template-parts/head');
     get_template_part('template-parts/header');
+    $buttonValue = tab_form_value('newslist');
 ?>
 <main class="l-main p-news">
     <section class="p-fv">
@@ -17,14 +19,7 @@ Template Name: News一覧
             'breadcrumb_slug_arr' => [],
             'breadcrumb_arr' => ['ニュース']
         ];
-
         get_template_part('template-parts/breadcrumb', null, $args);
-
-        $buttonValue = "all";
-        if ($_SERVER["REQUEST_METHOD"] == "POST") {
-            // 'button'の値を取得
-            $buttonValue = $_POST['button'];
-        }
     ?>
     <div class="p-articles-head">
         <h2 class="p-articles-title"><span class="p-articles-title-eng">NEWS</span><span class="p-articles-title-kana">ニュース</span></h2>
@@ -33,11 +28,11 @@ Template Name: News一覧
     <div class="p-mainContent">
         <section class="c-content">
             <form action="<?= esc_url( home_url('/') );?>newslist" method="post" class="p-article-header">
-                <button class="p-article-tab<?php $tabActive = $buttonValue == 'all' ?  ' is-tabActive' : ''; echo $tabActive; ?>" type="submit" name="button" value="all"><span>A</span>LL</button>
-                <button class="p-article-tab<?php $tabActive = $buttonValue == 'music' ?  ' is-tabActive' : ''; echo $tabActive; ?>" type="submit" name="button" value="music"><span>M</span>USIC</button>
-                <button class="p-article-tab<?php $tabActive = $buttonValue == 'game' ?  ' is-tabActive' : ''; echo $tabActive; ?>" type="submit" name="button" value="game"><span>G</span>AME</button>
-                <button class="p-article-tab<?php $tabActive = $buttonValue == 'animation' ?  ' is-tabActive' : ''; echo $tabActive; ?>" type="submit" name="button" value="animation"><span>A</span>NIME</button>
-                <button class="p-article-tab<?php $tabActive = $buttonValue == 'entertainment' ?  ' is-tabActive' : ''; echo $tabActive; ?>" type="submit" name="button" value="entertainment"><span>E</span>NTERTAINMENT</button>
+                <button class="p-article-tab<?php $tabActive = $buttonValue == 'all' ?  ' is-tabActive' : ''; echo $tabActive; ?>" type="submit" name="button" value="all"><span>A</span><span>LL</span></button>
+                <button class="p-article-tab<?php $tabActive = $buttonValue == 'music' ?  ' is-tabActive' : ''; echo $tabActive; ?>" type="submit" name="button" value="music"><span>M</span><span>USIC</span></button>
+                <button class="p-article-tab<?php $tabActive = $buttonValue == 'game' ?  ' is-tabActive' : ''; echo $tabActive; ?>" type="submit" name="button" value="game"><span>G</span><span>AME</span></button>
+                <button class="p-article-tab<?php $tabActive = $buttonValue == 'animation' ?  ' is-tabActive' : ''; echo $tabActive; ?>" type="submit" name="button" value="animation"><span>A</span><span>NIME</span></button>
+                <button class="p-article-tab<?php $tabActive = $buttonValue == 'entertainment' ?  ' is-tabActive' : ''; echo $tabActive; ?>" type="submit" name="button" value="entertainment"><span>E</span><span>NTERTAINMENT</span></button>
             </form>
             <div class="p-articles">
                 <?php
@@ -73,7 +68,7 @@ Template Name: News一覧
                             }
                         ?>
                         <figure  class="p-article-frame">
-                            <img src="<?php print $thumbnail; ?>" alt="<?php the_title(); ?>" class="p-article-thumbnail">
+                            <img src="<?php print $thumbnail; ?>" alt="<?php the_title(); ?>" class="p-article-thumbnail" loading="lazy">
                         </figure>
                         <div class="p-article-info">
                             <h2 class="p-article-title"><?php the_title(); ?></h2>

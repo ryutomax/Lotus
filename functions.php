@@ -139,41 +139,58 @@ function add_custom_taxonomy() {
 			'query_var' => true,
 			'show_in_menu' => false
 	);
-	register_taxonomy('category', array('game', 'music' , 'entertainment', 'animation'), $args);
+	register_taxonomy('category', ['game', 'music' , 'entertainment', 'animation'], $args);
 
-	//表示位置
+	//TOPカルーセル
 	$args = array(
-			'label' => '表示位置',
-			'labels' => array(
-				'name' => _x('表示位置', 'taxonomy general name'),
-				'singular_name' => _x('Location', 'taxonomy singular name')
-			),
+			'label' => 'TOPカルーセル',
+			'labels' => [
+				'name' => 'TOPカルーセル(表示順)',
+				'singular_name' => 'TOPカルーセル',
+			],
 			'hierarchical' => true, // このタクソノミーが階層化される（カテゴリーのように）かどうか
 			'public' => true,
 			'show_ui' => true,
 			'show_admin_column' => true,
 			'show_in_rest' => true,
 			'query_var' => true,
-			'show_in_menu' => false
+			'show_in_menu' => false //管理画面メニュー表示
 	);
-	register_taxonomy('post_locate', array('game', 'music' , 'entertainment', 'animation'), $args);
+	register_taxonomy('top_carousel', ['game', 'music' , 'entertainment', 'animation'], $args);
+
+	//Pick Up News
+	$args = array(
+			'label' => 'Pick Up News',
+			'labels' => [
+				'name' => 'Pick Up News',
+				'singular_name' => 'Pick Up News'
+			],
+			'hierarchical' => true, // このタクソノミーが階層化される（カテゴリーのように）かどうか
+			'public' => true,
+			'show_ui' => true,
+			'show_admin_column' => true,
+			'show_in_rest' => true,
+			'query_var' => true,
+			'show_in_menu' => false //管理画面メニュー表示
+	);
+	register_taxonomy('pick_up_news', ['game', 'music' , 'entertainment', 'animation'], $args);
 
 	//紐づけタグ
 	$args = array(
-			'label' => '紐づけタグ',
-			'labels' => array(
-				'all_items' => '紐づけタグ一覧',
-				'add_new_item' => '紐づけタグを追加',
-				'name' => '紐づけタグ',
-				'singular_name' => '紐づけタグ',
-			),
+			'label' => '付属情報紐づけ',
+			'labels' => [
+				'all_items' => '付属情報紐づけ一覧',
+				'add_new_item' => '付属情報紐づけを追加',
+				'name' => '付属情報紐づけ',
+				'singular_name' => '付属情報紐づけ',
+			],
 			'hierarchical' => false, // このタクソノミーが階層化される（カテゴリーのように）かどうか
 			'public' => true,
 			'show_ui' => true,
 			'show_in_rest' => true,
 			'query_var' => true,
 	);
-	register_taxonomy('meta-bind', array('game', 'music' , 'entertainment', 'animation', 'meta-info'), $args);
+	register_taxonomy('meta-bind', ['game', 'music', 'entertainment', 'animation', 'meta-info'], $args);
 }
 // init アクションフックを使用して、カスタムタクソノミーを初期化
 add_action('init', 'add_custom_taxonomy');
@@ -225,19 +242,27 @@ function add_custom_menu_item() {
 			'TOPカルーセル', // ページタイトル
 			'TOPカルーセル', // メニュータイトル
 			'manage_options', // 必要な権限
-			'post_locate-carousel-list', // ページスラッグ
-			'display_custom_post_list' // ページを表示する関数
+			'top_carousel-list', // ページスラッグ
+			'display_menu_top_carousel' // ページを表示する関数
+	);
+	add_menu_page(
+			'Pick Up News', // ページタイトル
+			'Pick Up News', // メニュータイトル
+			'manage_options', // 必要な権限
+			'pick_up_news-list', // ページスラッグ
+			'display_menu_pick_up_news' // ページを表示する関数
 	);
 }
 add_action('admin_menu', 'add_custom_menu_item');
 
-function display_custom_post_list() {
+// TOPカルーセル メニュー追加
+function display_menu_top_carousel() {
 	// 対象とする投稿タイプ
 	$post_types = array('music', 'game', 'animation', 'entertainment');
 
 	// タクソノミーの条件
-	$taxonomy = 'post_locate';
-	$term = 'carousel';
+	$taxonomy = 'top_carousel';
+	$term = ['1', '2', '3', '4', '5', '6'];
 
 	echo '<div class="wrap">';
 	echo '<h2>TOPカルーセル</h2>';
@@ -262,6 +287,82 @@ function display_custom_post_list() {
 					$query = new WP_Query($args);
 
 					if ($query->have_posts()) {
+							// ↓ヘッダー
+							echo '<table class="wp-list-table widefat fixed striped posts">';
+							echo '<thead>';
+							echo '<tr>';
+							echo '<th scope="col" id="title" class="manage-column column-title column-primary">タイトル</th>';
+							echo '<th scope="col" id="taxonomy" class="manage-column column-taxonomy">TOPカルーセル(表示順)</th>';
+							echo '<th scope="col" id="author" class="manage-column column-author">作成者</th>';
+							echo '<th scope="col" id="date" class="manage-column column-date">更新日</th>';
+							echo '</tr>';
+							echo '</thead>';
+							echo '<tbody id="the-list">';
+							// ↑ヘッダー
+							while ($query->have_posts()) {
+									$query->the_post();
+									$term_list = wp_get_post_terms(get_the_ID(), $taxonomy, array("fields" => "all"));
+									$term_names = !is_wp_error($term_list) ? join(', ', wp_list_pluck($term_list, 'name')) : '';
+
+									echo '<tr id="post-' . get_the_ID() . '" class="iedit">';
+									echo '<td class="title column-title has-row-actions column-primary page-title">';
+									echo '<strong><a class="row-title" href="' . get_edit_post_link() . '">' . get_the_title() . '</a></strong>';
+									echo '<div class="row-actions">';
+									echo '<span class="edit"><a href="' . get_edit_post_link() . '">編集</a> | </span>';
+									echo '<span class="inline hide-if-no-js">';
+									echo '</span>';
+									echo '</div>';
+									echo '</td>';
+									echo '<td class="taxonomy column-taxonomy">' . esc_html($term_names) . '</td>';
+									echo '<td class="author column-author">' . get_the_author() . '</td>';
+									echo '<td class="date column-date">' . get_the_date() . '</td>';
+									echo '</tr>';
+							}
+
+							echo '</tbody>';
+							echo '</table>';
+					} else {
+							echo '<p>TOPカルーセルに設定した投稿はありません。</p>';
+					}
+					wp_reset_postdata();
+			}
+	}
+
+	echo '</div>';
+}
+// Pick Up News メニュー追加
+function display_menu_pick_up_news() {
+	// 対象とする投稿タイプ
+	$post_types = array('music', 'game', 'animation', 'entertainment');
+
+	// タクソノミーの条件
+	$taxonomy = 'pick_up_news';
+	$term = 'is_display';
+
+	echo '<div class="wrap">';
+	echo '<h2>Pick Up News(4つまで表示可能)</h2>';
+
+	foreach ($post_types as $post_type) {
+			$post_type_obj = get_post_type_object($post_type);
+			if ($post_type_obj) {
+					echo '<h3>' . esc_html($post_type_obj->labels->name) . '</h3>';
+
+					// 投稿リストの表示
+					$args = array(
+							'post_type' => $post_type,
+							'posts_per_page' => 10, // 必要に応じて調整
+							'tax_query' => array(
+									array(
+											'taxonomy' => $taxonomy,
+											'field' => 'slug',
+											'terms' => $term
+									),
+							),
+					);
+					$query = new WP_Query($args);
+
+					if ($query->have_posts()) {
+							// ↓ヘッダー
 							echo '<table class="wp-list-table widefat fixed striped posts">';
 							echo '<thead>';
 							echo '<tr>';
@@ -271,18 +372,17 @@ function display_custom_post_list() {
 							echo '</tr>';
 							echo '</thead>';
 							echo '<tbody id="the-list">';
-
+							// ↑ヘッダー
 							while ($query->have_posts()) {
 									$query->the_post();
+
 									echo '<tr id="post-' . get_the_ID() . '" class="iedit">';
 									echo '<td class="title column-title has-row-actions column-primary page-title">';
 									echo '<strong><a class="row-title" href="' . get_edit_post_link() . '">' . get_the_title() . '</a></strong>';
 									echo '<div class="row-actions">';
 									echo '<span class="edit"><a href="' . get_edit_post_link() . '">編集</a> | </span>';
 									echo '<span class="inline hide-if-no-js">';
-									// echo '<a href="#" class="editinline" aria-label="Quick edit “' . get_the_title() . '” inline">Quick Edit</a> | ';
 									echo '</span>';
-									// echo '<span class="trash"><a href="' . get_delete_post_link() . '" class="submitdelete">Trash</a></span>';
 									echo '</div>';
 									echo '</td>';
 									echo '<td class="author column-author">' . get_the_author() . '</td>';
@@ -293,10 +393,8 @@ function display_custom_post_list() {
 							echo '</tbody>';
 							echo '</table>';
 					} else {
-							echo '<p>No posts found for ' . esc_html($post_type_obj->labels->name) . ' with term ' . esc_html($term) . '.</p>';
+							echo '<p>Pick Up Newsに設定した投稿はありません。</p>';
 					}
-
-					// グローバル $post 変数をリセット
 					wp_reset_postdata();
 			}
 	}

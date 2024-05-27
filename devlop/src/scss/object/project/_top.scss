@@ -72,6 +72,7 @@ $slider-h-sp: 70vw;
   transition: filter 0.3s;
 
   @include mq (o-sp) {
+    filter: brightness(0.9);
     height: $slider-h-sp;
   }
 }
@@ -104,6 +105,7 @@ $slider-h-sp: 70vw;
   color: $white;
   font-size: rem(16);
   line-height: 1.2;
+  text-shadow: 1px 1px 5px black;
 }
 
 .p-mainContent {
@@ -171,7 +173,7 @@ $slider-h-sp: 70vw;
 }
 
 .p-pickUp-list {
-  display: flex;
+  // display: flex;
   box-shadow: inset -10px 0 5px -8px rgba(0, 0, 0, 0.08), inset 10px 0 5px -8px rgba(0, 0, 0, 0.08);
 }
 .p-pickUp-article {

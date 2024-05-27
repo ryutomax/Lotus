@@ -6,7 +6,7 @@
         <h1 class="p-footer-logo">
           クリエイターの言葉を伝えるエンタメ総合メディア
           <a class="p-footer-logo-link" href="<?= esc_url(home_url('/')) ?>">
-            <img src="<?php echo esc_url(get_template_directory_uri() . '/'); ?>assets/images/footer/footer_logo.png" alt="Lotus クリエイターの言葉を伝えるエンタメ総合メディア" class="p-footer-logo-img">
+            <img src="<?php echo esc_url(get_template_directory_uri() . '/'); ?>assets/images/footer/footer_logo.png" alt="Lotus クリエイターの言葉を伝えるエンタメ総合メディア" class="p-footer-logo-img" loading="lazy">
           </a>
         </h1>
         <div class="p-header-search u-tb-show">

@@ -48,7 +48,7 @@
                     $gallery_per_page_link = $home_url . 'gallery/' . $post_slug;
                 ?>
 
-                <p class="p-gallery-num">この記事の画像・動画（ <?= count($media_urls); ?> 点）</p>
+                <p class="p-gallery-num">この記事の画像・動画（全<?= count($media_urls); ?>点）</p>
 
                 <?php
                     echo '<div class="p-slider-visual">';
@@ -61,7 +61,7 @@
                         } elseif (preg_match('/(?:www\.youtube\.com\/embed\/|youtu\.be\/)/', $url)) {// YouTube動画
                             echo '<a class="p-slider-visual-link" href="'. $gallery_per_page_link . '/' . $post_num .'"><iframe src="' . $url . '" ></iframe></a>';
                         } else {// 画像ファイル
-                            echo '<a class="p-slider-visual-link" href="'. $gallery_per_page_link . '/' . $post_num .'"><img src="' . $url . '" alt="Post Image"></a>';
+                            echo '<a class="p-slider-visual-link" href="'. $gallery_per_page_link . '/' . $post_num .'"><img src="' . $url . '" alt="Post Image" loading="lazy"></a>';
                         }
                     }
                     echo '</div>';
@@ -96,7 +96,7 @@
                                 }
                             ?>
                             <figure  class="p-article-frame">
-                                <img src="<?php print $thumbnail; ?>" alt="<?php the_title(); ?>" class="p-article-thumbnail">
+                                <img src="<?php print $thumbnail; ?>" alt="<?php the_title(); ?>" class="p-article-thumbnail" loading="lazy">
                             </figure>
                             <div class="p-article-info">
                                 <h2 class="p-article-title"><?php the_title(); ?></h2>

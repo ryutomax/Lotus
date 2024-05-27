@@ -56,11 +56,17 @@
 
     &:hover {
       border-bottom: 6px solid $news-red;
-      color: $news-red;
+      span {
+        color: $news-red;
+      }
     }
 
     span {
-      color: $news-red;
+      color: $black;
+      transition: .3s all;
+      &:first-child {
+        color: $news-red;
+      }
     }
 
     @include mq (o-sp) {
@@ -156,12 +162,18 @@
 
   .p-article-tab {
     span {
-      color: $music-blue;
+      color: $black;
+      transition: .3s all;
+      &:first-child {
+        color: $music-blue;
+      }
     }
 
     &:hover {
       border-bottom: 6px solid $music-blue;
-      color: $music-blue;
+      span {
+        color: $music-blue;
+      }
     }
   }
   .is-tabActive {
@@ -179,12 +191,20 @@
     background-position: center 35%;
   }
   .p-article-tab {
+
     span {
-      color: $anime-pink;
+      color: $black;
+      transition: .3s all;
+      &:first-child {
+        color: $anime-pink;
+      }
     }
+
     &:hover {
       border-bottom: 6px solid $anime-pink;
-      color: $anime-pink;
+      span {
+        color: $anime-pink;
+      }
     }
   }
 
@@ -204,12 +224,18 @@
   }
   .p-article-tab {
     span {
-      color: $game-purple;
+      color: $black;
+      transition: .3s all;
+      &:first-child {
+        color: $game-purple;
+      }
     }
 
     &:hover {
       border-bottom: 6px solid $game-purple;
-      color: $game-purple;
+      span {
+        color: $game-purple;
+      }
     }
   }
 
@@ -232,13 +258,20 @@
     font-size: min(15vw, 100px);
   }
   .p-article-tab {
+
     span {
-      color: $enter-orange;
+      color: $black;
+      transition: .3s all;
+      &:first-child {
+        color: $enter-orange;
+      }
     }
 
     &:hover {
       border-bottom: 6px solid $enter-orange;
-      color: $enter-orange;
+      span {
+        color: $enter-orange;
+      }
     }
   }
 
@@ -257,6 +290,7 @@
   text-align: start;
   font-size: rem(18);
   font-family: $ff-aptly;
+  font-weight: 400;
   letter-spacing: 0.05em;
   transition: 0.3s all;
 
@@ -424,7 +458,7 @@ $mr: 32px;
 .p-article-title {
   font-size: rem(14);
   margin-bottom: 8px;
-  line-height: 1.2;
+  line-height: 1.5;
 
   @include mq (o-sp) {
     font-size: rem(16);
@@ -452,6 +486,17 @@ $mr: 32px;
     margin-right: 4px;
   }
 }
+
+.p-pickUp {
+  .p-article-type {
+    padding-right: 12px;
+  }
+  .p-article-type-item {
+    font-size: rem(12);
+    margin-bottom: 8px;
+  }
+}
+
 
 .p-article-tags {
   display: none;

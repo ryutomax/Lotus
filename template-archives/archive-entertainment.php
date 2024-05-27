@@ -1,7 +1,9 @@
 <?php
+  session_start();
 	get_template_part('template-parts/head');
 	require_once(locate_template('template-parts/module_func.php', true, true));
 	get_template_part('template-parts/header');
+	$buttonValue = tab_form_value('entertainment');
 ?>
 <main class="l-main p-entertainment">
 	<section class="p-fv">
@@ -14,11 +16,6 @@
 						'breadcrumb_arr' => ['エンタメ']
 				];
 				get_template_part('template-parts/breadcrumb', null, $args);
-
-				$buttonValue = "all";
-				if ($_SERVER["REQUEST_METHOD"] == "POST") {
-						$buttonValue = $_POST['button'];
-				}
 		?>
 	<div class="p-articles-head">
 		<h2 class="p-articles-title"><span class="p-articles-title-eng">ENTERTAINMENT</span><span class="p-articles-title-kana">エンタメ</span></h2>
@@ -27,12 +24,12 @@
 	<div class="p-mainContent">
 		<section class="c-content">
 			<form action="<?= esc_url( home_url('/') );?>entertainment" method="post" class="p-article-header">
-				<button class="p-article-tab<?php $tabActive = $buttonValue == 'all' ?  ' is-tabActive' : ''; echo $tabActive; ?>" type="submit" name="button" value="all"><span>A</span>LL</button>
-				<button class="p-article-tab<?php $tabActive = $buttonValue == 'news' ?  ' is-tabActive' : ''; echo $tabActive; ?>" class="p-article-tab" type="submit" name="button" value="news"><span>N</span>EWS</button>
-				<button class="p-article-tab<?php $tabActive = $buttonValue == 'interview' ?  ' is-tabActive' : ''; echo $tabActive; ?>" type="submit" name="button" value="interview"><span>I</span>NTERVIEW</button>
-				<button class="p-article-tab<?php $tabActive = $buttonValue == 'column' ?  ' is-tabActive' : ''; echo $tabActive; ?>" type="submit" name="button" value="column"><span>C</span>OLUMN</button>
-				<button class="p-article-tab<?php $tabActive = $buttonValue == 'report' ?  ' is-tabActive' : ''; echo $tabActive; ?>" type="submit" name="button" value="report"><span>R</span>EPORT</button>
-				<button class="p-article-tab<?php $tabActive = $buttonValue == 'another' ?  ' is-tabActive' : ''; echo $tabActive; ?>" type="submit" name="button" value="another"><span>A</span>NOTHER</button>
+				<button class="p-article-tab<?php $tabActive = $buttonValue == 'all' ?  ' is-tabActive' : ''; echo $tabActive; ?>" type="submit" name="button" value="all"><span>A</span><span>LL</span></button>
+				<button class="p-article-tab<?php $tabActive = $buttonValue == 'news' ?  ' is-tabActive' : ''; echo $tabActive; ?>" class="p-article-tab" type="submit" name="button" value="news"><span>N</span><span>EWS</span></button>
+				<button class="p-article-tab<?php $tabActive = $buttonValue == 'interview' ?  ' is-tabActive' : ''; echo $tabActive; ?>" type="submit" name="button" value="interview"><span>I</span><span>NTERVIEW</span></button>
+				<button class="p-article-tab<?php $tabActive = $buttonValue == 'column' ?  ' is-tabActive' : ''; echo $tabActive; ?>" type="submit" name="button" value="column"><span>C</span><span>OLUMN</span></button>
+				<button class="p-article-tab<?php $tabActive = $buttonValue == 'report' ?  ' is-tabActive' : ''; echo $tabActive; ?>" type="submit" name="button" value="report"><span>R</span><span>EPORT</span></button>
+				<button class="p-article-tab<?php $tabActive = $buttonValue == 'another' ?  ' is-tabActive' : ''; echo $tabActive; ?>" type="submit" name="button" value="another"><span>A</span><span>NOTHER</span></button>
 			</form>
 			<div class="p-articles">
 				<?php
@@ -72,7 +69,7 @@
 							}
 						?>
 						<figure  class="p-article-frame">
-							<img src="<?php print $thumbnail; ?>" alt="<?php the_title(); ?>" class="p-article-thumbnail">
+							<img src="<?php print $thumbnail; ?>" alt="<?php the_title(); ?>" class="p-article-thumbnail" loading="lazy">
 						</figure>
 						<div class="p-article-info">
 							<h2 class="p-article-title"><?php the_title(); ?></h2>

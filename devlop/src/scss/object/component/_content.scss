@@ -1,11 +1,12 @@
 @use "global" as *;
 
-
 .c-content {
-  width: calc(100% - 300px);
+  width: calc(100% - 300px - 85px);
   margin-right: 85px;
+  overflow-x: hidden;
 
   @include mq (o-pc) {
+    width: calc(100% - 300px - 24px);
     margin-right: 24px;
   }
 

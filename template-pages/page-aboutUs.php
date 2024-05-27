@@ -36,7 +36,7 @@ Template Name: About Us
         </p>
         <a href="<?= esc_url(home_url('/')); ?>music" class="p-aboutUs-sec-btn">ミュージックのページへ</a>
       </div>
-      <img src="<?= esc_url(get_template_directory_uri() . '/'). 'assets/images/about_us/about_us_music.png'; ?>" alt="ミュージック" class="p-aboutUs-sec-img">
+      <img src="<?= esc_url(get_template_directory_uri() . '/'). 'assets/images/about_us/about_us_music.png'; ?>" alt="ミュージック" class="p-aboutUs-sec-img" loading="lazy">
     </div>
     <div class="p-aboutUs-sec">
       <div class="p-aboutUs-sec-info">
@@ -47,7 +47,7 @@ Template Name: About Us
         </p>
         <a href="<?= esc_url(home_url('/')); ?>animation" class="p-aboutUs-sec-btn">アニメのページへ</a>
       </div>
-      <img src="<?= esc_url(get_template_directory_uri() . '/'). 'assets/images/about_us/about_us_anime.png'; ?>" alt="アニメ" class="p-aboutUs-sec-img">
+      <img src="<?= esc_url(get_template_directory_uri() . '/'). 'assets/images/about_us/about_us_anime.png'; ?>" alt="アニメ" class="p-aboutUs-sec-img" loading="lazy">
     </div>
     <div class="p-aboutUs-sec">
       <div class="p-aboutUs-sec-info">
@@ -58,7 +58,7 @@ Template Name: About Us
         </p>
         <a href="<?= esc_url(home_url('/')); ?>game" class="p-aboutUs-sec-btn">ゲームのページへ</a>
       </div>
-      <img src="<?= esc_url(get_template_directory_uri() . '/'). 'assets/images/about_us/about_us_game.png'; ?>" alt="ゲーム" class="p-aboutUs-sec-img">
+      <img src="<?= esc_url(get_template_directory_uri() . '/'). 'assets/images/about_us/about_us_game.png'; ?>" alt="ゲーム" class="p-aboutUs-sec-img" loading="lazy">
     </div>
     <div class="p-aboutUs-sec">
       <div class="p-aboutUs-sec-info">
@@ -70,7 +70,7 @@ Template Name: About Us
         </p>
         <a href="<?= esc_url(home_url('/')); ?>entertainment" class="p-aboutUs-sec-btn">エンタメのページへ</a>
       </div>
-      <img src="<?= esc_url(get_template_directory_uri() . '/'). 'assets/images/about_us/about_us_entertainment.png'; ?>" alt="エンタメ" class="p-aboutUs-sec-img">
+      <img src="<?= esc_url(get_template_directory_uri() . '/'). 'assets/images/about_us/about_us_entertainment.png'; ?>" alt="エンタメ" class="p-aboutUs-sec-img" loading="lazy">
     </div>
   </section>
   <section class="p-aboutUs-bottom">

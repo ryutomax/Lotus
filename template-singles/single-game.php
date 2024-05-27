@@ -46,7 +46,7 @@
 						$post_thumbnail = esc_url(get_template_directory_uri() . '/'). 'assets/images/common/thumbnail-none.jpg';
 					}
 				?>
-				<img src="<?= esc_url($post_thumbnail); ?>" alt="<?php the_title(); ?>" class="p-single-thumbnail">
+				<img src="<?= esc_url($post_thumbnail); ?>" alt="<?php the_title(); ?>" class="p-single-thumbnail" loading="lazy">
 				<?= generate_gallery_link($title); ?><!-- 画像ギャラリーリンク -->
 				<?php include get_template_directory() . '/template-parts/sns_share.php'; ?>
 				<div class="p-single-cont">
@@ -94,7 +94,7 @@
 							}
 						?>
 						<figure  class="p-article-frame">
-							<img src="<?php print $thumbnail; ?>" alt="<?php the_title(); ?>" class="p-article-thumbnail">
+							<img src="<?php print $thumbnail; ?>" alt="<?php the_title(); ?>" class="p-article-thumbnail" loading="lazy">
 						</figure>
 						<div class="p-article-info">
 							<h2 class="p-article-title"><?php the_title(); ?></h2>

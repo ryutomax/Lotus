@@ -9,7 +9,7 @@
     &::after {
       content: "";
       position: absolute;
-      top: 37%;
+      top: 45%;
       left: 50%;
       transform: translate(-50%, -50%);
       background-image: url(../images/common/sns_x_icon.png);
@@ -23,6 +23,12 @@
     svg {
       opacity: 0 !important;
     }
+  }
+
+  .addtoany_list.a2a_kit_size_32 a:not(.addtoany_special_service)>span {
+    height: 40px;
+    line-height: 40px;
+    width: 40px;
   }
 }
 
