@@ -39,7 +39,7 @@
                     <h1 class="p-single-title"><?php the_title(); ?></h1>
                     <time class="p-single-date" datetime="<?= get_the_date('Y.m.d'); ?>"><?= get_the_date('Y.m.d'); ?></time>
                     <?php the_content(); ?>
-                    <!-- 画像にページ区切りのリンクを付与 -->
+                    <?php include get_template_directory() . '/template-parts/sns_share.php'; ?>
                     <?php get_template_part('template-parts/pagination'); ?>
                 <?php endwhile; wp_reset_postdata(); endif; ?>
                 <?php

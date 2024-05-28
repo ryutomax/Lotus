@@ -200,7 +200,7 @@
                 }
             } else {
                 foreach ($terms as $term) { //配列
-                    $terms_name = $term -> name;
+                    $terms_name[] = $term -> name;
                 }
             }
         }
