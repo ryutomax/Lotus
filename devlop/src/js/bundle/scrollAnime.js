@@ -1,4 +1,4 @@
-import $ from 'jquery'
+// import $ from 'jquery'
 
 export default class scrollAnime {
   constructor() {
@@ -55,8 +55,6 @@ export default class scrollAnime {
       }
       startPos = winScrollTop;
     });
-
-    
 
   }
 }
