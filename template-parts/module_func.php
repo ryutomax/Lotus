@@ -221,10 +221,11 @@
             $pattern = "/^" . preg_quote($homeUrl, '/') . $page_slug. "(\/page\/[0-9]+)?\/?$/";
 
             if (preg_match($pattern, $referer)) {
-                    $buttonValue = isset($_SESSION['buttonValue']) ? $_SESSION['buttonValue'] : '';
+                $buttonValue = isset($_SESSION['buttonValue']) ? $_SESSION['buttonValue'] : '';
+                unset($_SESSION['buttonValue']);
             } else {
-                    $buttonValue = "all";
-                    $_SESSION['buttonValue'] = "all";
+                $buttonValue = "all";
+                $_SESSION['buttonValue'] = "all";
             }
         }
         return $buttonValue;

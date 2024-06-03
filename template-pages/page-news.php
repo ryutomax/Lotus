@@ -4,6 +4,7 @@ Template Name: News一覧
 */
 ?>
 <?php
+    session_cache_limiter('private_no_expire');//ブラウザバック対策
     session_start();
     require_once(locate_template('template-parts/module_func.php', true, true));
     get_template_part('template-parts/head');
@@ -27,7 +28,7 @@ Template Name: News一覧
     </div>
     <div class="p-mainContent">
         <section class="c-content">
-            <form action="<?= esc_url( home_url('/') );?>newslist" method="post" class="p-article-header">
+            <form action="<?= esc_url( home_url('/') );?>newslist/" method="post" class="p-article-header">
                 <button class="p-article-tab<?php $tabActive = $buttonValue == 'all' ?  ' is-tabActive' : ''; echo $tabActive; ?>" type="submit" name="button" value="all"><span>A</span><span>LL</span></button>
                 <button class="p-article-tab<?php $tabActive = $buttonValue == 'music' ?  ' is-tabActive' : ''; echo $tabActive; ?>" type="submit" name="button" value="music"><span>M</span><span>USIC</span></button>
                 <button class="p-article-tab<?php $tabActive = $buttonValue == 'game' ?  ' is-tabActive' : ''; echo $tabActive; ?>" type="submit" name="button" value="game"><span>G</span><span>AME</span></button>

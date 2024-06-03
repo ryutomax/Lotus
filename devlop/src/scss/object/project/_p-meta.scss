@@ -4,12 +4,16 @@
   max-width: 1000px;
   width: 100%;
   margin: 0 auto;
+
+  a {
+    @include flashAnime;
+  }
 }
 
 .p-meta-info-content {
 
   .wp-block-group__inner-container {
-    padding: 16px 8px;
+    padding: 16px 20px;
   }
 
   >.wp-block-group {
@@ -38,7 +42,7 @@
       }
     }
 
-    &:last-child { //プロフィール
+    &:nth-child(3) { //プロフィール
       .wp-block-group {
         background-color: $white;
         box-shadow: 1px 1px 6px #e8e8e8;
@@ -60,6 +64,7 @@
     color: $white;
     background-color: #32373c;
     border-radius: 0;
+    @include flashAnime;
   }
 
   summary {
@@ -129,6 +134,10 @@
     & + li {
       margin-top: 8px;
     }
+  }
+
+  figure {
+    margin-bottom: 24px;
   }
 }
 

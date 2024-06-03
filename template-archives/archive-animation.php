@@ -1,4 +1,5 @@
 <?php
+	session_cache_limiter('private_no_expire');//ブラウザバック対策
   session_start();
 	get_template_part('template-parts/head');
 	require_once(locate_template('template-parts/module_func.php', true, true));
@@ -25,7 +26,7 @@
 	</div>
 	<div class="p-mainContent">
 		<section class="c-content">
-			<form action="<?= esc_url( home_url('/') );?>animation" method="post" class="p-article-header">
+			<form action="<?= esc_url( home_url('/') );?>animation/" method="post" class="p-article-header">
 				<button class="p-article-tab<?php $tabActive = $buttonValue == 'all' ?  ' is-tabActive' : ''; echo $tabActive; ?>" type="submit" name="button" value="all"><span>A</span><span>LL</span></button>
 				<button class="p-article-tab<?php $tabActive = $buttonValue == 'news' ?  ' is-tabActive' : ''; echo $tabActive; ?>" class="p-article-tab" type="submit" name="button" value="news"><span>N</span><span>EWS</span></button>
 				<button class="p-article-tab<?php $tabActive = $buttonValue == 'interview' ?  ' is-tabActive' : ''; echo $tabActive; ?>" type="submit" name="button" value="interview"><span>I</span><span>NTERVIEW</span></button>
