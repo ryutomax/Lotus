@@ -207,6 +207,10 @@ $slider-h-sp: 70vw;
 
 .p-pickUp-article-text {
   line-height: 1.7;
+
+  @include mq (o-sp) {
+    font-size: rem(14);
+  }
 }
 
 .p-search-result {
