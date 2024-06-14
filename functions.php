@@ -401,3 +401,14 @@ function display_menu_pick_up_news() {
 
 	echo '</div>';
 }
+
+// ========================================
+// 「パスワード保護」一覧非表示
+// ========================================
+function password_post_exclude_archive_posts($query) {
+	if(is_singular() || is_admin()) {
+		return;
+	}
+	$query->set('has_password', false);
+}
+add_action('pre_get_posts', 'password_post_exclude_archive_posts');
