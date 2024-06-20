@@ -412,3 +412,14 @@ function password_post_exclude_archive_posts($query) {
 	$query->set('has_password', false);
 }
 add_action('pre_get_posts', 'password_post_exclude_archive_posts');
+
+// ========================================
+// 「カスタム投稿タイプ」へ「予約投稿機能」追加
+// ========================================
+function enable_reservation_for_custom_post_type() {
+	add_post_type_support( 'music', 'future' );
+	add_post_type_support( 'game', 'future' );
+	add_post_type_support( 'animation', 'future' );
+	add_post_type_support( 'entertainment', 'future' );
+}
+add_action( 'init', 'enable_reservation_for_custom_post_type' );
