@@ -25,8 +25,8 @@ function enqueue_scripts() {
 		wp_enqueue_script('datepicker', 'https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js', [], $version, true);
 		wp_enqueue_script('contact', get_theme_file_uri('/assets/js/parts/contact-min.js'), [], $version, true);
 	}
-	wp_enqueue_script('jQuery', get_template_directory_uri() . '/assets/vender/jquery-3.7.1.min.js', [], $version, true);
-	wp_enqueue_script('slick-min', get_template_directory_uri() . '/assets/vender/slick-1.8.1/slick/slick.min.js', [], $version, true);
+	wp_enqueue_script('jQuery', get_template_directory_uri() . '/assets/vender/jquery-3.7.1.min.js', [], 1, true);
+	wp_enqueue_script('slick-min', get_template_directory_uri() . '/assets/vender/slick-1.8.1/slick/slick.min.js', [], 1, true);
 	wp_enqueue_script('bundle', get_template_directory_uri() . '/assets/js/bundle.js', [], $version, true);
 	// wp_enqueue_script('noBundle', get_template_directory_uri() . '/assets/js/nonBundle/noBundle-min.js', [], $css_version, true);
 }
@@ -400,4 +400,32 @@ function display_menu_pick_up_news() {
 	}
 
 	echo '</div>';
+}
+
+// ========================================
+// 「パスワード保護」一覧非表示
+// ========================================
+function password_post_exclude_archive_posts($query) {
+	if(is_singular() || is_admin()) {
+		return;
+	}
+	$query->set('has_password', false);
+}
+add_action('pre_get_posts', 'password_post_exclude_archive_posts');
+
+// ========================================
+// 「カスタム投稿タイプ」へ「予約投稿機能」追加
+// ========================================
+function enable_reservation_for_custom_post_type() {
+	add_post_type_support( 'music', 'future' );
+	add_post_type_support( 'game', 'future' );
+	add_post_type_support( 'animation', 'future' );
+	add_post_type_support( 'entertainment', 'future' );
+}
+add_action( 'init', 'enable_reservation_for_custom_post_type' );
+
+
+add_filter( 'ppp_nonce_life', 'my_nonce_life' );
+function my_nonce_life() {
+    return 60 * 60 * 24 * 30;
 }

@@ -138,8 +138,9 @@
     let match = currentUrl.match(/\/(\d+)\//);
     let lastNumber = 0;
     if (match && match != 1) {
-        lastNumber = match[1] - 1;
+        lastNumber = <?= count($media_urls); ?> - 1;
     }
+
     $('.p-slider-visual').slick({
         initialSlide: lastNumber, //スライド初期表示 クリックした画像リンクを保存して
         slidesToShow: 2.325,
