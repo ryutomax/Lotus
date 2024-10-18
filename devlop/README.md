@@ -7,7 +7,7 @@ yarn -v  (./node_modules/.bin/yarn -v)
 v1.22.19
 
 2. 監視状態/ローカルサーバ起動
-yarn start
+yarn start  (./node_modules/.bin/yarn start)
 
 基本的にsrc内のファイルで作業していただきます。
 

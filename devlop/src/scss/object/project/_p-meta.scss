@@ -14,9 +14,14 @@
 
   .wp-block-group__inner-container {
     padding: 16px 20px;
+    word-wrap: break-word;
   }
 
   >.wp-block-group {
+
+    &>.wp-block-group__inner-container {
+      padding: 0;
+    }
 
     .wp-block-group {
       margin-bottom: 24px;
@@ -113,6 +118,10 @@
 
   ul, h3, p {
     margin-bottom: 24px;
+
+    @include mq (o-sp) {
+      font-size: rem(14);
+    }
   }
 
   li {
