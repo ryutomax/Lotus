@@ -51,17 +51,21 @@
     <link rel="icon" type="image/png" href="<?php echo esc_url(get_template_directory_uri() . '/'); ?>assets/images/common/favicons/favicon-32x32.png" sizes="32x32">
     <link rel="icon" type="image/png" href="<?php echo esc_url(get_template_directory_uri() . '/'); ?>assets/images/common/favicons/favicon-16x16.png" sizes="16x16">
     <!--絶対パスで記述-->
-    <meta property="og:type" content="website" />
     <meta property="og:site_name" content="<?= $title ?>" />
+    <meta property="og:title" content="<?= $title ?>" />
+    <meta property="og:url" content="<?= esc_url(home_url('')); ?>" />
+    <meta property="og:type" content="website" />
     <meta property="og:locale" content="ja_JP" />
-    <meta name="og:image" content="<?php echo esc_url(get_template_directory_uri() . '/'); ?>assets/images/common/OGP.jpg">
+    <meta property="og:image" content="<?= esc_url(get_template_directory_uri() . '/'); ?>assets/images/common/OGP632.png">
+    <meta property="og:description" content='<?= $description ?>' />
+    
     <!--twitter用-->
-    <meta name="twitter:card" content="summary_large_image" /><!-- summary summary_large_image photo gallery appから選ぶ -->
+    <meta name="twitter:card" content="summary" />
     <!-- <meta name="twitter:site" content="" /> -->
     <meta name="twitter:title" content="<?= $title ?>" />
-    <meta name="twitter:url" content="https://twitter.com/" />
-    <meta name="twitter:description" content="<?= $description ?>" />
-    <meta name="twitter:image" content="<?php echo esc_url(get_template_directory_uri() . '/'); ?>assets/images/common/OGP.jpg" />
+    <meta name="twitter:description" content='<?= $description ?>' />
+    <meta name="twitter:image:src" content="<?= esc_url(get_template_directory_uri() . '/'); ?>assets/images/common/OGP632.png" />
+    
     <!--絶対パスで記述-->
     <title><?= $title ?></title>
     <?php wp_head(); ?>
