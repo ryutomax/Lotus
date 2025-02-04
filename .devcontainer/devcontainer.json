@@ -1,0 +1,28 @@
+{
+  "name": "wp-dev-docker",
+  "dockerComposeFile": "../docker-config/docker-compose.yml",
+  "service": "wordpress",
+  "workspaceFolder": "/var/www/html/",
+  "forwardPorts": [
+    9003
+  ],
+  "customizations": {
+    "settings": {
+			"terminal.integrated.shell.linux": "/bin/bash",
+			"php.suggest.basic": false, // avoids duplicate autocomplete
+      "php.validate.executablePath": "/usr/local/bin/php"
+		},
+    "vscode": {
+      "extensions": [
+        "xdebug.php-pack",
+				"xdebug.php-debug",
+        "felixfbecker.php-debug",
+				"wordpresstoolbox.wordpress-toolbox",
+				"johnbillion.vscode-wordpress-hooks",
+				"oderwat.indent-rainbow",
+				"mosapride.zenkaku"
+      ]
+    }
+  },
+  "remoteUser": "root"
+}

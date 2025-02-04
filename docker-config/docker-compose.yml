@@ -1,0 +1,66 @@
+version: '3'
+
+x-app: &app
+    restart: always
+    env_file:
+      - .env
+
+services:
+  wordpress:
+    <<: *app
+    build:
+      context: ./
+      args:
+        - WP_THEME_NAME=${WP_THEME_NAME}
+    depends_on:
+      - mysql
+    image: wordpress:6.5.5
+    volumes:
+      - ../Lotus:/var/www/html/wp-content/themes/${WP_THEME_NAME}
+      - ./package.json:/var/www/html/wp-content/themes/${WP_THEME_NAME}/develop/package.json
+      ### ▼no mount directory ###
+      - backup:/var/www/html/wp-content/themes/${WP_THEME_NAME}/WP_BK
+      ### ▼no sync directory ###
+      - /var/www/html/wp-content/themes/${WP_THEME_NAME}/develop/node_modules
+      # - /var/www/html/wp-content/themes/${WP_THEME_NAME}/assets/
+    ports:
+      - "8000:80"
+      - "9003:9003"
+    environment:
+      WORDPRESS_DB_HOST: db
+      WORDPRESS_DB_USER: ${DB_USER}
+      WORDPRESS_DB_PASSWORD: ${DB_PASSWORD}
+      WORDPRESS_DB_NAME: ${DB_NAME}
+      WORDPRESS_DEBUG: 1
+
+  mysql:
+    <<: *app
+    image: mysql:5.7
+    volumes:
+      - db_data:/var/lib/mysql
+    environment:
+      MYSQL_DATABASE: ${DB_NAME}
+      MYSQL_USER: ${DB_USER}
+      MYSQL_PASSWORD: ${DB_PASSWORD}
+      MYSQL_ROOT_PASSWORD: ${DB_ROOT_PASSWORD}
+    ports:
+      - "3308:3308"
+
+  phpmyadmin:
+    <<: *app
+    depends_on:
+      - mysql
+    image: phpmyadmin/phpmyadmin:latest
+    environment:
+      PMA_HOST: mysql
+      PMA_USER: root
+      PMA_PASSWORD: ${DB_ROOT_PASSWORD}
+    ports:
+      - "8888:80"
+  # sqlファイルインポート時はファイルサイズの上限を変更するためコメントアウトを外す
+  # volumes:
+  #    - ./phpmyadmin-misc.ini:/usr/local/etc/php/conf.d/phpmyadmin-misc.ini
+
+volumes:
+  backup:
+  db_data: {}
