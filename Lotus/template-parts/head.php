@@ -20,7 +20,7 @@
     <?php $title = "ニュース｜Lotus"; ?>
     <?php $description = "ミュージック、アニメ、ゲーム、エンタメ等の新着ニュースをお届け"; ?>
   <?php elseif(is_single()) :?>
-    <?php $title = "Lotus|" . get_the_title(); ?>
+    <?php $title = "Lotus |" . get_the_title(); ?>
     <?php $description = get_the_excerpt(); ?>
     <?php if(is_single() && ('gallery' == get_post_type())) :?>
       <?php $title = "画像ギャラリー｜Lotus"; ?>
@@ -61,7 +61,7 @@
     <!--絶対パスで記述-->
     <meta property="og:site_name" content="Lotus|”クリエイターの言葉を伝える”エンタメ総合メディア" />
     <meta property="og:title" content="<?= esc_attr($title); ?>" />
-    <meta property="og:url" content="<?= esc_url(get_permalink()); ?> ?>" />
+    <meta property="og:url" content="<?= esc_url(get_permalink()); ?>" />
     <meta property="og:locale" content="ja_JP" />
     <meta property="og:image" content="<?= esc_url($ogp_image); ?>">
     <meta property="og:description" content='<?= esc_attr($description); ?>' />
