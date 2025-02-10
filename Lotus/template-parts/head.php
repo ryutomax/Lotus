@@ -67,7 +67,7 @@
     <meta property="og:description" content='<?= esc_attr($description); ?>' />
     
     <!--twitter用-->
-    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:site" content="<?= esc_url(home_url('')); ?>" />
     <meta name="twitter:title" content="<?= esc_attr($title); ?>" />
     <meta name="twitter:description" content='<?= esc_attr($description); ?>' />
