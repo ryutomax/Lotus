@@ -7,9 +7,10 @@
 	$post_type = get_post_type();
 	$page_url = get_permalink();
 	$post_id = get_the_ID();
+	$taxonomy = 'game-tag';
 
 	$terms_name = term_names_by_term($post_id, 'meta-bind', false);
-	$tag_terms_name = term_names_by_term($post_id, 'game-tag', true);
+	$tag_terms_name = term_names_by_term($post_id, $taxonomy, true);
 
 	$home_url = esc_url(home_url('/'));
 
@@ -23,11 +24,7 @@
 	<div class="p-mainContent">
 		<section class="c-content p-single-game">
 			<?php
-				if(have_posts()):
-					while(have_posts()):
-						the_post();
-
-				$post_id = get_the_ID();
+				if(have_posts()): while(have_posts()): the_post();
 			?>
 			<div class="p-single">
 				<span class="p-single-type" style="background-color: #9195F6;">
@@ -72,11 +69,12 @@
 						'post_status' => 'publish',
 						'tax_query' => [
 							[
-								'taxonomy' => 'game-tag',   // カスタムタクソノミーを指定
+								'taxonomy' => $taxonomy,   // カスタムタクソノミーを指定
 								'field'    => 'slug',       // タームの"slug"または"id"を指定
 								'terms'    => $tag_terms_name, // 絞り込みたいタームを指定
 							]
-						]
+						],
+						// 'post__not_in' => [get_the_ID()]
 					);
 					$wp_query = new WP_Query( $args );
 					if ( $wp_query->have_posts() ):
@@ -127,7 +125,14 @@
 				?>
 			</div>
 		</section>
-		<?php get_template_part('template-parts/side'); ?><!-- サイド -->
+		<?php
+			set_query_var('post_type', $post_type);
+			set_query_var('post_id', $post_id);
+			set_query_var('is_single', true);
+			set_query_var('tag_name', $taxonomy);
+			set_query_var('tag_terms_name', $tag_terms_name);
+			get_template_part('template-parts/side');
+		?><!-- サイド -->
 	</div>
 	<!-- ./p-mainContent -->
 </main>
