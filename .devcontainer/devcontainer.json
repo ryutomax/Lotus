@@ -2,7 +2,7 @@
   "name": "wp-dev-docker",
   "dockerComposeFile": "../docker-config/docker-compose.yml",
   "service": "wordpress",
-  "workspaceFolder": "/var/www/html/",
+  "workspaceFolder": "/var/www/html/wp-content/themes/Lotus/",
   "forwardPorts": [
     9003
   ],
