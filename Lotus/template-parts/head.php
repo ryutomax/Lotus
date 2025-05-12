@@ -67,8 +67,8 @@
     <meta property="og:description" content='<?= esc_attr($description); ?>' />
     
     <!--twitter用-->
-    <meta name="twitter:card" content="summary" />
-    <meta name="twitter:site" content="<?= esc_url(home_url('')); ?>" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@lotus_magic_d" />
     <meta name="twitter:title" content="<?= esc_attr($title); ?>" />
     <meta name="twitter:description" content='<?= esc_attr($description); ?>' />
     <meta name="twitter:image:src" content="<?= esc_url($ogp_image); ?>" />
