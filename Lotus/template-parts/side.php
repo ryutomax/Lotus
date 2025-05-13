@@ -7,7 +7,7 @@
     </div>
     <?php
       $post_type = get_query_var('post_type');
-      $post_id = get_query_var('post_id');
+      $post_now_id = get_query_var('post_id');
       $tag_name = get_query_var('tag_name');
       $tag_terms_name = get_query_var('tag_terms_name');
       $is_single = get_query_var('is_single');
@@ -29,7 +29,7 @@
                         'terms'    => $tag_terms_name, // 絞り込みたいタームを指定
                     ]
                 ],
-                // 'post__not_in' => [$post_id]
+                'post__not_in' => [$post_now_id]
             );
             $wp_query = new WP_Query( $args );
             if ( $wp_query->have_posts() ): while ( $wp_query->have_posts() ): $wp_query->the_post();
@@ -50,8 +50,7 @@
                     <h2 class="p-article-title"><?php the_title(); ?></h2>
                     <div class="p-article-type">
                     <?php
-                        $post_id = get_the_ID(); // 現在の投稿IDを取得
-                        $terms = wp_get_post_terms($post_id, 'category', array('fields' => 'names'));
+                        $terms = wp_get_post_terms(get_the_ID(), 'category', array('fields' => 'names'));
 
                         if (!is_wp_error($terms) && !empty($terms)) :
                             foreach ($terms as $term_name) :

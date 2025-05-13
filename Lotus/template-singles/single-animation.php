@@ -23,11 +23,11 @@
 	
 	<?php get_template_part('template-parts/breadcrumb', null, $args); ?>
 	<div class="p-mainContent">
-		<section class="c-content">
+		<section class="c-content p-single-anime">
 			<?php
 				if(have_posts()):while(have_posts()):the_post();
 			?>
-			<div class="p-single p-single-anime">
+			<div class="p-single">
 				<span class="p-single-type" style="background-color: #f4538a;">
 					<?php
 						$terms = wp_get_post_terms($post_id, 'category', array('fields' => 'names'));
@@ -76,7 +76,7 @@
 								'terms'    => $tag_terms_name, // 絞り込みたいタームを指定
 							]
 						],
-						// 'post__not_in' => [get_the_ID()]
+						'post__not_in' => [$post_id]
 					);
 					$wp_query = new WP_Query( $args );
 					if ( $wp_query->have_posts() ):
@@ -100,8 +100,7 @@
 							<h2 class="p-article-title"><?php the_title(); ?></h2>
 							<div class="p-article-type">
 								<?php
-									$post_id = get_the_ID(); // 現在の投稿IDを取得
-									$terms = wp_get_post_terms($post_id, 'category', array('fields' => 'names'));
+									$terms = wp_get_post_terms(get_the_ID(), 'category', array('fields' => 'names'));
 
 									if (!is_wp_error($terms) && !empty($terms)) :
 										foreach ($terms as $term_name) :
