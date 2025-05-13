@@ -17,6 +17,7 @@
   }
 
   .p-articles {
+    margin-right: 0;
     @include mq (o-tb) {
       display: none;
     }
@@ -36,6 +37,8 @@
 
   .p-article {
     width: 100%;
+    margin-right: 0;
+    margin-bottom: 0;
   }
 
   .p-article-thumbnail {
@@ -53,7 +56,9 @@
   }
 }
 
-.p-side01 {//Xタイムライン
+.p-side-x {//Xタイムライン
+  margin-bottom: 54px;
+
   h3 {
     display: inline-block;
     font-size: rem(15);
