@@ -29,10 +29,9 @@
 	$tag_terms_name = term_names_by_term($single_post_id, $tag_name, true);
 ?>
 <main class="l-main">
-    
     <?php get_template_part('template-parts/breadcrumb', null, $breadcrumb_args); ?>
     <div class="p-mainContent">
-        <section class="c-content">
+        <section class="c-content p-gallery-single">
             <div class="p-gallery">
                 <?php if(have_posts()): while(have_posts()): the_post();?>
                     <span class="p-single-type" style="<?= get_post_type_info($post_type)['color']; ?>"><?= get_post_type_info($post_type)['name']; ?></span>
@@ -45,7 +44,7 @@
                 <?php
                     $post_content = get_post_field('post_content', $post_id); // 投稿の内容を取得
                     $media_urls = get_media_urls_from_post($post_content); // 関数を呼び出し
-                    $gallery_per_page_link = $home_url . 'gallery/' . $post_slug;
+                    $gallery_per_page_link = $home_url . 'gallery/' . $post_id;
                 ?>
 
                 <p class="p-gallery-num">この記事の画像・動画（全<?= count($media_urls); ?>点）</p>
@@ -81,7 +80,8 @@
                                     'field'    => 'slug',       // タームの"slug"または"id"を指定
                                     'terms'    => $tag_terms_name, // 絞り込みたいタームを指定
                                 ]
-                            ]
+                            ],
+                            'post__not_in' => [$post_id]
                         );
                         $wp_query = new WP_Query( $args );
                         if ( $wp_query->have_posts() ): while ( $wp_query->have_posts() ): $wp_query->the_post();
@@ -127,7 +127,14 @@
 			</div>
             <!-- /.p-articles -->
         </section>
-        <?php get_template_part('template-parts/side'); ?><!-- サイド -->
+        <?php
+			set_query_var('post_type', $post_type);
+			set_query_var('post_id', $post_id);
+			set_query_var('is_single', true);
+			set_query_var('tag_name', $tag_name);
+			set_query_var('tag_terms_name', $tag_terms_name);
+			get_template_part('template-parts/side');
+		?><!-- サイド -->
     </div>
 </main>
 
@@ -135,10 +142,11 @@
 <script>
 
     let currentUrl = window.location.href;
-    let match = currentUrl.match(/\/(\d+)\//);
+    const segments = currentUrl.split("/").filter(Boolean); // 空文字を除去
+    const lastSegment = segments[segments.length - 1];
     let lastNumber = 0;
-    if (match && match != 1) {
-        lastNumber = match[1] - 1;
+    if (lastSegment && lastSegment != 1) {
+        lastNumber = lastSegment - 1;
     }
     $('.p-slider-visual').slick({
         initialSlide: lastNumber, //スライド初期表示 クリックした画像リンクを保存して

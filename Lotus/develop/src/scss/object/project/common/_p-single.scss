@@ -131,7 +131,8 @@
 .p-single-music,
 .p-single-music,
 .p-single-anime,
-.p-single-entertainment {
+.p-single-entertainment,
+.p-gallery-single {
   .p-articles {
     display: none;
     @include mq (o-tb) {
