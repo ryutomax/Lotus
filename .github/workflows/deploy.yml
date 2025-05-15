@@ -1,0 +1,35 @@
+name: Deploy to Lolipop Server
+
+on:
+  push:
+    branches:
+      - master  # masterブランチにpushしたらデプロイ実行
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Deploy via FTP
+        uses: SamKirkland/FTP-Deploy-Action@4.3.0
+        with:
+          server: ${{ secrets.FTP_HOST }} # デプロイ先ディレクトリを適宜変更
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          local-dir: ./
+          server-dir: /Lotus-test/wp-content/themes/Lotus/  # デプロイ先ディレクトリを適宜変更
+          exclude: |
+            **/.git/**
+            **/.github/**
+            **/node_modules/**
+            **/develop/**
+            **/.devcontainer/**
+            **/docker-config/**
+            **/WP_BK/**
+            **/backup/**
+            **/README.md
+            **/.gitignore
+            **/.ftp-deploy-sync-state.json
