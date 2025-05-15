@@ -142,9 +142,14 @@
 <script>
 
     let currentUrl = window.location.href;
-    const segments = currentUrl.split("/").filter(Boolean); // 空文字を除去
-    const lastSegment = segments[segments.length - 1];
-    let lastNumber = 0;
+    const segments = currentUrl.split("/").filter(Boolean); // 空でないパスのみ取得
+
+    // 数値だけを抽出
+    const numbers = segments.filter(segment => !isNaN(segment));
+
+    // 2番目の数値を取得（存在しなければ undefined
+    const lastSegment = numbers[1] !== undefined ? parseInt(numbers[1], 10) : 1;
+    let lastNumber = 0
     if (lastSegment && lastSegment != 1) {
         lastNumber = lastSegment - 1;
     }
