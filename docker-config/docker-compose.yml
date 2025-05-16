@@ -16,7 +16,7 @@ services:
       - mysql
     image: wordpress:6.5.5
     volumes:
-      - ../${WP_THEME_NAME}:/var/www/html/wp-content/themes/${WP_THEME_NAME}
+      - ../:/var/www/html/wp-content/themes/${WP_THEME_NAME}
       - ../.vscode:/var/www/html/.vscode
       - ./package.json:/var/www/html/wp-content/themes/${WP_THEME_NAME}/develop/package.json
       ### ▼no mount directory ###

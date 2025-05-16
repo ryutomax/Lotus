@@ -10,7 +10,8 @@
       <a class="twitter-timeline" href="https://twitter.com/lotus_magic_d?ref_src=twsrc%5Etfw">Tweets by lotus_magic_d</a>
       <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
     </div>
-    <blockquote class="twitter-tweet"><p lang="ja" dir="ltr">“クリエイターの言葉を伝える”エンタメ総合メディア「Lotus」始動！アーティストやクリエイターが放つ純粋な言葉の魔法をお届けします。<br><br>ここだけでしか見れない独占インタビューやオリジナル記事も続々登場！<br><br>▼<a href="https://t.co/PrO5UQxDrF">https://t.co/PrO5UQxDrF</a><a href="https://twitter.com/hashtag/Lotus?src=hash&amp;ref_src=twsrc%5Etfw">#Lotus</a></p>&mdash; Lotus編集部 (@lotus_magic_d) <a href="https://twitter.com/lotus_magic_d/status/1774730339279421570?ref_src=twsrc%5Etfw">April 1, 2024</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+    <blockquote class="twitter-tweet">
+      <p lang="ja" dir="ltr">“クリエイターの言葉を伝える”エンタメ総合メディア「Lotus」始動！アーティストやクリエイターが放つ純粋な言葉の魔法をお届けします。<br><br>ここだけでしか見れない独占インタビューやオリジナル記事も続々登場！<br><br>▼<a href="https://t.co/PrO5UQxDrF">https://t.co/PrO5UQxDrF</a><a href="https://twitter.com/hashtag/Lotus?src=hash&amp;ref_src=twsrc%5Etfw">#Lotus</a></p>&mdash; Lotus編集部 (@lotus_magic_d) <a href="https://twitter.com/lotus_magic_d/status/1774730339279421570?ref_src=twsrc%5Etfw">April 1, 2024</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
     <?php
       $post_type = get_query_var('post_type');
       $post_now_id = get_query_var('post_id');
