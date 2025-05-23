@@ -1,0 +1,39 @@
+name: Deploy to Production (main)
+
+on:
+  pull_request:
+    types:
+      - closed  # PR が閉じられたとき（マージ含む）
+    branches:
+      - master    # 対象は main ブランチ
+
+jobs:
+  deploy:
+    if: github.event.pull_request.merged == true && github.event.pull_request.base.ref == 'master' && github.event.pull_request.head.ref == 'develop'
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Deploy to production via FTP
+        uses: SamKirkland/FTP-Deploy-Action@4.3.0
+        with:
+          server: ${{ secrets.FTP_HOST_PROD }}
+          username: ${{ secrets.FTP_USERNAME_PROD }}
+          password: ${{ secrets.FTP_PASSWORD_PROD }}
+          local-dir: ./
+          server-dir: ${{ secrets.FTP_TARGET_DIR_PROD }}
+          exclude: |
+            **/.git/**
+            **/.github/**
+            **/.vscode/**
+            **/node_modules/**
+            **/develop/**
+            **/.devcontainer/**
+            **/docker-config/**
+            **/WP_BK/**
+            **/WP_DB/**
+            **/backup/**
+            **/README.md
+            **/.gitignore

@@ -3,7 +3,7 @@ name: Deploy to Lolipop Server
 on:
   push:
     branches:
-      - master  # masterブランチにpushしたらデプロイ実行
+      - develop  # masterブランチにpushしたらデプロイ実行
 
 jobs:
   deploy:
@@ -20,16 +20,17 @@ jobs:
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
           local-dir: ./
-          server-dir: /Lotus-test/wp-content/themes/Lotus/  # デプロイ先ディレクトリを適宜変更
+          server-dir: ${{ secrets.FTP_TARGET_DIR }}  # デプロイ先ディレクトリを適宜変更
           exclude: |
             **/.git/**
             **/.github/**
+            **/.vscode/**
             **/node_modules/**
             **/develop/**
             **/.devcontainer/**
             **/docker-config/**
             **/WP_BK/**
+            **/WP_DB/**
             **/backup/**
             **/README.md
             **/.gitignore
-            **/.ftp-deploy-sync-state.json
